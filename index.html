@@ -139,6 +139,16 @@
             padding: 24px;
             border-radius: 16px;
             border: 1px solid #333;
+            transition: transform 0.2s, border-color 0.2s;
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
         }
 
         .feature-icon {
@@ -212,26 +222,26 @@
         </div>
 
         <div class="features">
-            <div class="feature-card">
+            <a href="finder.html" class="feature-card">
                 <div class="feature-icon">🔍</div>
                 <div class="feature-title">String Finder</div>
                 <div class="feature-desc">Discover the best strings for Power, Spin, or Comfort.</div>
-            </div>
-            <div class="feature-card">
+            </a>
+            <a href="logs.html" class="feature-card">
                 <div class="feature-icon">📝</div>
                 <div class="feature-title">Detailed Logs</div>
                 <div class="feature-desc">Track every restringing job, tension, and date.</div>
-            </div>
-            <div class="feature-card">
+            </a>
+            <a href="health.html" class="feature-card">
                 <div class="feature-icon">📉</div>
                 <div class="feature-title">Tension Health</div>
                 <div class="feature-desc">Monitor tension loss and know when to restring.</div>
-            </div>
-            <div class="feature-card">
+            </a>
+            <a href="profile.html" class="feature-card">
                 <div class="feature-icon">👤</div>
                 <div class="feature-title">My Profile</div>
                 <div class="feature-desc">Manage your rackets and track your play level.</div>
-            </div>
+            </a>
         </div>
 
         <footer>
