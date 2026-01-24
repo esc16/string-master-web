@@ -336,18 +336,23 @@
 
     <script>
         window.onload = function() {
-            // Get URL hash (fragment)
+            // 1. Get URL hash (fragment) -> e.g., #access_token=...
             const hash = window.location.hash;
+            
+            // 2. Get URL Search Params (Query) -> e.g., ?code=...
+            const urlParams = new URLSearchParams(window.location.search);
+            const hasCode = urlParams.has('code');
 
-            // Supabase returns tokens in the hash (e.g. #access_token=...&type=signup...)
-            // We check for 'access_token' OR specific type parameters
-            if (hash && (hash.includes('access_token') || hash.includes('type=signup') || hash.includes('type=recovery') || hash.includes('type=email_change'))) {
+            // ✅ Condition: Check for Hash Token OR Query Code
+            if (hasCode || (hash && (hash.includes('access_token') || hash.includes('type=signup') || hash.includes('type=recovery') || hash.includes('type=email_change')))) {
                 
-                // Optional: Customize message based on type
-                if (hash.includes('type=recovery')) {
+                // Optional: Customize message based on type (only possible if type is in hash or param)
+                // Note: ?code=... usually doesn't come with type param explicitly in the URL bar visible to JS in the same way, 
+                // but we can assume success if code is present.
+                if (hash && hash.includes('type=recovery')) {
                     document.getElementById('modalTitle').innerText = "Identity Verified!";
                     document.getElementById('modalBody').innerText = "You can now reset your password in the app.";
-                } else if (hash.includes('type=email_change')) {
+                } else if (hash && hash.includes('type=email_change')) {
                     document.getElementById('modalTitle').innerText = "Email Updated!";
                     document.getElementById('modalBody').innerText = "Your new email address has been confirmed.";
                 }
@@ -356,6 +361,7 @@
                 document.getElementById('verificationModal').style.display = 'flex';
 
                 // 2. Clean URL (Remove sensitive tokens from address bar)
+                // Removes both search params (?) and hash (#)
                 history.replaceState(null, null, window.location.pathname);
             }
         };
