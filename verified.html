@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verified - String Master</title>
+    <style>
+        :root {
+            --primary: #CCFF00;
+            --bg: #121212;
+            --surface: #1E1E1E;
+            --text: #FFFFFF;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+
+        .card {
+            background-color: var(--surface);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            max-width: 400px;
+            width: 90%;
+            border: 1px solid #333;
+            animation: popIn 0.5s ease-out;
+        }
+
+        .icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #AAA;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: black;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <div class="icon">🎉</div>
+        <h1 id="title">Email Verified!</h1>
+        <p id="message">Your account has been successfully verified.<br>Redirecting to home...</p>
+        <a href="index.html" class="btn">Go to Home</a>
+    </div>
+
+    <script>
+        window.onload = function() {
+            // 1. URL 정보 감지 (Hash or Query)
+            const hash = window.location.hash;
+            const urlParams = new URLSearchParams(window.location.search);
+            const hasCode = urlParams.has('code');
+
+            // 토큰이 있거나 코드가 있으면 인증 성공으로 간주
+            if (hasCode || (hash && (hash.includes('access_token') || hash.includes('type=signup') || hash.includes('type=recovery') || hash.includes('type=email_change')))) {
+                
+                // (옵션) 상황별 텍스트 변경
+                if (hash && hash.includes('type=recovery')) {
+                    document.getElementById('title').innerText = "Identity Verified!";
+                    document.getElementById('message').innerHTML = "You can now reset your password in the app.<br>Redirecting...";
+                } else if (hash && hash.includes('type=email_change')) {
+                    document.getElementById('title').innerText = "Email Updated!";
+                }
+
+                // 2. URL 정리 (보안상 토큰 제거)
+                history.replaceState(null, null, window.location.pathname);
+
+                // 3. 3초 뒤 메인으로 자동 이동 (사용자가 앱으로 돌아갈 시간 확보)
+                setTimeout(() => {
+                    window.location.href = 'index.html';
+                }, 3000);
+            } else {
+                // 토큰 없이 그냥 들어온 경우 바로 홈으로 보냄
+                window.location.href = 'index.html';
+            }
+        };
+    </script>
+</body>
+</html>
