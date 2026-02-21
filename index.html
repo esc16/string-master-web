@@ -43,7 +43,7 @@
         }
 
         .container {
-            max-width: 800px;
+            max-width: 900px;
             width: 100%;
             padding: 40px 20px;
             text-align: center;
@@ -125,10 +125,10 @@
 
         .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
             gap: 20px;
             width: 100%;
-            margin-bottom: 60px;
+            margin-bottom: 30px;
             text-align: left;
         }
 
@@ -141,7 +141,9 @@
             cursor: pointer;
             text-decoration: none;
             color: inherit;
-            display: block;
+            display: flex;
+            flex-direction: column;
+            position: relative;
         }
 
         .feature-card:hover {
@@ -154,6 +156,20 @@
             margin-bottom: 12px;
         }
 
+        .badge {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--bg);
+            font-size: 0.7rem;
+            font-weight: 800;
+            padding: 4px 8px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            align-self: flex-start;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
         .feature-title {
             font-size: 1.1rem;
             font-weight: bold;
@@ -164,6 +180,20 @@
         .feature-desc {
             font-size: 0.9rem;
             color: var(--text-secondary);
+        }
+        
+        .signup-promo {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 60px;
+            padding: 15px 25px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            display: inline-block;
+        }
+
+        .signup-promo strong {
+            color: white;
         }
 
         footer {
@@ -227,6 +257,21 @@
                 <div class="feature-title">My Profile</div>
                 <div class="feature-desc">Manage your rackets and track your play level.</div>
             </a>
+            
+            <a href="logs.html" class="feature-card" style="border-color: #333; background: linear-gradient(145deg, #1E1E1E, #252525);">
+                <div class="badge">Members Only</div>
+                <div class="feature-title">⏰ Smart Routine Log</div>
+                <div class="feature-desc">Get lock-screen notifications based on your schedule and log playtime in 1 tap.</div>
+            </a>
+            <a href="logs.html" class="feature-card" style="border-color: #333; background: linear-gradient(145deg, #1E1E1E, #252525);">
+                <div class="badge">Members Only</div>
+                <div class="feature-title">🪄 1-Tap Restring</div>
+                <div class="feature-desc">Seamlessly clone your previous racket setup and log a new job instantly.</div>
+            </a>
+        </div>
+
+        <div class="signup-promo">
+            💡 Sign up for free via <strong>Email, Apple, or Google</strong> to unlock smart notifications and 1-tap logging!
         </div>
 
          <div class="store-buttons">
