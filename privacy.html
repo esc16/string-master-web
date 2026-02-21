@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - String Master</title>
-    <meta name="description" content="Privacy Policy for String Master: Tennis Log application.">
-    
+    <title>String Master - Privacy Policy</title>
     <style>
         :root {
             --primary: #CCFF00;
@@ -36,129 +34,206 @@
             max-width: 800px;
             width: 100%;
             padding: 40px 20px;
-            text-align: left;
+            display: flex;
+            flex-direction: column;
             flex-grow: 1;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .logo {
+            font-size: 60px;
+            text-decoration: none;
+            display: inline-block;
+            margin-bottom: 10px;
         }
 
         h1 {
             font-size: 2rem;
             font-weight: 800;
-            margin-bottom: 20px;
-            color: var(--primary);
-            text-align: center;
+            margin-bottom: 16px;
+            background: linear-gradient(45deg, #fff, #CCFF00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+
+        .nav a {
+            background-color: #333;
+            color: var(--text);
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.2s ease;
+        }
+
+        .nav a:hover {
+            background-color: var(--primary);
+            color: var(--bg);
+            transform: translateY(-2px);
+        }
+
+        .content-box {
+            background: var(--surface);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #333;
+            margin-bottom: 40px;
         }
 
         h2 {
-            font-size: 1.5rem;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: #fff;
+            color: var(--primary);
             border-bottom: 1px solid #333;
-            padding-bottom: 10px;
+            padding-bottom: 8px;
+            margin-top: 40px;
+            font-size: 1.3rem;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
         }
 
         p {
-            margin-bottom: 16px;
             color: var(--text-secondary);
-        }
-
-        ul {
-            margin-bottom: 16px;
-            padding-left: 20px;
-            color: var(--text-secondary);
-        }
-
-        li {
-            margin-bottom: 8px;
-        }
-
-        strong {
-            color: #fff;
-        }
-
-        a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 20px;
-            color: var(--text-secondary);
-            font-size: 0.9rem;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
         }
 
         footer {
             margin-top: auto;
             padding: 20px;
+            text-align: center;
             color: #555;
             font-size: 0.8rem;
-            text-align: center;
-            width: 100%;
+        }
+
+        footer a {
+            color: #777;
+            text-decoration: none;
+            margin: 0 5px;
+            transition: color 0.2s;
+        }
+
+        footer a:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.6rem; }
+            .content-box { padding: 20px; }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <a href="index.html" class="back-btn">← Back to Home</a>
+        <div class="header">
+            <a href="index.html" class="logo">🎾</a>
+            <h1>Global Privacy Policy (v1.4.0)</h1>
+        </div>
         
-        <h1>Privacy Policy</h1>
-        
-        <p><strong>Effective Date:</strong> 2025-12-26</p>
+        <div class="nav">
+            <a href="#en">🇺🇸 English</a>
+            <a href="#ko">🇰🇷 한국어</a>
+            <a href="#es">🇪🇸 Español</a>
+            <a href="#ja">🇯🇵 日本語</a>
+            <a href="#zh">🇨🇳 简体中文</a>
+            <a href="#zh-TW">🇹🇼 繁體中文</a>
+            <a href="#de">🇩🇪 Deutsch</a>
+            <a href="#fr">🇫🇷 Français</a>
+            <a href="#it">🇮🇹 Italiano</a>
+        </div>
 
-        <p>This privacy policy governs your use of the software application <strong>"String Master: Tennis Log"</strong> (displayed as <strong>"String Master"</strong> on devices) for mobile devices that was created by the developer. The Application is a utility tool designed to help tennis players manage their stringing logs, equipment details, and monitor string health.</p>
+        <div class="content-box">
+            <h2 id="en">🇺🇸 English (EN) - [Privacy Policy]</h2>
+            <p>1. (Information Collection) We collect equipment details, string logs, NTRP level, and physical condition. We also collect Email, Google, and Apple account information for authentication and OTP delivery.</p>
+            <p>2. (Data Analysis & Posting) The developer may analyze anonymized user data for statistical purposes and share reports/insights on blogs, social media, or Reddit. No personally identifiable information (PII) is included.</p>
+            <p>3. (App Notifications) We may send push notifications for maintenance reminders and service updates. You can opt-out at any time in the settings.</p>
+            <p>4. (Data Deletion) You may permanently delete your account and all associated data via the "Delete Account" button in the app.</p>
+            <p>5. (Third-Party) We use Supabase for data hosting and Resend for email authentication (OTP) delivery.</p>
+            <p>6. (Contact Us) For privacy inquiries, account deletion requests, or service support, please contact us at tennis.string.master@gmail.com.</p>
 
-        <h2>1. What information does the Application obtain and how is it used?</h2>
-        <p><strong>User Provided Data</strong><br>
-        The Application obtains the information you provide when you use the Application. We collect:</p>
-        <ul>
-            <li><strong>Tennis Equipment Details:</strong> Racket brand, model name, string specifications, and tension settings.</li>
-            <li><strong>Activity Logs:</strong> Stringing dates, usage hours, and performance feedback.</li>
-            <li><strong>Profile Preferences:</strong> Your NTRP level and physical condition status (e.g., tennis elbow) to provide customized recommendations.</li>
-        </ul>
+            <h2 id="ko">🇰🇷 한국어 (KO) - [개인정보 처리방침]</h2>
+            <p>1. (정보 수집) 테니스 장비 상세 정보, 스트링 로그, NTRP 레벨 및 신체 조건을 수집합니다. 또한, 계정 연동 및 OTP 인증을 위해 이메일, Google, Apple 계정 정보를 수집합니다.</p>
+            <p>2. (데이터 분석 및 게시) 개발자는 서비스 개선을 위해 유저의 데이터를 익명화하여 분석할 수 있으며, 그 결과(통계 리포트 등)를 블로그, SNS, Reddit 등에 게시할 수 있습니다. 이때 개인 식별 정보는 절대 포함되지 않습니다.</p>
+            <p>3. (앱 알림) 서비스 공지, 스트링 교체 주기 알림 등을 위해 푸시 알림을 발송할 수 있으며, 설정에서 언제든 해제 가능합니다.</p>
+            <p>4. (데이터 삭제) 앱 내 '계정 삭제' 기능을 통해 모든 데이터를 즉시 영구 삭제할 수 있습니다.</p>
+            <p>5. (제3자 서비스) 데이터 저장 및 인증을 위해 Supabase를 사용하며, 이메일 인증(OTP) 발송을 위해 Resend 서비스를 이용합니다.</p>
+            <p>6. (문의처) 개인정보 보호, 계정 삭제 및 서비스 관련 문의는 tennis.string.master@gmail.com 으로 연락해 주시기 바랍니다.</p>
 
-        <h2>2. Authentication Data</h2>
-        <p>We currently use <strong>Anonymous Authentication (Guest Mode)</strong>. We assign a unique User ID to your device installation to store your data securely. We do not collect your email address, name, or phone number in this mode.</p>
+            <h2 id="es">🇪🇸 Español (ES) - [Política de Privacidad]</h2>
+            <p>1. (Información recopilada) Detalles del equipo, registros de cuerdas y datos de autenticación (Email, Google, Apple).</p>
+            <p>2. (Análisis de datos) El desarrollador puede analizar datos anónimos para informes estadísticos sin incluir datos personales.</p>
+            <p>3. (Notificaciones) La aplicación puede enviar notificaciones push. Se pueden desactivar en los ajustes.</p>
+            <p>4. (Eliminación de datos) Puede eliminar su cuenta y datos permanentemente en la aplicación.</p>
+            <p>5. (Servicios de terceros) Utilizamos Supabase para el almacenamiento y Resend para el envío de correos de autenticación (OTP).</p>
+            <p>6. (Contacto) Para consultas sobre privacidad, eliminación de cuentas o soporte del servicio, contáctenos en tennis.string.master@gmail.com.</p>
 
-        <h2>3. How we use your data</h2>
-        <p>We use the collected data for the following purposes:</p>
-        <ul>
-            <li>To provide and maintain the Service (saving your stringing history).</li>
-            <li>To calculate string lifespan and health based on your usage hours.</li>
-            <li>To recommend suitable tennis strings based on your profile and equipment.</li>
-        </ul>
+            <h2 id="ja">🇯🇵 日本語 (JA) - [プライバシーポリシー]</h2>
+            <p>1. (収集する情報) ラケット・ストリングの詳細、および認証情報（Email, Google, Apple）。</p>
+            <p>2. (データの分析および公開) 開発者は匿名化されたデータを統計分析し、その結果を公開する権利を有します。</p>
+            <p>3. (通知機能) プッシュ通知を送信する場合があります。設定でオフにできます。</p>
+            <p>4. (データの削除) アプリ内の「アカウント削除」から、すべてのデータを永久削除できます。</p>
+            <p>5. (第三者サービス) データ保存にSupabase、メール認証(OTP)送信にResendを使用します。</p>
+            <p>6. (お問い合わせ) プライバシーに関するご質問、アカウント削除のご依頼、またはサービスに関するお問い合わせは、tennis.string.master@gmail.com までご連絡ください。</p>
 
-        <h2>4. Third Party Access</h2>
-        <p>We use <strong>Supabase</strong> as our backend service provider for database hosting and authentication. Your data is stored securely on Supabase servers.</p>
-        <p>Supabase Privacy Policy: <a href="https://supabase.com/privacy" target="_blank">https://supabase.com/privacy</a></p>
+            <h2 id="zh">🇨🇳 简体中文 (ZH) - [隐私政策]</h2>
+            <p>1. (收集信息) 球拍及球线数据，以及身份验证信息 (Email, Google, Apple)。</p>
+            <p>2. (数据分析与发布) 开发者可以对匿名数据进行统计分析并发布报告。</p>
+            <p>3. (应用通知) 应用可能会发送推送通知。您可以在设置中关闭。</p>
+            <p>4. (数据删除) 您可以通过应用内的“删除账户”按钮永久删除数据。</p>
+            <p>5. (第三方服务) 我们使用 Supabase 进行数据存储，使用 Resend 发送电子邮件验证 (OTP)。</p>
+            <p>6. (联系我们) 有关隐私查询、账户删除请求或服务支持，请联系 tennis.string.master@gmail.com。</p>
 
-        <h2>5. Data Retention and Deletion Policy</h2>
-        <p>We will retain User Provided data for as long as you use the Application. You have the right to delete your account and all associated data at any time.</p>
-        
-        <p><strong>How to delete your data:</strong></p>
-        <ol style="margin-left: 20px; color: var(--text-secondary); margin-bottom: 16px;">
-            <li>Open the <strong>String Master</strong> app.</li>
-            <li>Navigate to the <strong>Profile</strong> (or Settings) screen.</li>
-            <li>Tap the <strong>"Delete Account"</strong> button.</li>
-            <li>Confirm the action in the popup dialog.</li>
-        </ol>
-        <p><strong>Result:</strong> Your User ID, Racket information, and Stringing Logs will be immediately and permanently deleted from our servers.</p>
+            <h2 id="zh-TW">🇹🇼 繁體中文 (ZH-TW) - [隱私權政策]</h2>
+            <p>1. (收集資訊) 球拍及球線數據，以及身分驗證資訊 (Email, Google, Apple)。</p>
+            <p>2. (數據分析與發布) 開發者可以對匿名數據進行統計分析並發布報告。</p>
+            <p>3. (應用通知) 應用程式可能會發送推播通知。您可以在設定中關閉。</p>
+            <p>4. (刪除數據) 您可以透過應用程式內的「刪除帳戶」按鈕永久刪除數據。</p>
+            <p>5. (第三方服務) 我們使用 Supabase 進行數據儲存，使用 Resend 發送電子郵件驗證 (OTP)。</p>
+            <p>6. (聯絡我們) 有關隱私查詢、帳戶刪除請求或服務支援，請聯絡 tennis.string.master@gmail.com。</p>
 
-        <p><strong>Important Note regarding Guest Mode:</strong> Since this Application currently uses Anonymous Guest Login, we do not store personal identifiers like email or phone numbers. Therefore, if you simply uninstall the Application without using the "Delete Account" button, we will be unable to identify or delete your orphaned data upon email request. <strong>Please perform the deletion process within the app before uninstalling.</strong></p>
+            <h2 id="de">🇩🇪 Deutsch (DE) - [Datenschutzerklärung]</h2>
+            <p>1. (Datenerhebung) Ausrüstungsdetails, Besaitungsprotokolle und Authentifizierung (Email, Google, Apple).</p>
+            <p>2. (Datenanalyse) Der Entwickler darf anonymisierte Daten analysieren und Berichte teilen.</p>
+            <p>3. (Benachrichtigungen) Die App kann Push-Benachrichtigungen senden.</p>
+            <p>4. (Datenlöschung) Sie können Ihr Konto über die Schaltfläche "Konto löschen" dauerhaft löschen.</p>
+            <p>5. (Drittanbieter) Wir nutzen Supabase zur Speicherung und Resend für den Versand von E-Mail-Authentifizierungen (OTP).</p>
+            <p>6. (Kontakt) Für Datenschutzanfragen, Anfragen zur Kontolöschung oder Service-Support kontaktieren Sie uns bitte unter tennis.string.master@gmail.com.</p>
 
-        <h2>6. Contact Information</h2>
-        <p>If you have any questions regarding privacy while using the Application, or have questions about our practices, please contact us via email at: <strong>tennis.string.master@gmail.com</strong></p>
+            <h2 id="fr">🇫🇷 Français (FR) - [Politique de Confidentialité]</h2>
+            <p>1. (Collecte de données) Détails de l'équipement, journaux de cordage et authentification (Email, Google, Apple).</p>
+            <p>2. (Analyse des données) Le développeur peut analyser des données anonymisées et partager des rapports.</p>
+            <p>3. (Notifications) L'application peut envoyer des notifications push.</p>
+            <p>4. (Suppression des données) Vous pouvez supprimer définitivement votre compte via le bouton "Supprimer le compte".</p>
+            <p>5. (Services tiers) Nous utilisons Supabase pour l'hébergement et Resend pour l'envoi d'e-mails d'authentification (OTP).</p>
+            <p>6. (Contact) Pour toute question relative à la confidentialité, demande de suppression de compte ou assistance, veuillez nous contacter à tennis.string.master@gmail.com.</p>
+
+            <h2 id="it">🇮🇹 Italiano (IT) - [Informativa sulla Privacy]</h2>
+            <p>1. (Raccolta dati) Dettagli dell'attrezzatura, log delle incordature e autenticazione (Email, Google, Apple).</p>
+            <p>2. (Analisi dei dati) Lo sviluppatore può analizzare dati anonimizzati per scopi statistici.</p>
+            <p>3. (Notifiche) L'app può inviare notifiche push.</p>
+            <p>4. (Cancellazione dei dati) È possibile eliminare definitivamente l'account tramite il pulsante "Elimina account".</p>
+            <p>5. (Servizi di terze parti) Utilizziamo Supabase per l'archiviazione e Resend per l'invio di e-mail di autenticazione (OTP).</p>
+            <p>6. (Contatti) Per domande sulla privacy, richieste di eliminazione dell'account o supporto al servizio, contattaci all'indirizzo tennis.string.master@gmail.com.</p>
+        </div>
+
+        <footer>
+            &copy; 2026 X Dragons. All rights reserved.<br>
+            <a href="index.html">Home</a> | <a href="terms.html">Terms of Service</a>
+        </footer>
     </div>
 
-    <footer>
-        &copy; 2026 Dean Kim. All rights reserved.
-    </footer>
 </body>
 </html>
-
-
-
