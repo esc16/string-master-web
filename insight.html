@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta http-equiv="Content-Security-Policy" 
+          content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://bckwjrapgdctawgauubo.supabase.co;">
+          
     <title>Community Insights - String Master</title>
     <style>
         :root {
@@ -310,18 +314,36 @@
                  .replace(/'/g, "&#039;");
         }
 
+        // 3. API 응답 검증 함수 (방어적 프로그래밍)
+        function validateStatsData(data) {
+            return data &&
+                typeof data.total_players === 'number' &&
+                typeof data.total_logs === 'number' &&
+                Array.isArray(data.top_brands) &&
+                Array.isArray(data.top_strings) &&
+                Array.isArray(data.top_strings_elbow) &&
+                Array.isArray(data.top_strings_no_elbow);
+        }
+
         async function fetchStats() {
             try {
                 const response = await fetch(STATS_API_URL);
-                if (!response.ok) throw new Error('API error');
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 
                 const data = await response.json();
-                if (data) {
-                    renderDashboard(data);
+                
+                // 받아온 데이터 구조가 올바른지 확인
+                if (!validateStatsData(data)) {
+                    throw new Error('Invalid data structure received from API');
                 }
+                
+                renderDashboard(data);
             } catch (err) {
-                console.error(err);
-                document.getElementById('error').style.display = 'block';
+                console.error('Stats fetch failed:', err);
+                // 에러 발생 시 사용자에게 안전한 메시지만 노출
+                const errorEl = document.getElementById('error');
+                errorEl.innerText = 'Failed to load data. Please try again later.';
+                errorEl.style.display = 'block';
             } finally {
                 document.getElementById('loading').style.opacity = '0';
                 setTimeout(() => {
