@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community Insights - String Master</title>
+    <style>
+        :root {
+            --primary: #CCFF00;
+            --bg: #121212;
+            --surface: #1E1E1E;
+            --text: #FFFFFF;
+            --text-secondary: #AAAAAA;
+            --accent: #2A2A2A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            padding: 40px 20px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 30px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .back-btn:hover {
+            color: var(--primary);
+        }
+
+        header {
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        .stat-card {
+            background: var(--surface);
+            padding: 30px 20px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Charts Section */
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        @media (max-width: 500px) {
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .chart-card {
+            background: var(--surface);
+            padding: 24px;
+            border-radius: 24px;
+            border: 1px solid #333;
+        }
+
+        .chart-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ranking-list {
+            list-style: none;
+        }
+
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            gap: 15px;
+        }
+
+        .rank-num {
+            width: 24px;
+            height: 24px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: var(--text-secondary);
+            flex-shrink: 0;
+        }
+
+        .item-details {
+            flex-grow: 1;
+        }
+
+        .item-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 6px;
+        }
+
+        .item-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .item-count {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .bar-bg {
+            height: 8px;
+            background: var(--accent);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 4px;
+            width: 0%;
+            transition: width 1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
+        }
+
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--bg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            transition: opacity 0.5s;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--accent);
+            border-top: 4px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .error-message {
+            color: #ff4444;
+            display: none;
+            padding: 20px;
+            text-align: center;
+        }
+
+        footer {
+            padding: 40px 20px;
+            color: #555;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="loading" class="loading-overlay">
+        <div class="spinner"></div>
+        <p>Fetching community insights...</p>
+    </div>
+
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Home</a>
+        
+        <header>
+            <h1>🎾 Community Insights</h1>
+            <p class="subtitle">Real-time statistics from String Master players worldwide.</p>
+        </header>
+
+        <div id="error" class="error-message">
+            Failed to load data. Please try again later.
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div id="total_players" class="stat-value">--</div>
+                <div class="stat-label">Total Players</div>
+            </div>
+            <div class="stat-card">
+                <div id="total_logs" class="stat-value">--</div>
+                <div class="stat-label">String Logs</div>
+            </div>
+            <div class="stat-card">
+                <div id="total_rackets" class="stat-value">--</div>
+                <div class="stat-label">Managed Rackets</div>
+            </div>
+            <div class="stat-card">
+                <div id="total_play_time" class="stat-value">--</div>
+                <div class="stat-label">Total Hours Played</div>
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <!-- Brand Share -->
+            <div class="chart-card">
+                <div class="chart-title">🏆 Top Racket Brands</div>
+                <div id="top_brands" class="ranking-list"></div>
+            </div>
+
+            <!-- Global Top Strings -->
+            <div class="chart-card">
+                <div class="chart-title">🔥 Most Popular Strings</div>
+                <div id="top_strings" class="ranking-list"></div>
+            </div>
+
+            <!-- Elbow Friendly Strings -->
+            <div class="chart-card">
+                <div class="chart-title">🛡️ Arm-Friendly Choice (Elbow Users)</div>
+                <div id="top_strings_elbow" class="ranking-list"></div>
+            </div>
+
+            <!-- Performance Strings -->
+            <div class="chart-card">
+                <div class="chart-title">⚡ High-Performance (No Elbow)</div>
+                <div id="top_strings_no_elbow" class="ranking-list"></div>
+            </div>
+        </div>
+
+        <footer>
+            Data reflects real-time community activity. &copy; 2026 Dean Kim.
+        </footer>
+    </div>
+
+    <script>
+        // SECURE ARCHITECTURE: Using Supabase Edge Function to hide ANON_KEY and Project details.
+        const STATS_API_URL = 'https://bckwjrapgdctawgauubo.supabase.co/functions/v1/get-public-stats';
+
+        async function fetchStats() {
+            try {
+                const response = await fetch(STATS_API_URL);
+                if (!response.ok) throw new Error('API error');
+                
+                const data = await response.json();
+                if (data) {
+                    renderDashboard(data);
+                }
+            } catch (err) {
+                console.error(err);
+                document.getElementById('error').style.display = 'block';
+            } finally {
+                document.getElementById('loading').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('loading').style.display = 'none';
+                }, 500);
+            }
+        }
+
+        function renderDashboard(stats) {
+            // Update counters
+            animateCounter('total_players', stats.total_players);
+            animateCounter('total_logs', stats.total_logs);
+            animateCounter('total_rackets', stats.total_rackets);
+            animateCounter('total_play_time', stats.total_play_time);
+
+            // Render ranking lists
+            renderList('top_brands', stats.top_brands, 'brand');
+            renderList('top_strings', stats.top_strings, 'model_name');
+            renderList('top_strings_elbow', stats.top_strings_elbow, 'model_name');
+            renderList('top_strings_no_elbow', stats.top_strings_no_elbow, 'model_name');
+        }
+
+        function animateCounter(id, target) {
+            const el = document.getElementById(id);
+            if (!el) return;
+            let current = 0;
+            const step = Math.ceil(target / 50);
+            const interval = setInterval(() => {
+                current += step;
+                if (current >= target) {
+                    el.innerText = target.toLocaleString();
+                    clearInterval(interval);
+                } else {
+                    el.innerText = current.toLocaleString();
+                }
+            }, 30);
+        }
+
+        function renderList(id, items, nameKey) {
+            const container = document.getElementById(id);
+            if (!items || items.length === 0) {
+                container.innerHTML = '<p style="color: var(--text-secondary); font-size: 0.9rem;">No data available</p>';
+                return;
+            }
+
+            const maxCount = items[0].count;
+            
+            container.innerHTML = items.map((item, index) => `
+                <div class="ranking-item">
+                    <div class="rank-num">${index + 1}</div>
+                    <div class="item-details">
+                        <div class="item-header">
+                            <span class="item-name">${item[nameKey]}</span>
+                            <span class="item-count">${item.count}</span>
+                        </div>
+                        <div class="bar-bg">
+                            <div class="bar-fill" style="width: 0%" data-width="${(item.count / maxCount) * 100}%"></div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            // Trigger animation
+            setTimeout(() => {
+                container.querySelectorAll('.bar-fill').forEach(bar => {
+                    bar.style.width = bar.dataset.width;
+                });
+            }, 100);
+        }
+
+        fetchStats();
+    </script>
+</body>
+</html>
