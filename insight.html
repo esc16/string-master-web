@@ -269,25 +269,21 @@
         </div>
 
         <div class="charts-container">
-            <!-- Brand Share -->
             <div class="chart-card">
                 <div class="chart-title">🏆 Top Racket Brands</div>
                 <div id="top_brands" class="ranking-list"></div>
             </div>
 
-            <!-- Global Top Strings -->
             <div class="chart-card">
                 <div class="chart-title">🔥 Most Popular Strings</div>
                 <div id="top_strings" class="ranking-list"></div>
             </div>
 
-            <!-- Elbow Friendly Strings -->
             <div class="chart-card">
                 <div class="chart-title">🛡️ Arm-Friendly Choice (Elbow Users)</div>
                 <div id="top_strings_elbow" class="ranking-list"></div>
             </div>
 
-            <!-- Performance Strings -->
             <div class="chart-card">
                 <div class="chart-title">⚡ High-Performance (No Elbow)</div>
                 <div id="top_strings_no_elbow" class="ranking-list"></div>
@@ -302,6 +298,17 @@
     <script>
         // SECURE ARCHITECTURE: Using Supabase Edge Function to hide ANON_KEY and Project details.
         const STATS_API_URL = 'https://bckwjrapgdctawgauubo.supabase.co/functions/v1/get-public-stats';
+
+        // XSS 방지를 위한 HTML 이스케이프 함수
+        function escapeHtml(unsafe) {
+            if (!unsafe) return '';
+            return String(unsafe)
+                 .replace(/&/g, "&amp;")
+                 .replace(/</g, "&lt;")
+                 .replace(/>/g, "&gt;")
+                 .replace(/"/g, "&quot;")
+                 .replace(/'/g, "&#039;");
+        }
 
         async function fetchStats() {
             try {
@@ -367,7 +374,7 @@
                     <div class="rank-num">${index + 1}</div>
                     <div class="item-details">
                         <div class="item-header">
-                            <span class="item-name">${item[nameKey]}</span>
+                            <span class="item-name">${escapeHtml(item[nameKey])}</span>
                             <span class="item-count">${item.count}</span>
                         </div>
                         <div class="bar-bg">
