@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta http-equiv="Content-Security-Policy" 
-          content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://bckwjrapgdctawgauubo.supabase.co;">
-          
     <title>Community Insights - String Master</title>
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://bckwjrapgdctawgauubo.supabase.co; img-src 'self' data:;">
     <style>
         :root {
             --primary: #CCFF00;
@@ -273,21 +271,25 @@
         </div>
 
         <div class="charts-container">
+            <!-- Brand Share -->
             <div class="chart-card">
                 <div class="chart-title">🏆 Top Racket Brands</div>
                 <div id="top_brands" class="ranking-list"></div>
             </div>
 
+            <!-- Global Top Strings -->
             <div class="chart-card">
                 <div class="chart-title">🔥 Most Popular Strings</div>
                 <div id="top_strings" class="ranking-list"></div>
             </div>
 
+            <!-- Elbow Friendly Strings -->
             <div class="chart-card">
                 <div class="chart-title">🛡️ Arm-Friendly Choice (Elbow Users)</div>
                 <div id="top_strings_elbow" class="ranking-list"></div>
             </div>
 
+            <!-- Performance Strings -->
             <div class="chart-card">
                 <div class="chart-title">⚡ High-Performance (No Elbow)</div>
                 <div id="top_strings_no_elbow" class="ranking-list"></div>
@@ -303,47 +305,25 @@
         // SECURE ARCHITECTURE: Using Supabase Edge Function to hide ANON_KEY and Project details.
         const STATS_API_URL = 'https://bckwjrapgdctawgauubo.supabase.co/functions/v1/get-public-stats';
 
-        // XSS 방지를 위한 HTML 이스케이프 함수
-        function escapeHtml(unsafe) {
-            if (!unsafe) return '';
-            return String(unsafe)
-                 .replace(/&/g, "&amp;")
-                 .replace(/</g, "&lt;")
-                 .replace(/>/g, "&gt;")
-                 .replace(/"/g, "&quot;")
-                 .replace(/'/g, "&#039;");
-        }
-
-        // 3. API 응답 검증 함수 (방어적 프로그래밍)
-        function validateStatsData(data) {
-            return data &&
-                typeof data.total_players === 'number' &&
-                typeof data.total_logs === 'number' &&
-                Array.isArray(data.top_brands) &&
-                Array.isArray(data.top_strings) &&
-                Array.isArray(data.top_strings_elbow) &&
-                Array.isArray(data.top_strings_no_elbow);
+        // XSS Protection Utility
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
         }
 
         async function fetchStats() {
             try {
                 const response = await fetch(STATS_API_URL);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                if (!response.ok) throw new Error('API error');
                 
                 const data = await response.json();
-                
-                // 받아온 데이터 구조가 올바른지 확인
-                if (!validateStatsData(data)) {
-                    throw new Error('Invalid data structure received from API');
+                if (data) {
+                    renderDashboard(data);
                 }
-                
-                renderDashboard(data);
             } catch (err) {
-                console.error('Stats fetch failed:', err);
-                // 에러 발생 시 사용자에게 안전한 메시지만 노출
-                const errorEl = document.getElementById('error');
-                errorEl.innerText = 'Failed to load data. Please try again later.';
-                errorEl.style.display = 'block';
+                console.error(err);
+                document.getElementById('error').style.display = 'block';
             } finally {
                 document.getElementById('loading').style.opacity = '0';
                 setTimeout(() => {

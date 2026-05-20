@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta http-equiv="Content-Security-Policy" 
-          content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://bckwjrapgdctawgauubo.supabase.co;">
-
     <title>String Master - Tennis Log & Finder</title>
     <meta name="description" content="Optimize your tennis equipment. Track string tension, log jobs, and find your perfect setup.">
+    <!-- Content Security Policy -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://bckwjrapgdctawgauubo.supabase.co; img-src 'self' data:;">
     
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://dean.github.io/string-master/">
@@ -235,7 +233,7 @@
         </p>
 
         <div class="store-buttons" style="margin-bottom: 40px;">
-            <a href="https://apps.apple.com/en/app/string-master-tennis-log/id6757102423" class="store-btn" target="_blank" rel="noopener noreferrer">
+            <a href="https://apps.apple.com/en/app/string-master-tennis-log/id6757102423" class="store-btn" target="_blank">
                 <svg viewBox="0 0 384 512" width="24" fill="white" style="margin-right: 12px;">
                     <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C55 141.6 0 196 0 286c0 47.1 17 94.4 38.3 125.7 17.7 25.8 38.7 54.9 66.8 54.9 26.7 0 36.9-17 68.4-17 31.5 0 40.5 17 68.1 17 27.8 0 47.9-25.1 66.1-51.7 18.7-27.2 26.5-53.5 26.6-54.8-1.5-.7-51.1-19.6-50.6-91.4zm-76.1-168.1c14.2-17.1 23.8-40.9 21.2-64.6-20.5 1-45.5 13.6-60.2 30.7-13.1 15.3-24.6 39.9-21.5 63.4 22.9 1.8 46.2-13.5 60.5-29.5z"/>
                 </svg>
@@ -245,7 +243,7 @@
                 </div>
             </a>
 
-            <a href="https://play.google.com/store/apps/details?id=com.dragons.tennis_string_master" class="store-btn" target="_blank" rel="noopener noreferrer">
+            <a href="https://play.google.com/store/apps/details?id=com.dragons.tennis_string_master" class="store-btn" target="_blank">
                 <svg viewBox="0 0 512 512" width="24" fill="white" style="margin-right: 12px;">
                     <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l220.7-221.3-58.9-58.9L47 499z"/>
                 </svg>
@@ -256,6 +254,7 @@
             </a>
         </div>
 
+        <!-- Minimal Stats Bar -->
         <div class="stats-bar" style="display: flex; gap: 20px; margin-bottom: 50px; background: rgba(255,255,255,0.03); padding: 15px 30px; border-radius: 50px; border: 1px solid #222; font-size: 0.85rem; color: var(--text-secondary); flex-wrap: wrap; justify-content: center;">
             <div class="mini-stat"><strong><span id="stat_players">--</span></strong> Players</div>
             <div style="color: #333;">|</div>
@@ -312,7 +311,7 @@
         </div>
 
         <div class="feature-disclaimer" style="font-size: 0.75rem; color: #888; text-align: center; margin-bottom: 40px;">
-            * String specification data is proudly sourced from <a href="http://twu.tennis-warehouse.com/" target="_blank" rel="noopener noreferrer" style="color: var(--primary); text-decoration: none;">Tennis Warehouse University (TWU)</a>.
+            * String specification data is proudly sourced from <a href="http://twu.tennis-warehouse.com/" target="_blank" style="color: var(--primary); text-decoration: none;">Tennis Warehouse University (TWU)</a>.
         </div>
 
         <div class="signup-promo">
@@ -326,28 +325,20 @@
     </div>
 
     <script>
+        // SECURE ARCHITECTURE: Using Supabase Edge Function to hide ANON_KEY and Project details.
         const STATS_API_URL = 'https://bckwjrapgdctawgauubo.supabase.co/functions/v1/get-public-stats';
 
         async function fetchMiniStats() {
             try {
                 const response = await fetch(STATS_API_URL);
-                
-                // API 통신 에러 방어
-                if (!response.ok) throw new Error(`HTTP error: ${response.status}`);
-                
                 const stats = await response.json();
-                
-                // 데이터 유효성 검증
-                if (stats && typeof stats.total_players === 'number') {
+                if (stats) {
                     animateCounter('stat_players', stats.total_players);
                     animateCounter('stat_logs', stats.total_logs);
                     animateCounter('stat_rackets', stats.total_rackets);
                     animateCounter('stat_hours', stats.total_play_time);
                 }
-            } catch (err) { 
-                // 실패 시 조용히 넘어감 (UI에는 기본값 -- 유지)
-                console.error('Stats fetch error:', err); 
-            }
+            } catch (err) { console.error('Stats fetch error:', err); }
         }
 
         function animateCounter(id, target) {
