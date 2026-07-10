@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Redirecting...</title>
+    <script>
+        (function() {
+            const iosStoreUrl = "https://apps.apple.com/en/app/string-master-tennis-log/id6757102423";
+            const androidStoreUrl = "https://play.google.com/store/apps/details?id=com.dragons.tennis_string_master";
+            const homeUrl = "/";
+
+            const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+            const isAndroid = /android/i.test(userAgent);
+            const isIOS = /iPad|iPhone|iPod/.test(userAgent) && !window.MSStream;
+            const isIPadOS = navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1;
+
+            if (isAndroid) {
+                window.location.replace(androidStoreUrl);
+            } else if (isIOS || isIPadOS) {
+                window.location.replace(iosStoreUrl);
+            } else {
+                window.location.replace(homeUrl);
+            }
+        })();
+    </script>
+</head>
+<body>
+</body>
+</html>

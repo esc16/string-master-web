@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Community Insights - String Master</title>
     <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://bckwjrapgdctawgauubo.supabase.co; img-src 'self' data:;">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self' https://bckwjrapgdctawgauubo.supabase.co; img-src 'self' data:;">
     <style>
         :root {
             --primary: #CCFF00;
@@ -214,8 +216,13 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
         .error-message {
@@ -231,17 +238,149 @@
             font-size: 0.8rem;
             text-align: center;
         }
+
+        /* App Lock Overlay Styles */
+        .app-lock-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(18, 18, 18, 0.45);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 90;
+            padding: 24px;
+        }
+
+        .lock-card {
+            background: #1E1E1E;
+            border: 1px solid rgba(204, 255, 0, 0.15);
+            border-radius: 28px;
+            padding: 40px 32px;
+            max-width: 440px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+            animation: cardScaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes cardScaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.96) translateY(12px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .lock-icon-container {
+            width: 72px;
+            height: 72px;
+            background: rgba(204, 255, 0, 0.08);
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            border: 1px solid rgba(204, 255, 0, 0.2);
+            animation: lockPulse 2s infinite alternate;
+        }
+
+        @keyframes lockPulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(204, 255, 0, 0.15);
+            }
+
+            100% {
+                box-shadow: 0 0 24px 6px rgba(204, 255, 0, 0.08);
+            }
+        }
+
+        .lock-card h2 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: #FFFFFF;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .lock-card p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.6;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            padding: 16px 24px;
+            background: var(--primary);
+            color: #121212;
+            text-decoration: none;
+            border-radius: 16px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 12px rgba(204, 255, 0, 0.15);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(204, 255, 0, 0.35);
+            background: #d8ff33;
+        }
+
+        .download-btn:active {
+            transform: translateY(0);
+        }
     </style>
 </head>
+
 <body>
     <div id="loading" class="loading-overlay">
         <div class="spinner"></div>
         <p>Fetching community insights...</p>
     </div>
 
+    <div class="app-lock-overlay">
+        <div class="lock-card">
+            <div class="lock-icon-container">
+                <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" style="color: var(--primary);">
+                    <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                    <circle cx="12" cy="9" r="3" stroke-width="1.5"></circle>
+                    <path d="M12 12v4" stroke-width="1.5"></path>
+                    <path d="M10.5 9h3M12 7.5v3" stroke-width="1"></path>
+                    <line x1="12" y1="19" x2="12.01" y2="19" stroke-width="3"></line>
+                </svg>
+            </div>
+            <h2>Unlock Community Insights</h2>
+            <p>To view real-time string logs, rankings, and player stats, please install the String Master app.</p>
+            <a href="download/" class="download-btn">
+                <span>Install App</span>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                    <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+            </a>
+        </div>
+    </div>
+
     <div class="container">
         <a href="index.html" class="back-btn">← Back to Home</a>
-        
+
         <header>
             <h1>🎾 Community Insights</h1>
             <p class="subtitle">Real-time statistics from String Master players worldwide.</p>
@@ -316,7 +455,7 @@
             try {
                 const response = await fetch(STATS_API_URL);
                 if (!response.ok) throw new Error('API error');
-                
+
                 const data = await response.json();
                 if (data) {
                     renderDashboard(data);
@@ -370,7 +509,7 @@
             }
 
             const maxCount = items[0].count;
-            
+
             container.innerHTML = items.map((item, index) => `
                 <div class="ranking-item">
                     <div class="rank-num">${index + 1}</div>
@@ -397,4 +536,5 @@
         fetchStats();
     </script>
 </body>
+
 </html>
