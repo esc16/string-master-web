@@ -7,7 +7,9 @@
             "namespace": "android_app",
             "package_name": "com.dragons.tennis_string_master",
             "sha256_cert_fingerprints": [
-                "0B:2F:BA:B6:55:85:A3:1A:21:71:5F:C4:89:26:A1:15:F0:BA:49:A4:B3:FB:AB:39:7A:9F:42:04:2D:DF:BC:AF"
+                "0B:2F:BA:B6:55:85:A3:1A:21:71:5F:C4:89:26:A1:15:F0:BA:49:A4:B3:FB:AB:39:7A:9F:42:04:2D:DF:BC:AF",
+                "E9:9F:2E:86:D2:C2:95:33:17:99:38:B7:E0:6A:2E:35:3E:B7:F5:AD:25:17:92:9E:0C:23:EC:E6:66:3A:AB:88"
+"
             ]
         }
     }
