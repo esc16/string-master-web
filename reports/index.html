@@ -74,13 +74,20 @@
     <!-- We can also add a script to try deep linking or fallback to stores -->
     <script>
       function tryOpenApp() {
-        // Attempt to redirect to the app using custom scheme as a last resort
-        window.location.href = "stringmaster://reports";
+        var isAndroid = /Android/i.test(navigator.userAgent);
         
-        // After 2 seconds, if we're still here, redirect to the homepage
-        setTimeout(() => {
-          window.location.href = "/";
-        }, 2000);
+        if (isAndroid) {
+          // Chrome on Android requires the intent:// syntax to reliably launch apps
+          window.location.href = "intent://tennisstringmaster.com/reports#Intent;scheme=stringmaster;package=com.dragons.tennis_string_master;end";
+        } else {
+          // iOS and others
+          window.location.href = "stringmaster://tennisstringmaster.com/reports";
+          
+          // Fallback redirect if app is not installed (iOS)
+          setTimeout(() => {
+            window.location.href = "/";
+          }, 2000);
+        }
       }
     </script>
 
