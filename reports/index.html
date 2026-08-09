@@ -72,26 +72,33 @@
     <p>To view your detailed weekly report, please open this link on your mobile device where the String Master app is installed.</p>
     
     <!-- We can also add a script to try deep linking or fallback to stores -->
+
+
+    <a id="open-app-btn" href="#" class="btn">Open App</a>
+
     <script>
-      function tryOpenApp() {
+      // Chrome blocks window.location.href redirects for intents if they happen inside a click handler's logic.
+      // We must assign the href directly to the <a> tag on load.
+      document.addEventListener("DOMContentLoaded", function() {
         var isAndroid = /Android/i.test(navigator.userAgent);
+        var btn = document.getElementById("open-app-btn");
         
         if (isAndroid) {
-          // Chrome on Android requires the intent:// syntax to reliably launch apps
-          window.location.href = "intent://tennisstringmaster.com/reports#Intent;scheme=stringmaster;package=com.dragons.tennis_string_master;end";
+          // Android Chrome reliable Intent URL
+          btn.href = "intent://tennisstringmaster.com/reports#Intent;scheme=stringmaster;package=com.dragons.tennis_string_master;end";
         } else {
-          // iOS and others
-          window.location.href = "stringmaster://tennisstringmaster.com/reports";
+          // iOS Universal Link / Custom Scheme fallback
+          btn.href = "stringmaster://tennisstringmaster.com/reports";
           
-          // Fallback redirect if app is not installed (iOS)
-          setTimeout(() => {
-            window.location.href = "/";
-          }, 2000);
+          // Fallback redirect if iOS fails to open app
+          btn.onclick = function() {
+            setTimeout(function() {
+              window.location.href = "/";
+            }, 2500);
+          };
         }
-      }
+      });
     </script>
-
-    <a href="#" class="btn" onclick="tryOpenApp(); return false;">Open App</a>
   </div>
 </body>
 </html>
