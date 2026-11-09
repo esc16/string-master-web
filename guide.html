@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pro Features User Guide - String Master</title>
+    <meta name="description" content="Step-by-step guide on how and where to use String Master Pro features: Smartwatch Auto-Sync, String Presets, Reports, and CSV Export.">
+    <style>
+        :root {
+            --primary: #CCFF00;
+            --bg: #121212;
+            --surface: #1E1E1E;
+            --surface-card: #252525;
+            --text: #FFFFFF;
+            --text-secondary: #AAAAAA;
+            --accent-blue: #0066FF;
+            --accent-purple: #8e24aa;
+            --accent-green: #2e7d32;
+            --accent-orange: #ff9800;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 860px;
+            width: 100%;
+            padding: 40px 20px;
+            flex-grow: 1;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 25px;
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .back-btn:hover { color: var(--primary); }
+
+        .header-section {
+            margin-bottom: 40px;
+            text-align: left;
+        }
+
+        .guide-badge {
+            display: inline-block;
+            background: var(--primary);
+            color: #121212;
+            font-size: 0.75rem;
+            font-weight: 800;
+            padding: 4px 10px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 12px;
+            background: linear-gradient(45deg, #fff, #CCFF00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.15rem;
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+
+        /* Quick Navigation Pills */
+        .nav-pills {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .nav-pill {
+            background: var(--surface);
+            border: 1px solid #333;
+            color: #ddd;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+
+        .nav-pill:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Guide Card */
+        .guide-card {
+            background: var(--surface);
+            border-radius: 18px;
+            border: 1px solid #333;
+            padding: 30px;
+            margin-bottom: 35px;
+            position: relative;
+            transition: border-color 0.2s;
+        }
+
+        .guide-card:hover {
+            border-color: rgba(204, 255, 0, 0.4);
+        }
+
+        .guide-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+
+        .guide-card-icon {
+            font-size: 1.8rem;
+        }
+
+        .guide-card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .ui-location-badge {
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid #444;
+            color: #e0e0e0;
+            font-size: 0.85rem;
+            padding: 8px 14px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .ui-location-badge strong {
+            color: var(--primary);
+        }
+
+        .step-list {
+            margin: 20px 0;
+            padding-left: 20px;
+        }
+
+        .step-list li {
+            margin-bottom: 14px;
+            color: #ccc;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .step-list li strong {
+            color: #fff;
+        }
+
+        .pro-tip {
+            background: rgba(204, 255, 0, 0.06);
+            border-left: 4px solid var(--primary);
+            border-radius: 0 10px 10px 0;
+            padding: 14px 18px;
+            font-size: 0.88rem;
+            color: #ddd;
+            margin-top: 20px;
+        }
+
+        .pro-tip strong {
+            color: var(--primary);
+        }
+
+        .cta-bottom {
+            text-align: center;
+            margin: 50px 0 20px 0;
+            padding: 35px;
+            background: var(--surface);
+            border-radius: 20px;
+            border: 1px solid #333;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: black;
+            padding: 14px 32px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            margin-top: 15px;
+            transition: transform 0.2s;
+        }
+
+        .cta-btn:hover { transform: scale(1.05); }
+
+        footer {
+            margin-top: auto;
+            padding: 25px;
+            color: #555;
+            font-size: 0.85rem;
+            text-align: center;
+            width: 100%;
+        }
+
+        footer a { color: #777; text-decoration: none; }
+        footer a:hover { color: var(--primary); }
+
+        @media (max-width: 600px) {
+            h1 { font-size: 1.9rem; }
+            .guide-card { padding: 22px 18px; }
+            .nav-pills { gap: 6px; }
+            .nav-pill { font-size: 0.75rem; padding: 6px 12px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">← Back to Home</a>
+
+        <div class="header-section">
+            <span class="guide-badge">👑 PRO USER GUIDE</span>
+            <h1>How to Use String Master Pro</h1>
+            <p class="subtitle">
+                A quick visual reference showing exactly <strong>where in the UI</strong> and <strong>how to use</strong> all premium features.
+            </p>
+
+            <div class="nav-pills">
+                <a href="#smartwatch" class="nav-pill">⌚ Smartwatch Sync</a>
+                <a href="#presets" class="nav-pill">⚡ String Presets</a>
+                <a href="#reports" class="nav-pill">📊 Weekly & Monthly Reports</a>
+                <a href="#csv" class="nav-pill">📁 CSV History Export</a>
+                <a href="#rackets" class="nav-pill">🎾 3+ Rackets & Pro Specs</a>
+            </div>
+        </div>
+
+        <!-- 1. SMARTWATCH AUTO-SYNC -->
+        <div id="smartwatch" class="guide-card" style="border-left: 5px solid var(--accent-blue);">
+            <div class="guide-card-header">
+                <span class="guide-card-icon">⌚</span>
+                <div class="guide-card-title">Smartwatch Workout Auto-Sync</div>
+            </div>
+
+            <div class="ui-location-badge">
+                📍 <strong>UI Location:</strong> Smartwatch Workout App ➔ String Master Launch Screen (Auto-Prompt Bottom Sheet)
+            </div>
+
+            <ol class="step-list">
+                <li>
+                    <strong>Record Workout on Your Watch:</strong> On your <strong>Apple Watch</strong> (Workout app) or <strong>Galaxy Watch</strong> (Samsung Health), start an exercise and select the <strong>'Tennis'</strong> workout mode.
+                </li>
+                <li>
+                    <strong>Open String Master:</strong> After your match, open the String Master mobile app on your iPhone or Android phone.
+                </li>
+                <li>
+                    <strong>Auto-Detection Prompt:</strong> The app automatically inspects unprocessed tennis workouts from the last 3 days. A <strong>'Tennis Workout Detected'</strong> bottom sheet immediately slides up on your screen.
+                </li>
+                <li>
+                    <strong>Confirm or Fine-Tune:</strong> Your primary racket is pre-selected. Tap <strong>`+0.5h`</strong> or <strong>`-0.5h`</strong> if you need to adjust duration, then tap <strong>[Log Playtime]</strong> to save in 1 tap!
+                </li>
+            </ol>
+
+            <div class="pro-tip">
+                💡 <strong>Important Pro Tip:</strong> Make sure you record your workout under the official <strong>'Tennis'</strong> category on your watch. Workouts recorded as 'Other' or 'HIIT' are intentionally skipped to prevent accidental playtime additions.
+            </div>
+        </div>
+
+        <!-- 2. FAVORITE STRING PRESETS -->
+        <div id="presets" class="guide-card" style="border-left: 5px solid var(--primary);">
+            <div class="guide-card-header">
+                <span class="guide-card-icon">⚡</span>
+                <div class="guide-card-title">Favorite String Presets</div>
+            </div>
+
+            <div class="ui-location-badge">
+                📍 <strong>UI Location:</strong> Home Screen ➔ Tap Racket ➔ <strong>[+ Log Job]</strong> ➔ Top Preset Button
+            </div>
+
+            <ol class="step-list">
+                <li>
+                    <strong>Saving a New Preset:</strong> When logging a new string job on the <strong>Log Job Screen</strong>, select your Main & Cross strings (single or hybrid), gauges, and tensions. Before saving, check the toggle <strong>'Save as Preset'</strong> and give it a nickname (e.g., <em>"Tour Match Setup - 52 lbs"</em>).
+                </li>
+                <li>
+                    <strong>Applying a Preset in 1 Second:</strong> The next time you restring any racket, tap <strong>[+ Log Job]</strong> and press the <strong>[⭐ Presets]</strong> button at the very top.
+                </li>
+                <li>
+                    <strong>Instant Auto-Fill:</strong> Tap your desired preset from the list. All string models, gauges, and tensions populate instantly across your setup with zero typing required!
+                </li>
+            </ol>
+
+            <div class="pro-tip">
+                💡 <strong>Pro Tip:</strong> You can store multiple presets for different seasons (e.g., winter soft poly vs. summer crisp hybrid) and apply them to any racket in your bag.
+            </div>
+        </div>
+
+        <!-- 3. WEEKLY & MONTHLY REPORTS -->
+        <div id="reports" class="guide-card" style="border-left: 5px solid var(--accent-purple);">
+            <div class="guide-card-header">
+                <span class="guide-card-icon">📊</span>
+                <div class="guide-card-title">Smart Weekly & Monthly Reports</div>
+            </div>
+
+            <div class="ui-location-badge">
+                📍 <strong>UI Location:</strong> Weekly Push Notification ➔ <strong>Profile Tab</strong> ➔ <strong>'Reports & Analytics'</strong>
+            </div>
+
+            <ol class="step-list">
+                <li>
+                    <strong>Automated Delivery:</strong> Every <strong>Monday at 9:00 AM (your local time)</strong>, active players receive a localized Push & Email notification with their weekly court summary.
+                </li>
+                <li>
+                    <strong>Viewing Historical Reports:</strong> Open String Master and tap the <strong>Profile (👤)</strong> tab in the bottom navigation bar, then select <strong>'Weekly & Monthly Reports'</strong>.
+                </li>
+                <li>
+                    <strong>In-Depth Insights:</strong> Toggle between <strong>Weekly</strong> and <strong>Monthly</strong> tabs to review total hours on court, session frequencies, tension health decay curves per racket, and recommended restringing schedules.
+                </li>
+            </ol>
+
+            <div class="pro-tip">
+                💡 <strong>Pro Tip:</strong> Monthly reports arrive on the 1st of every month, providing a high-level retrospective on gear wear and tear.
+            </div>
+        </div>
+
+        <!-- 4. CSV DATA EXPORT -->
+        <div id="csv" class="guide-card" style="border-left: 5px solid var(--accent-green);">
+            <div class="guide-card-header">
+                <span class="guide-card-icon">📁</span>
+                <div class="guide-card-title">Full History CSV Data Export</div>
+            </div>
+
+            <div class="ui-location-badge">
+                📍 <strong>UI Location:</strong> <strong>Logs Tab (📝)</strong> ➔ Top-Right <strong>[Export / Share]</strong> Icon
+            </div>
+
+            <ol class="step-list">
+                <li>
+                    <strong>Navigate to Logs:</strong> Tap the <strong>Logs (📝)</strong> tab at the bottom of the screen.
+                </li>
+                <li>
+                    <strong>Tap Export:</strong> Press the <strong>CSV Export</strong> icon located in the top-right corner of the app bar.
+                </li>
+                <li>
+                    <strong>Choose Export Scope:</strong> Select between:
+                        <br>• <em>Stringing Jobs:</em> Date strung, tension, main/cross brands, gauges, and stringer notes.
+                        <br>• <em>Playtime Sessions:</em> Match dates, durations, playability feel, weather, temperature (°C/°F), and session notes.
+                        <br>• <em>Full Archive:</em> Exports both tables simultaneously.
+                </li>
+                <li>
+                    <strong>Native Share:</strong> The native iOS / Android share sheet opens instantly. Send the files to your computer via AirDrop, save to Google Drive/Files, or open directly in <strong>Microsoft Excel, Apple Numbers, or Google Sheets</strong> (encoded in UTF-8 with BOM for zero font corruption).
+                </li>
+            </ol>
+        </div>
+
+        <!-- 5. UNLIMITED RACKETS & PRO SPECS -->
+        <div id="rackets" class="guide-card" style="border-left: 5px solid var(--accent-orange);">
+            <div class="guide-card-header">
+                <span class="guide-card-icon">🎾</span>
+                <div class="guide-card-title">3+ Rackets & Tour Tuning Specs</div>
+            </div>
+
+            <div class="ui-location-badge">
+                📍 <strong>UI Location:</strong> <strong>Home Tab</strong> ➔ Swipe Racket Carousel ➔ <strong>[+ Add Racket]</strong>
+            </div>
+
+            <ol class="step-list">
+                <li>
+                    <strong>Managing 3+ Rackets:</strong> Free tier players can manage up to 2 rackets forever. Pro members can add unlimited rackets to their active bag.
+                </li>
+                <li>
+                    <strong>Advanced Tuning Specs:</strong> When adding or editing a racket, tap <strong>'Advanced Racket Specs'</strong> to track your custom specs:
+                        <br>• Static Weight (grams)
+                        <br>• Swingweight (kg·cm²)
+                        <br>• Balance Point (mm / pts HL)
+                        <br>• Frame Stiffness (RA)
+                        <br>• Custom Lead Tape & Grip customization notes
+                </li>
+            </ol>
+        </div>
+
+        <!-- CALL TO ACTION -->
+        <div class="cta-bottom">
+            <h2 style="font-size: 1.6rem; margin-bottom: 10px;">Ready to elevate your tennis gear game?</h2>
+            <p style="color: var(--text-secondary); max-width: 500px; margin: auto;">
+                Experience all Pro features with a <strong>14-Day Free Trial</strong> directly inside the String Master app.
+            </p>
+            <a href="index.html" class="cta-btn">Get String Master on iOS & Android</a>
+        </div>
+
+        <footer>
+            &copy; 2026 X Dragons. All rights reserved.<br>
+            <a href="index.html">Home</a> | 
+            <a href="privacy.html">Privacy Policy</a> | 
+            <a href="terms.html">Terms of Service</a>
+        </footer>
+    </div>
+</body>
+</html>
+
