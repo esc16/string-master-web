@@ -18,11 +18,7 @@
             --accent: #2A2A2A;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -35,322 +31,111 @@
             min-height: 100vh;
         }
 
-        .container {
-            max-width: 900px;
-            width: 100%;
-            padding: 40px 20px;
-        }
+        .container { max-width: 900px; width: 100%; padding: 40px 20px; }
 
-        .back-btn {
-            display: inline-block;
-            margin-bottom: 30px;
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .back-btn:hover {
-            color: var(--primary);
-        }
-
-        header {
-            margin-bottom: 50px;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            font-size: 1.1rem;
-            color: var(--text-secondary);
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 50px;
-        }
-
-        .stat-card {
-            background: var(--surface);
-            padding: 30px 20px;
-            border-radius: 20px;
-            border: 1px solid #333;
-            text-align: center;
-        }
-
-        .stat-value {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--text);
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Charts Section */
-        .charts-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 30px;
-            margin-bottom: 50px;
-        }
-
-        @media (max-width: 500px) {
-            .charts-container {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .chart-card {
-            background: var(--surface);
-            padding: 24px;
-            border-radius: 24px;
-            border: 1px solid #333;
-        }
-
-        .chart-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .ranking-list {
-            list-style: none;
-        }
-
-        .ranking-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-            gap: 15px;
-        }
-
-        .rank-num {
-            width: 24px;
-            height: 24px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.8rem;
-            font-weight: bold;
-            color: var(--text-secondary);
-            flex-shrink: 0;
-        }
-
-        .item-details {
-            flex-grow: 1;
-        }
-
-        .item-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 6px;
-        }
-
-        .item-name {
-            font-weight: 600;
-            font-size: 0.95rem;
-        }
-
-        .item-count {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-        }
-
-        .bar-bg {
-            height: 8px;
-            background: var(--accent);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .bar-fill {
-            height: 100%;
-            background: var(--primary);
-            border-radius: 4px;
-            width: 0%;
-            transition: width 1s cubic-bezier(0.17, 0.67, 0.83, 0.67);
-        }
-
-        .loading-overlay {
+        .floating-lang {
             position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--bg);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            z-index: 100;
-            transition: opacity 0.5s;
-        }
-
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid var(--accent);
-            border-top: 4px solid var(--primary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 20px;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        .error-message {
-            color: #ff4444;
-            display: none;
-            padding: 20px;
-            text-align: center;
-        }
-
-        footer {
-            padding: 40px 20px;
-            color: #555;
-            font-size: 0.8rem;
-            text-align: center;
-        }
-
-        /* App Lock Overlay Styles */
-        .app-lock-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(18, 18, 18, 0.45);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 90;
-            padding: 24px;
-        }
-
-        .lock-card {
-            background: #1E1E1E;
-            border: 1px solid rgba(204, 255, 0, 0.15);
-            border-radius: 28px;
-            padding: 40px 32px;
-            max-width: 440px;
-            width: 100%;
-            text-align: center;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-            animation: cardScaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        @keyframes cardScaleIn {
-            from {
-                opacity: 0;
-                transform: scale(0.96) translateY(12px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        .lock-icon-container {
-            width: 72px;
-            height: 72px;
-            background: rgba(204, 255, 0, 0.08);
-            border-radius: 22px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            border: 1px solid rgba(204, 255, 0, 0.2);
-            animation: lockPulse 2s infinite alternate;
-        }
-
-        @keyframes lockPulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(204, 255, 0, 0.15);
-            }
-
-            100% {
-                box-shadow: 0 0 24px 6px rgba(204, 255, 0, 0.08);
-            }
-        }
-
-        .lock-card h2 {
-            font-size: 1.6rem;
-            font-weight: 800;
-            color: #FFFFFF;
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-
-        .lock-card p {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-bottom: 32px;
-            line-height: 1.6;
-        }
-
-        .download-btn {
+            top: 20px;
+            right: 20px;
+            z-index: 95;
             display: inline-flex;
             align-items: center;
-            justify-content: center;
-            gap: 10px;
-            width: 100%;
-            padding: 16px 24px;
-            background: var(--primary);
-            color: #121212;
-            text-decoration: none;
-            border-radius: 16px;
-            font-weight: 700;
-            font-size: 1.05rem;
-            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 4px 12px rgba(204, 255, 0, 0.15);
+            gap: 8px;
+            background: rgba(30, 30, 30, 0.92);
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
 
-        .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(204, 255, 0, 0.35);
-            background: #d8ff33;
+        .floating-lang select {
+            background: transparent;
+            color: #fff;
+            border: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            color-scheme: dark;
         }
 
-        .download-btn:active {
-            transform: translateY(0);
-        }
+        .floating-lang select option { background: #1E1E1E; color: #fff; }
+
+        .back-btn { display: inline-block; margin-bottom: 30px; color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .back-btn:hover { color: var(--primary); }
+
+        header { margin-bottom: 50px; }
+        h1 { font-size: 2.5rem; font-weight: 800; color: var(--primary); margin-bottom: 10px; }
+        .subtitle { font-size: 1.1rem; color: var(--text-secondary); }
+
+        /* Stats Grid */
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-bottom: 50px; }
+        .stat-card { background: var(--surface); padding: 30px 20px; border-radius: 20px; border: 1px solid #333; text-align: center; }
+        .stat-value { font-size: 2.5rem; font-weight: 800; color: var(--text); margin-bottom: 5px; }
+        .stat-label { font-size: 0.9rem; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Charts Section */
+        .charts-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; margin-bottom: 50px; }
+        @media (max-width: 500px) { .charts-container { grid-template-columns: 1fr; } }
+
+        .chart-card { background: var(--surface); padding: 24px; border-radius: 24px; border: 1px solid #333; }
+        .chart-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        .ranking-list { list-style: none; }
+        .ranking-item { display: flex; align-items: center; margin-bottom: 15px; gap: 15px; }
+        .rank-num { width: 24px; height: 24px; background: var(--accent); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: bold; color: var(--text-secondary); flex-shrink: 0; }
+        .item-details { flex-grow: 1; }
+        .item-header { display: flex; justify-content: space-between; margin-bottom: 6px; }
+        .item-name { font-weight: 600; font-size: 0.95rem; }
+        .item-count { font-size: 0.85rem; color: var(--text-secondary); }
+        .bar-bg { height: 8px; background: var(--accent); border-radius: 4px; overflow: hidden; }
+        .bar-fill { height: 100%; background: var(--primary); border-radius: 4px; width: 0%; transition: width 1s cubic-bezier(0.17, 0.67, 0.83, 0.67); }
+
+        .loading-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--bg); display: flex; flex-direction: column; align-items: center; justify-content: center; z-index: 100; transition: opacity 0.5s; }
+        .spinner { width: 40px; height: 40px; border: 4px solid var(--accent); border-top: 4px solid var(--primary); border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 20px; }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+
+        .error-message { color: #ff4444; display: none; padding: 20px; text-align: center; }
+        footer { padding: 40px 20px; color: #555; font-size: 0.8rem; text-align: center; }
+
+        /* App Lock Overlay Styles */
+        .app-lock-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(18, 18, 18, 0.45); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 90; padding: 24px; }
+        .lock-card { background: #1E1E1E; border: 1px solid rgba(204, 255, 0, 0.15); border-radius: 28px; padding: 40px 32px; max-width: 440px; width: 100%; text-align: center; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); animation: cardScaleIn 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+        @keyframes cardScaleIn { from { opacity: 0; transform: scale(0.96) translateY(12px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        .lock-icon-container { width: 72px; height: 72px; background: rgba(204, 255, 0, 0.08); border-radius: 22px; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px; border: 1px solid rgba(204, 255, 0, 0.2); animation: lockPulse 2s infinite alternate; }
+        @keyframes lockPulse { 0% { box-shadow: 0 0 0 0 rgba(204, 255, 0, 0.15); } 100% { box-shadow: 0 0 24px 6px rgba(204, 255, 0, 0.08); } }
+        .lock-card h2 { font-size: 1.6rem; font-weight: 800; color: #FFFFFF; margin-bottom: 12px; line-height: 1.3; }
+        .lock-card p { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 32px; line-height: 1.6; }
+        .download-btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; width: 100%; padding: 16px 24px; background: var(--primary); color: #121212; text-decoration: none; border-radius: 16px; font-weight: 700; font-size: 1.05rem; transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1); box-shadow: 0 4px 12px rgba(204, 255, 0, 0.15); }
+        .download-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(204, 255, 0, 0.35); background: #d8ff33; }
+        .download-btn:active { transform: translateY(0); }
+        .lock-back-link { display: inline-block; margin-top: 16px; color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; }
+        .lock-back-link:hover { color: var(--primary); }
     </style>
 </head>
 
 <body>
+    <label class="floating-lang" aria-label="Language">
+        <span>🌐</span>
+        <select id="langSelect" class="sm-lang-select">
+            <option value="en">🇺🇸 English</option>
+            <option value="ko">🇰🇷 한국어</option>
+            <option value="ja">🇯🇵 日本語</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="zh">🇨🇳 简体中文</option>
+            <option value="zh_Hant">🇹🇼 繁體中文</option>
+            <option value="de">🇩🇪 Deutsch</option>
+            <option value="fr">🇫🇷 Français</option>
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="pt">🇵🇹 Português</option>
+        </select>
+    </label>
+
     <div id="loading" class="loading-overlay">
         <div class="spinner"></div>
-        <p>Fetching community insights...</p>
+        <p data-i18n="loading">Fetching community insights...</p>
     </div>
 
     <div class="app-lock-overlay">
@@ -365,82 +150,292 @@
                     <line x1="12" y1="19" x2="12.01" y2="19" stroke-width="3"></line>
                 </svg>
             </div>
-            <h2>Unlock Community Insights</h2>
-            <p>Explore real-time global string rankings, popular racket brands, and arm-friendly string trends in the String Master app.</p>
+            <h2 data-i18n="lockTitle">Unlock Community Insights</h2>
+            <p data-i18n="lockDesc">Explore real-time global string rankings, popular racket brands, and arm-friendly string trends in the String Master app.</p>
             <a href="download/" class="download-btn">
-                <span>Install App</span>
+                <span data-i18n="installApp">Install App</span>
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
                     stroke-linecap="round" stroke-linejoin="round">
                     <line x1="5" y1="12" x2="19" y2="12"></line>
                     <polyline points="12 5 19 12 12 19"></polyline>
                 </svg>
             </a>
+            <a href="index.html" class="lock-back-link" data-i18n="backHome">← Back to Home</a>
         </div>
     </div>
 
     <div class="container">
-        <a href="index.html" class="back-btn">← Back to Home</a>
+        <a href="index.html" class="back-btn" data-i18n="backHome">← Back to Home</a>
 
         <header>
-            <h1>🎾 Community Insights <span style="display:inline-block; background:var(--primary); color:#121212; font-size:0.85rem; font-weight:800; padding:4px 10px; border-radius:8px; vertical-align:middle; margin-left:8px;">👑 PRO</span></h1>
-            <p class="subtitle">Real-time equipment rankings, popular string setups, and arm-friendly trends from String Master players worldwide.</p>
+            <h1><span data-i18n="title">🎾 Community Insights</span> <span style="display:inline-block; background:var(--primary); color:#121212; font-size:0.85rem; font-weight:800; padding:4px 10px; border-radius:8px; vertical-align:middle; margin-left:8px;">👑 PRO</span></h1>
+            <p class="subtitle" data-i18n="subtitle">Real-time equipment rankings, popular string setups, and arm-friendly trends from String Master players worldwide.</p>
         </header>
 
-        <div id="error" class="error-message">
+        <div id="error" class="error-message" data-i18n="errorMsg">
             Failed to load data. Please try again later.
         </div>
 
         <div class="stats-grid">
             <div class="stat-card">
                 <div id="total_players" class="stat-value">--</div>
-                <div class="stat-label">Total Players</div>
+                <div class="stat-label" data-i18n="statPlayers">Total Players</div>
             </div>
             <div class="stat-card">
                 <div id="total_logs" class="stat-value">--</div>
-                <div class="stat-label">String Logs</div>
+                <div class="stat-label" data-i18n="statLogs">String Logs</div>
             </div>
             <div class="stat-card">
                 <div id="total_rackets" class="stat-value">--</div>
-                <div class="stat-label">Managed Rackets</div>
+                <div class="stat-label" data-i18n="statRackets">Managed Rackets</div>
             </div>
             <div class="stat-card">
                 <div id="total_play_time" class="stat-value">--</div>
-                <div class="stat-label">Total Hours Played</div>
+                <div class="stat-label" data-i18n="statHours">Total Hours Played</div>
             </div>
         </div>
 
         <div class="charts-container">
-            <!-- Brand Share -->
             <div class="chart-card">
-                <div class="chart-title">🏆 Top Racket Brands</div>
+                <div class="chart-title" data-i18n="c1">🏆 Top Racket Brands</div>
                 <div id="top_brands" class="ranking-list"></div>
             </div>
-
-            <!-- Global Top Strings -->
             <div class="chart-card">
-                <div class="chart-title">🔥 Most Popular Strings</div>
+                <div class="chart-title" data-i18n="c2">🔥 Most Popular Strings</div>
                 <div id="top_strings" class="ranking-list"></div>
             </div>
-
-            <!-- Elbow Friendly Strings -->
             <div class="chart-card">
-                <div class="chart-title">🛡️ Arm-Friendly Choice (Elbow Users)</div>
+                <div class="chart-title" data-i18n="c3">🛡️ Arm-Friendly Choice (Elbow Users)</div>
                 <div id="top_strings_elbow" class="ranking-list"></div>
             </div>
-
-            <!-- Performance Strings -->
             <div class="chart-card">
-                <div class="chart-title">⚡ High-Performance (No Elbow)</div>
+                <div class="chart-title" data-i18n="c4">⚡ High-Performance (No Elbow)</div>
                 <div id="top_strings_no_elbow" class="ranking-list"></div>
             </div>
         </div>
 
-        <footer>
+        <footer data-i18n-html="footer">
             Data reflects real-time community activity. &copy; 2026 X Dragons.
         </footer>
     </div>
 
+    <script src="i18n.js"></script>
     <script>
+        const INSIGHT_I18N = {
+            en: {
+                pageTitle: "Community Insights - String Master",
+                loading: "Fetching community insights...",
+                lockTitle: "Unlock Community Insights",
+                lockDesc: "Explore real-time global string rankings, popular racket brands, and arm-friendly string trends in the String Master app.",
+                installApp: "Install App",
+                backHome: "← Back to Home",
+                title: "🎾 Community Insights",
+                subtitle: "Real-time equipment rankings, popular string setups, and arm-friendly trends from String Master players worldwide.",
+                errorMsg: "Failed to load data. Please try again later.",
+                statPlayers: "Total Players",
+                statLogs: "String Logs",
+                statRackets: "Managed Rackets",
+                statHours: "Total Hours Played",
+                c1: "🏆 Top Racket Brands",
+                c2: "🔥 Most Popular Strings",
+                c3: "🛡️ Arm-Friendly Choice (Elbow Users)",
+                c4: "⚡ High-Performance (No Elbow)",
+                noData: "No data available",
+                footer: "Data reflects real-time community activity. &copy; 2026 X Dragons."
+            },
+            ko: {
+                pageTitle: "커뮤니티 인사이트 - String Master",
+                loading: "커뮤니티 인사이트를 불러오는 중...",
+                lockTitle: "커뮤니티 인사이트 열기",
+                lockDesc: "String Master 앱에서 전 세계 실시간 스트링 랭킹, 인기 라켓 브랜드, 엘보 유저를 위한 부드러운 스트링 트렌드를 확인해 보세요.",
+                installApp: "앱 설치하기",
+                backHome: "← 홈으로 돌아가기",
+                title: "🎾 커뮤니티 인사이트",
+                subtitle: "전 세계 String Master 플레이어들의 실시간 장비 랭킹, 인기 스트링 세팅, 팔 보호 스트링 트렌드.",
+                errorMsg: "데이터를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.",
+                statPlayers: "전체 플레이어",
+                statLogs: "스트링 로그",
+                statRackets: "등록된 라켓",
+                statHours: "총 플레이 시간",
+                c1: "🏆 인기 라켓 브랜드 TOP",
+                c2: "🔥 가장 인기 있는 스트링",
+                c3: "🛡️ 팔에 편안한 선택 (엘보 유저)",
+                c4: "⚡ 하이 퍼포먼스 (일반 유저)",
+                noData: "데이터가 없습니다",
+                footer: "실시간 커뮤니티 활동 데이터가 반영됩니다. &copy; 2026 X Dragons."
+            },
+            ja: {
+                pageTitle: "コミュニティインサイト - String Master",
+                loading: "コミュニティ統計を読み込み中...",
+                lockTitle: "コミュニティインサイトを解放",
+                lockDesc: "String Masterアプリで世界のリアルタイム・ストリングランキング、人気ラケットブランド、肘に優しいトレンドをチェックしましょう。",
+                installApp: "アプリをインストール",
+                backHome: "← ホームへ戻る",
+                title: "🎾 コミュニティインサイト",
+                subtitle: "世界中のString Masterプレイヤーによるリアルタイム装備ランキングと人気ストリング傾向。",
+                errorMsg: "データの読み込みに失敗しました。後ほど再試行してください。",
+                statPlayers: "総プレイヤー数",
+                statLogs: "ストリングログ",
+                statRackets: "管理ラケット数",
+                statHours: "合計プレイ時間",
+                c1: "🏆 人気ラケットブランド",
+                c2: "🔥 最も人気のストリング",
+                c3: "🛡️ 腕に優しい選択（肘配慮）",
+                c4: "⚡ ハイパフォーマンス（一般）",
+                noData: "データがありません",
+                footer: "コミュニティのリアルタイム活動が反映されます。 &copy; 2026 X Dragons."
+            },
+            es: {
+                pageTitle: "Estadísticas de la Comunidad - String Master",
+                loading: "Cargando estadísticas de la comunidad...",
+                lockTitle: "Desbloquea las Estadísticas",
+                lockDesc: "Explora rankings globales de cuerdas en tiempo real, marcas de raquetas populares y tendencias cómodas para el brazo en la app String Master.",
+                installApp: "Instalar App",
+                backHome: "← Volver al inicio",
+                title: "🎾 Estadísticas de la Comunidad",
+                subtitle: "Rankings de equipamiento en tiempo real y tendencias de cordaje de jugadores de String Master en todo el mundo.",
+                errorMsg: "Error al cargar los datos. Inténtalo más tarde.",
+                statPlayers: "Jugadores Totales",
+                statLogs: "Registros",
+                statRackets: "Raquetas Gestionadas",
+                statHours: "Horas Totales",
+                c1: "🏆 Mejores Marcas de Raquetas",
+                c2: "🔥 Cuerdas Más Populares",
+                c3: "🛡️ Cómodas para el Brazo (Codo)",
+                c4: "⚡ Alto Rendimiento (Sin Lesión)",
+                noData: "Sin datos disponibles",
+                footer: "Los datos reflejan la actividad comunitaria en tiempo real. &copy; 2026 X Dragons."
+            },
+            zh: {
+                pageTitle: "社区洞察 - String Master",
+                loading: "正在加载社区数据...",
+                lockTitle: "解锁社区洞察",
+                lockDesc: "在 String Master 应用中查看全球实时球线榜单、热门球拍品牌与护臂舒适球线趋势。",
+                installApp: "安装应用",
+                backHome: "← 返回首页",
+                title: "🎾 社区洞察",
+                subtitle: "来自全球 String Master 球员的实时装备排行、热门穿线配置与护臂趋势。",
+                errorMsg: "数据加载失败，请稍后重试。",
+                statPlayers: "总球员数",
+                statLogs: "穿线日志",
+                statRackets: "管理球拍",
+                statHours: "累计打球时长",
+                c1: "🏆 热门球拍品牌",
+                c2: "🔥 最受欢迎球线",
+                c3: "🛡️ 护臂之选（网球肘用户）",
+                c4: "⚡ 高性能之选（无肘伤）",
+                noData: "暂无数据",
+                footer: "数据实时反映社区活动。 &copy; 2026 X Dragons."
+            },
+            zh_Hant: {
+                pageTitle: "社群洞察 - String Master",
+                loading: "正在載入社群數據...",
+                lockTitle: "解鎖社群洞察",
+                lockDesc: "在 String Master App 中探索全球即時網線排行、熱門球拍品牌與友善手臂的網線趨勢。",
+                installApp: "安裝 App",
+                backHome: "← 返回首頁",
+                title: "🎾 社群洞察",
+                subtitle: "來自全球 String Master 球員的即時裝備排行、熱門穿線組合與護臂趨勢。",
+                errorMsg: "資料載入失敗，請稍後再試。",
+                statPlayers: "總球員數",
+                statLogs: "穿線紀錄",
+                statRackets: "管理球拍",
+                statHours: "累計打球時數",
+                c1: "🏆 熱門球拍品牌",
+                c2: "🔥 最受歡迎網線",
+                c3: "🛡️ 護臂之選（網球肘用戶）",
+                c4: "⚡ 高效能之選（無肘傷）",
+                noData: "目前無資料",
+                footer: "資料即時反映社群活動。 &copy; 2026 X Dragons."
+            },
+            de: {
+                pageTitle: "Community-Einblicke - String Master",
+                loading: "Community-Daten werden geladen...",
+                lockTitle: "Community-Einblicke freischalten",
+                lockDesc: "Entdecke globale Echtzeit-Saitenrankings, beliebte Schlägermarken und armschonende Trends in der String Master App.",
+                installApp: "App installieren",
+                backHome: "← Zurück zur Startseite",
+                title: "🎾 Community-Einblicke",
+                subtitle: "Echtzeit-Equipment-Rankings, beliebte Bespannungen und armschonende Trends weltweiter Spieler.",
+                errorMsg: "Daten konnten nicht geladen werden. Bitte später erneut versuchen.",
+                statPlayers: "Spieler gesamt",
+                statLogs: "Saiten-Logs",
+                statRackets: "Verwaltete Schläger",
+                statHours: "Spielstunden gesamt",
+                c1: "🏆 Top-Schlägermarken",
+                c2: "🔥 Beliebteste Saiten",
+                c3: "🛡️ Armschonend (Tennisarm)",
+                c4: "⚡ High-Performance (Ohne Beschwerden)",
+                noData: "Keine Daten verfügbar",
+                footer: "Daten zeigen Echtzeit-Community-Aktivität. &copy; 2026 X Dragons."
+            },
+            fr: {
+                pageTitle: "Tendances Communauté - String Master",
+                loading: "Chargement des statistiques...",
+                lockTitle: "Débloquer les Tendances",
+                lockDesc: "Découvrez les classements mondiaux de cordages en temps réel, les marques populaires et les tendances confort dans l'app String Master.",
+                installApp: "Installer l'App",
+                backHome: "← Retour à l'accueil",
+                title: "🎾 Tendances Communauté",
+                subtitle: "Classements matériel en temps réel, cordages populaires et tendances confort des joueurs du monde entier.",
+                errorMsg: "Échec du chargement des données. Veuillez réessayer plus tard.",
+                statPlayers: "Joueurs Totaux",
+                statLogs: "Logs de Cordage",
+                statRackets: "Raquettes Gérées",
+                statHours: "Heures Totales",
+                c1: "🏆 Top Marques de Raquettes",
+                c2: "🔥 Cordages les Plus Populaires",
+                c3: "🛡️ Choix Confort (Tennis Elbow)",
+                c4: "⚡ Haute Performance (Sans Douleur)",
+                noData: "Aucune donnée disponible",
+                footer: "Les données reflètent l'activité communautaire en temps réel. &copy; 2026 X Dragons."
+            },
+            it: {
+                pageTitle: "Statistiche Community - String Master",
+                loading: "Caricamento statistiche community...",
+                lockTitle: "Sblocca le Statistiche Community",
+                lockDesc: "Esplora classifiche globali in tempo reale, marchi di racchette più scelti e corde confortevoli nell'app String Master.",
+                installApp: "Installa App",
+                backHome: "← Torna alla Home",
+                title: "🎾 Statistiche Community",
+                subtitle: "Classifiche in tempo reale di racchette, setup popolari e tendenze comfort dei giocatori nel mondo.",
+                errorMsg: "Impossibile caricare i dati. Riprova più tardi.",
+                statPlayers: "Giocatori Totali",
+                statLogs: "Registrazioni",
+                statRackets: "Racchette Gestite",
+                statHours: "Ore Totali Giocate",
+                c1: "🏆 Migliori Marchi Racchette",
+                c2: "🔥 Corde Più Popolari",
+                c3: "🛡️ Scelta Comfort (Gomito)",
+                c4: "⚡ Alte Prestazioni (Senza Dolore)",
+                noData: "Nessun dato disponibile",
+                footer: "I dati riflettono l'attività della community in tempo reale. &copy; 2026 X Dragons."
+            },
+            pt: {
+                pageTitle: "Insights da Comunidade - String Master",
+                loading: "Carregando insights da comunidade...",
+                lockTitle: "Desbloquear Insights",
+                lockDesc: "Explore rankings globais de cordas em tempo real, marcas de raquetes populares e tendências confortáveis para o braço no app String Master.",
+                installApp: "Instalar App",
+                backHome: "← Voltar ao Início",
+                title: "🎾 Insights da Comunidade",
+                subtitle: "Rankings de equipamentos em tempo real, setups populares e tendências dos jogadores de String Master no mundo.",
+                errorMsg: "Falha ao carregar dados. Tente novamente mais tarde.",
+                statPlayers: "Total de Jogadores",
+                statLogs: "Registros de Cordas",
+                statRackets: "Raquetes Gerenciadas",
+                statHours: "Total de Horas Jogadas",
+                c1: "🏆 Top Marcas de Raquetes",
+                c2: "🔥 Cordas Mais Populares",
+                c3: "🛡️ Conforto para o Braço (Cotovelo)",
+                c4: "⚡ Alta Performance (Sem Lesão)",
+                noData: "Sem dados disponíveis",
+                footer: "Os dados refletem a atividade da comunidade em tempo real. &copy; 2026 X Dragons."
+            }
+        };
+
+        const i18nCtl = window.initStringMasterI18n(INSIGHT_I18N);
+
         // SECURE ARCHITECTURE: Using Supabase Edge Function to hide ANON_KEY and Project details.
         const STATS_API_URL = 'https://bckwjrapgdctawgauubo.supabase.co/functions/v1/get-public-stats';
 
@@ -472,13 +467,11 @@
         }
 
         function renderDashboard(stats) {
-            // Update counters
             animateCounter('total_players', stats.total_players);
             animateCounter('total_logs', stats.total_logs);
             animateCounter('total_rackets', stats.total_rackets);
             animateCounter('total_play_time', stats.total_play_time);
 
-            // Render ranking lists
             renderList('top_brands', stats.top_brands, 'brand');
             renderList('top_strings', stats.top_strings, 'model_name');
             renderList('top_strings_elbow', stats.top_strings_elbow, 'model_name');
@@ -504,7 +497,8 @@
         function renderList(id, items, nameKey) {
             const container = document.getElementById(id);
             if (!items || items.length === 0) {
-                container.innerHTML = '<p style="color: var(--text-secondary); font-size: 0.9rem;">No data available</p>';
+                const noDataText = (i18nCtl && i18nCtl.getDict().noData) || 'No data available';
+                container.innerHTML = `<p style="color: var(--text-secondary); font-size: 0.9rem;">${escapeHtml(noDataText)}</p>`;
                 return;
             }
 
@@ -525,7 +519,6 @@
                 </div>
             `).join('');
 
-            // Trigger animation
             setTimeout(() => {
                 container.querySelectorAll('.bar-fill').forEach(bar => {
                     bar.style.width = bar.dataset.width;

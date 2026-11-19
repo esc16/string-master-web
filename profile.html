@@ -10,6 +10,10 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: var(--bg); color: var(--text); line-height: 1.6; display: flex; flex-direction: column; align-items: center; min-height: 100vh; }
         .container { max-width: 800px; width: 100%; padding: 40px 20px; text-align: left; flex-grow: 1; }
+        .top-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 30px; }
+        .lang-switcher { display: inline-flex; align-items: center; gap: 8px; background: var(--surface); border: 1px solid #333; border-radius: 20px; padding: 6px 14px; font-size: 0.85rem; color: var(--text-secondary); }
+        .lang-switcher select { background: transparent; color: #fff; border: none; font-size: 0.85rem; font-weight: 600; cursor: pointer; outline: none; color-scheme: dark; }
+        .lang-switcher select option { background: #1E1E1E; color: #fff; }
         h1 { font-size: 2.5rem; font-weight: 800; margin-bottom: 20px; color: var(--primary); display: flex; align-items: center; gap: 10px; }
         .hero-text { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 40px; }
         .feature-list { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 60px; }
@@ -18,7 +22,7 @@
         .feature-item h3 { color: var(--text); margin-bottom: 8px; font-size: 1.2rem; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
         .feature-item p { color: var(--text-secondary); font-size: 0.95rem; }
         .pro-badge { display: inline-block; background: var(--primary); color: #121212; font-size: 0.7rem; font-weight: 800; padding: 2px 8px; border-radius: 6px; text-transform: uppercase; }
-        .back-btn { display: inline-block; margin-bottom: 30px; color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
+        .back-btn { display: inline-block; color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; transition: color 0.3s; }
         .back-btn:hover { color: var(--primary); }
         .cta-section { text-align: center; margin-top: 40px; padding: 40px; background: rgba(204, 255, 0, 0.05); border-radius: 20px; border: 1px solid rgba(204, 255, 0, 0.2); }
         .cta-btn { display: inline-block; background: var(--primary); color: black; padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: bold; margin-top: 20px; transition: transform 0.2s; }
@@ -29,48 +33,294 @@
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-btn">← Back to Home</a>
-        
-        <h1>👤 My Profile & Reports</h1>
-        <p class="hero-text">Your personal tennis command center. Manage your racket arsenal, review weekly/monthly reports, and customize your setup.</p>
+        <div class="top-bar">
+            <a href="index.html" class="back-btn" data-i18n="backHome">← Back to Home</a>
+            <label class="lang-switcher" aria-label="Language">
+                <span>🌐</span>
+                <select id="langSelect" class="sm-lang-select">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="ko">🇰🇷 한국어</option>
+                    <option value="ja">🇯🇵 日本語</option>
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="zh">🇨🇳 简体中文</option>
+                    <option value="zh_Hant">🇹🇼 繁體中文</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                    <option value="pt">🇵🇹 Português</option>
+                </select>
+            </label>
+        </div>
+
+        <h1 data-i18n="title">👤 My Profile &amp; Reports</h1>
+        <p class="hero-text" data-i18n="hero">Your personal tennis command center. Manage your racket arsenal, review weekly/monthly reports, and customize your setup.</p>
 
         <div class="feature-list">
             <div class="feature-item pro">
-                <h3>📈 Weekly & Monthly Performance Reports <span class="pro-badge">👑 PRO</span></h3>
-                <p>Get automated weekly and monthly reports delivered via push and email, detailing your total hours played, session count, and racket usage breakdown.</p>
+                <h3><span data-i18n="f1Title">📈 Weekly &amp; Monthly Performance Reports</span> <span class="pro-badge">👑 PRO</span></h3>
+                <p data-i18n="f1Desc">Get automated weekly and monthly reports delivered via push and email, detailing your total hours played, session count, and racket usage breakdown.</p>
                 <div style="margin-top: 10px; font-size: 0.85rem; color: #ccc;">
-                    <strong>📍 UI Location:</strong> Push Notifications ➔ Profile Tab ➔ <strong>'Weekly & Monthly Reports'</strong>.<br>
-                    <a href="guide.html#reports" style="color: var(--primary); font-weight: 600;">See Step-by-Step Guide →</a>
+                    <span data-i18n-html="f1Loc"><strong>📍 UI Location:</strong> Push Notifications ➔ Profile Tab ➔ <strong>'Weekly &amp; Monthly Reports'</strong>.</span><br>
+                    <a href="guide.html#reports" style="color: var(--primary); font-weight: 600;" data-i18n="seeGuide">See Step-by-Step Guide →</a>
                 </div>
             </div>
             <div class="feature-item pro">
-                <h3>🎾 Unlimited Racket Rotation & Pro Specs <span class="pro-badge">👑 PRO</span></h3>
-                <p>Manage 2 active rackets for free, or upgrade to Pro for unlimited rackets. Record custom tuning specs including weight (g), swingweight, balance (mm), stiffness (RA), serial numbers, and lead-tape notes.</p>
+                <h3><span data-i18n="f2Title">🎾 Unlimited Racket Rotation &amp; Pro Specs</span> <span class="pro-badge">👑 PRO</span></h3>
+                <p data-i18n="f2Desc">Manage 2 active rackets for free, or upgrade to Pro for unlimited rackets. Record custom tuning specs including weight (g), swingweight, balance (mm), stiffness (RA), serial numbers, and lead-tape notes.</p>
                 <div style="margin-top: 10px; font-size: 0.85rem; color: #ccc;">
-                    <strong>📍 UI Location:</strong> Home Screen ➔ Swipe Racket Carousel ➔ <strong>[+ Add Racket]</strong>.<br>
-                    <a href="guide.html#rackets" style="color: var(--primary); font-weight: 600;">See Step-by-Step Guide →</a>
+                    <span data-i18n-html="f2Loc"><strong>📍 UI Location:</strong> Home Screen ➔ Swipe Racket Carousel ➔ <strong>[+ Add Racket]</strong>.</span><br>
+                    <a href="guide.html#rackets" style="color: var(--primary); font-weight: 600;" data-i18n="seeGuide">See Step-by-Step Guide →</a>
                 </div>
             </div>
             <div class="feature-item">
-                <h3>🏆 NTRP Level & Tennis Elbow Protection</h3>
-                <p>Set your NTRP skill level and arm condition so our recommendation engine prioritizes soft, arm-friendly strings when you need them.</p>
+                <h3 data-i18n="f3Title">🏆 NTRP Level &amp; Tennis Elbow Protection</h3>
+                <p data-i18n="f3Desc">Set your NTRP skill level and arm condition so our recommendation engine prioritizes soft, arm-friendly strings when you need them.</p>
             </div>
             <div class="feature-item">
-                <h3>🌍 10 Languages & Custom Units</h3>
-                <p>Switch seamlessly between lbs and kg, Celsius (°C) and Fahrenheit (°F), and 10 global languages (English, Korean, Spanish, Japanese, Simplified & Traditional Chinese, German, French, Italian, and Portuguese).</p>
+                <h3 data-i18n="f4Title">🌍 10 Languages &amp; Custom Units</h3>
+                <p data-i18n="f4Desc">Switch seamlessly between lbs and kg, Celsius (°C) and Fahrenheit (°F), and 10 global languages (English, Korean, Spanish, Japanese, Simplified &amp; Traditional Chinese, German, French, Italian, and Portuguese).</p>
             </div>
         </div>
 
         <div class="cta-section">
-            <h2>Personalize your experience</h2>
-            <a href="index.html" class="cta-btn">Download String Master</a>
+            <h2 data-i18n="ctaTitle">Personalize your experience</h2>
+            <a href="index.html" class="cta-btn" data-i18n="ctaBtn">Download String Master</a>
         </div>
     </div>
     <footer>
         &copy; 2026 X Dragons. All rights reserved.<br>
-        <a href="index.html">Home</a> | 
-        <a href="guide.html">Pro User Guide</a> | 
-        <a href="privacy.html">Privacy Policy</a>
+        <a href="index.html" data-i18n="footHome">Home</a> |
+        <a href="guide.html" data-i18n="footGuide">Pro User Guide</a> |
+        <a href="privacy.html" data-i18n="footPrivacy">Privacy Policy</a>
     </footer>
+
+    <script>
+        const PROFILE_I18N = {
+            en: {
+                pageTitle: "My Profile - String Master",
+                backHome: "← Back to Home",
+                title: "👤 My Profile & Reports",
+                hero: "Your personal tennis command center. Manage your racket arsenal, review weekly/monthly reports, and customize your setup.",
+                f1Title: "📈 Weekly & Monthly Performance Reports",
+                f1Desc: "Get automated weekly and monthly reports delivered via push and email, detailing your total hours played, session count, and racket usage breakdown.",
+                f1Loc: "<strong>📍 UI Location:</strong> Push Notifications ➔ Profile Tab ➔ <strong>'Weekly &amp; Monthly Reports'</strong>.",
+                f2Title: "🎾 Unlimited Racket Rotation & Pro Specs",
+                f2Desc: "Manage 2 active rackets for free, or upgrade to Pro for unlimited rackets. Record custom tuning specs including weight (g), swingweight, balance (mm), stiffness (RA), serial numbers, and lead-tape notes.",
+                f2Loc: "<strong>📍 UI Location:</strong> Home Screen ➔ Swipe Racket Carousel ➔ <strong>[+ Add Racket]</strong>.",
+                seeGuide: "See Step-by-Step Guide →",
+                f3Title: "🏆 NTRP Level & Tennis Elbow Protection",
+                f3Desc: "Set your NTRP skill level and arm condition so our recommendation engine prioritizes soft, arm-friendly strings when you need them.",
+                f4Title: "🌍 10 Languages & Custom Units",
+                f4Desc: "Switch seamlessly between lbs and kg, Celsius (°C) and Fahrenheit (°F), and 10 global languages (English, Korean, Spanish, Japanese, Simplified & Traditional Chinese, German, French, Italian, and Portuguese).",
+                ctaTitle: "Personalize your experience",
+                ctaBtn: "Download String Master",
+                footHome: "Home",
+                footGuide: "Pro User Guide",
+                footPrivacy: "Privacy Policy"
+            },
+            ko: {
+                pageTitle: "내 프로필 & 리포트 - String Master",
+                backHome: "← 홈으로 돌아가기",
+                title: "👤 내 프로필 & 리포트",
+                hero: "나만의 테니스 장비 관제센터. 보유 중인 라켓 관리, 주간/월간 리포트 확인, 언어 및 단위 설정을 한 곳에서 맞춤 관리하세요.",
+                f1Title: "📈 주간 & 월간 퍼포먼스 리포트",
+                f1Desc: "푸시 알림과 이메일로 자동 발송되는 주간·월간 리포트를 통해 총 플레이 시간, 세션 횟수, 라켓별 사용 비중을 한눈에 확인하세요.",
+                f1Loc: "<strong>📍 사용 위치:</strong> 푸시 알림 ➔ 프로필 탭 ➔ <strong>'내 리포트'</strong>.",
+                f2Title: "🎾 무제한 라켓 관리 & 프로 튜닝 스펙",
+                f2Desc: "무료로 2자루까지 관리하고, Pro 업그레이드 시 개수 제한 없이 라켓을 등록할 수 있습니다. 무게(g), 스윙웨이트, 밸런스(mm), 강성(RA), 시리얼 번호, 납테이프 메모까지 정밀 기록!",
+                f2Loc: "<strong>📍 사용 위치:</strong> 홈 화면 ➔ 라켓 카드 스와이프 ➔ <strong>[+ 라켓 추가]</strong>.",
+                seeGuide: "단계별 가이드 보기 →",
+                f3Title: "🏆 NTRP 레벨 & 테니스 엘보 설정",
+                f3Desc: "NTRP 실력과 팔 상태를 설정해 두면 필요할 때 추천 엔진이 부드럽고 팔에 편안한 스트링을 최우선으로 제안합니다.",
+                f4Title: "🌍 10개 국어 & 맞춤 단위 지원",
+                f4Desc: "lbs / kg, 섭씨(°C) / 화씨(°F) 및 10개 국어(한국어, 영어, 스페인어, 일본어, 중국어 간체/번체, 독일어, 프랑스어, 이탈리아어, 포르투갈어)를 자유롭게 전환하세요.",
+                ctaTitle: "나에게 딱 맞게 맞춤 설정해 보세요",
+                ctaBtn: "String Master 다운로드",
+                footHome: "홈",
+                footGuide: "Pro 사용 가이드",
+                footPrivacy: "개인정보처리방침"
+            },
+            ja: {
+                pageTitle: "マイプロフィール - String Master",
+                backHome: "← ホームへ戻る",
+                title: "👤 マイプロフィール & レポート",
+                hero: "あなた専用のテニスギア司令塔。ラケット管理、週次・月次レポート、各種環境設定をまとめてカスタマイズできます。",
+                f1Title: "📈 週次・月次パフォーマンスレポート",
+                f1Desc: "プッシュ通知とメールで自動配信されるレポートで、総プレイ時間、セッション数、ラケット別の使用比率を確認できます。",
+                f1Loc: "<strong>📍 場所:</strong> プッシュ通知 ➔ プロフィールタブ ➔ <strong>「マイレポート」</strong>。",
+                f2Title: "🎾 無制限ラケット管理 & プロスペック",
+                f2Desc: "無料プランで2本、Proで無制限に管理可能。重量(g)、スイングウェイト、バランス(mm)、剛性(RA)、シリアル番号、加重メモまで記録できます。",
+                f2Loc: "<strong>📍 場所:</strong> ホーム画面 ➔ ラケットカルーセル ➔ <strong>[+ ラケット追加]</strong>。",
+                seeGuide: "ステップガイドを見る →",
+                f3Title: "🏆 NTRPレベル & テニス肘ケア",
+                f3Desc: "NTRPレベルと肘の状態を設定しておけば、診断エンジンが腕に優しいストリングを優先して提案します。",
+                f4Title: "🌍 10言語 & 単位カスタマイズ",
+                f4Desc: "lbs / kg、摂氏(°C) / 華氏(°F)、さらに日本語・英語・韓国語など10言語をシームレスに切り替え可能です。",
+                ctaTitle: "自分仕様にカスタマイズしよう",
+                ctaBtn: "String Masterをダウンロード",
+                footHome: "ホーム",
+                footGuide: "Pro 使い方ガイド",
+                footPrivacy: "プライバシーポリシー"
+            },
+            es: {
+                pageTitle: "Mi Perfil - String Master",
+                backHome: "← Volver al inicio",
+                title: "👤 Mi Perfil e Informes",
+                hero: "Tu centro de control personal de tenis. Gestiona tus raquetas, revisa tus informes semanales/mensuales y personaliza tus preferencias.",
+                f1Title: "📈 Informes Semanales y Mensuales",
+                f1Desc: "Recibe informes automáticos por notificación y correo con tus horas totales, sesiones y desglose por raqueta.",
+                f1Loc: "<strong>📍 Ubicación:</strong> Notificaciones ➔ Pestaña Perfil ➔ <strong>'Mis Informes'</strong>.",
+                f2Title: "🎾 Raquetas Ilimitadas y Especificaciones Pro",
+                f2Desc: "Gestiona 2 raquetas gratis o pasa a Pro para raquetas ilimitadas. Guarda peso (g), swingweight, balance (mm), rigidez (RA), número de serie y notas de plomo.",
+                f2Loc: "<strong>📍 Ubicación:</strong> Inicio ➔ Carrusel de raquetas ➔ <strong>[+ Añadir Raqueta]</strong>.",
+                seeGuide: "Ver guía paso a paso →",
+                f3Title: "🏆 Nivel NTRP y Protección del Codo",
+                f3Desc: "Define tu nivel NTRP y estado del brazo para que el buscador priorice cuerdas cómodas cuando lo necesites.",
+                f4Title: "🌍 10 Idiomas y Unidades Personalizadas",
+                f4Desc: "Cambia fácilmente entre lbs y kg, °C y °F, y 10 idiomas globales (español, inglés, coreano, japonés, chino, alemán, francés, italiano y portugués).",
+                ctaTitle: "Personaliza tu experiencia",
+                ctaBtn: "Descargar String Master",
+                footHome: "Inicio",
+                footGuide: "Guía Pro",
+                footPrivacy: "Privacidad"
+            },
+            zh: {
+                pageTitle: "个人中心 - String Master",
+                backHome: "← 返回首页",
+                title: "👤 个人中心与报告",
+                hero: "您的专属网球装备控制中心。管理全部球拍、查阅周报/月报，并自由定制语言与单位偏好。",
+                f1Title: "📈 周度与月度表现报告",
+                f1Desc: "通过推送与邮件自动接收周报和月报，全面掌握总击球时长、训练次数与各球拍使用分布。",
+                f1Loc: "<strong>📍 入口位置:</strong> 推送通知 ➔ 个人中心 ➔ <strong>“我的报告”</strong>。",
+                f2Title: "🎾 无限球拍管理与专业参数",
+                f2Desc: "免费管理 2 支球拍，升级 Pro 解锁无限球拍。可记录重量(g)、挥重、平衡点(mm)、硬度(RA)、序列号及铅片改装备注。",
+                f2Loc: "<strong>📍 入口位置:</strong> 首页 ➔ 滑动球拍卡片 ➔ <strong>[+ 添加球拍]</strong>。",
+                seeGuide: "查看分步指南 →",
+                f3Title: "🏆 NTRP 水平与网球肘保护",
+                f3Desc: "设置您的 NTRP 级别与手臂状态，需要时推荐引擎将优先筛选柔和护臂的球线。",
+                f4Title: "🌍 10 种语言与自定义单位",
+                f4Desc: "无缝切换 lbs 与 kg、摄氏度(°C) 与华氏度(°F)，以及中、英、韩、日、西、德、法、意、葡等 10 种全球语言。",
+                ctaTitle: "打造专属于您的体验",
+                ctaBtn: "下载 String Master",
+                footHome: "首页",
+                footGuide: "Pro 使用指南",
+                footPrivacy: "隐私政策"
+            },
+            zh_Hant: {
+                pageTitle: "個人檔案 - String Master",
+                backHome: "← 返回首頁",
+                title: "👤 個人檔案與報告",
+                hero: "您的專屬網球裝備指揮中心。管理所有球拍、瀏覽週報/月報，並自由自訂偏好設定。",
+                f1Title: "📈 週度與月度表現報告",
+                f1Desc: "透過推播與 Email 自動接收週報及月報，詳盡呈現總打球時數、場次與各球拍使用比例。",
+                f1Loc: "<strong>📍 功能位置:</strong> 推播通知 ➔ 個人檔案 ➔ <strong>「我的報告」</strong>。",
+                f2Title: "🎾 無限球拍管理與專業規格",
+                f2Desc: "免費管理 2 支球拍，升級 Pro 解鎖無限球拍。完整記錄重量(g)、揮重、平衡點(mm)、硬度(RA)、序號與鉛片調校筆記。",
+                f2Loc: "<strong>📍 功能位置:</strong> 首頁 ➔ 滑動球拍卡片 ➔ <strong>[+ 新增球拍]</strong>。",
+                seeGuide: "查看步驟指南 →",
+                f3Title: "🏆 NTRP 等級與網球肘防護",
+                f3Desc: "設定 NTRP 程度與手臂狀況，讓推薦引擎在您需要時優先挑選溫和護臂的網線。",
+                f4Title: "🌍 10 國語言與自訂單位",
+                f4Desc: "無縫切換 lbs 與 kg、攝氏(°C) 與華氏(°F)，並支援繁簡中文、英、韓、日、西、德、法、義、葡共 10 種語言。",
+                ctaTitle: "打造您的專屬使用體驗",
+                ctaBtn: "下載 String Master",
+                footHome: "首頁",
+                footGuide: "Pro 使用指南",
+                footPrivacy: "隱私政策"
+            },
+            de: {
+                pageTitle: "Mein Profil - String Master",
+                backHome: "← Zurück zur Startseite",
+                title: "👤 Mein Profil & Berichte",
+                hero: "Deine persönliche Tennis-Zentrale. Verwalte dein Schläger-Arsenal, prüfe Wochen-/Monatsberichte und passe deine Einstellungen an.",
+                f1Title: "📈 Wochen- & Monatsberichte",
+                f1Desc: "Erhalte automatische Berichte per Push und E-Mail mit Gesamtspielzeit, Anzahl der Sessions und Schlägerverteilung.",
+                f1Loc: "<strong>📍 Position:</strong> Push-Nachrichten ➔ Profil-Tab ➔ <strong>„Meine Berichte“</strong>.",
+                f2Title: "🎾 Unbegrenzte Schläger & Pro-Specs",
+                f2Desc: "Verwalte 2 Schläger gratis oder unbegrenzt mit Pro. Speichere Gewicht (g), Schwunggewicht, Balance (mm), Rahmenhärte (RA), Seriennummern und Tuning-Notizen.",
+                f2Loc: "<strong>📍 Position:</strong> Startbildschirm ➔ Schläger-Karussell ➔ <strong>[+ Schläger hinzufügen]</strong>.",
+                seeGuide: "Schritt-für-Schritt-Anleitung →",
+                f3Title: "🏆 NTRP-Level & Tennisarm-Schutz",
+                f3Desc: "Hinterlege Spielstärke und Armzustand, damit die Empfehlungs-Engine bei Bedarf armschonende Saiten priorisiert.",
+                f4Title: "🌍 10 Sprachen & Eigene Einheiten",
+                f4Desc: "Wechsle nahtlos zwischen lbs und kg, °C und °F sowie 10 Weltsprachen (Deutsch, Englisch, Koreanisch, Japanisch, Spanisch, Chinesisch, Französisch, Italienisch, Portugiesisch).",
+                ctaTitle: "Personalisiere dein Erlebnis",
+                ctaBtn: "String Master herunterladen",
+                footHome: "Startseite",
+                footGuide: "Pro-Handbuch",
+                footPrivacy: "Datenschutz"
+            },
+            fr: {
+                pageTitle: "Mon Profil - String Master",
+                backHome: "← Retour à l'accueil",
+                title: "👤 Mon Profil & Rapports",
+                hero: "Votre centre de contrôle tennis personnel. Gérez vos raquettes, consultez vos rapports hebdo/mensuels et personnalisez vos préférences.",
+                f1Title: "📈 Rapports de Performance Hebdo & Mensuels",
+                f1Desc: "Recevez automatiquement par notification et e-mail vos rapports détaillant heures jouées, nombre de séances et répartition par raquette.",
+                f1Loc: "<strong>📍 Emplacement :</strong> Notifications ➔ Onglet Profil ➔ <strong>« Mes Rapports »</strong>.",
+                f2Title: "🎾 Raquettes Illimitées & Specs Pro",
+                f2Desc: "Gérez 2 raquettes gratuitement ou passez à Pro sans limite. Enregistrez poids (g), swingweight, équilibre (mm), rigidité (RA), numéro de série et notes plomb.",
+                f2Loc: "<strong>📍 Emplacement :</strong> Accueil ➔ Carrousel raquettes ➔ <strong>[+ Ajouter une raquette]</strong>.",
+                seeGuide: "Voir le guide étape par étape →",
+                f3Title: "🏆 Niveau NTRP & Protection du Coude",
+                f3Desc: "Renseignez votre niveau et la sensibilité de votre bras pour que le moteur privilégie des cordages confortables.",
+                f4Title: "🌍 10 Langues & Unités Personnalisées",
+                f4Desc: "Passez librement de lbs à kg, de °C à °F, et choisissez parmi 10 langues internationales dont le français, l'anglais, le coréen et le japonais.",
+                ctaTitle: "Personnalisez votre expérience",
+                ctaBtn: "Télécharger String Master",
+                footHome: "Accueil",
+                footGuide: "Guide Pro",
+                footPrivacy: "Confidentialité"
+            },
+            it: {
+                pageTitle: "Il Mio Profilo - String Master",
+                backHome: "← Torna alla Home",
+                title: "👤 Il Mio Profilo e Report",
+                hero: "Il tuo centro di controllo personale per il tennis. Gestisci le racchette, consulta i report settimanali/mensili e personalizza l'app.",
+                f1Title: "📈 Report Settimanali e Mensili",
+                f1Desc: "Ricevi report automatici via push ed email con ore totali giocate, numero di sessioni e utilizzo di ciascuna racchetta.",
+                f1Loc: "<strong>📍 Posizione:</strong> Notifiche Push ➔ Scheda Profilo ➔ <strong>'I Miei Report'</strong>.",
+                f2Title: "🎾 Racchette Illimitate e Specifiche Pro",
+                f2Desc: "Gestisci 2 racchette gratis o passa a Pro senza limiti. Registra peso (g), swingweight, bilanciamento (mm), rigidità (RA), numero di serie e note di tuning.",
+                f2Loc: "<strong>📍 Posizione:</strong> Home ➔ Carosello racchette ➔ <strong>[+ Aggiungi Racchetta]</strong>.",
+                seeGuide: "Vedi guida passo passo →",
+                f3Title: "🏆 Livello NTRP e Protezione Gomito",
+                f3Desc: "Imposta il livello NTRP e le condizioni del braccio affinché il motore dia priorità a corde morbide quando serve.",
+                f4Title: "🌍 10 Lingue e Unità Personalizzate",
+                f4Desc: "Passa facilmente tra lbs e kg, °C e °F e 10 lingue globali tra cui italiano, inglese, coreano, giapponese, spagnolo, cinese, tedesco, francese e portoghese.",
+                ctaTitle: "Personalizza la tua esperienza",
+                ctaBtn: "Scarica String Master",
+                footHome: "Home",
+                footGuide: "Guida Pro",
+                footPrivacy: "Privacy Policy"
+            },
+            pt: {
+                pageTitle: "Meu Perfil - String Master",
+                backHome: "← Voltar ao Início",
+                title: "👤 Meu Perfil e Relatórios",
+                hero: "Sua central pessoal de tênis. Gerencie suas raquetes, acompanhe relatórios semanais/mensais e personalize suas preferências.",
+                f1Title: "📈 Relatórios Semanais e Mensais",
+                f1Desc: "Receba relatórios automáticos por notificação e e-mail com total de horas jogadas, sessões e uso detalhado por raquete.",
+                f1Loc: "<strong>📍 Onde fica:</strong> Notificações ➔ Aba Perfil ➔ <strong>'Meus Relatórios'</strong>.",
+                f2Title: "🎾 Raquetes Ilimitadas e Especificações Pro",
+                f2Desc: "Gerencie 2 raquetes grátis ou assine o Pro para raquetes ilimitadas. Salve peso (g), swingweight, equilíbrio (mm), rigidez (RA), número de série e notas de chumbo.",
+                f2Loc: "<strong>📍 Onde fica:</strong> Tela Inicial ➔ Carrossel de Raquetes ➔ <strong>[+ Adicionar Raquete]</strong>.",
+                seeGuide: "Ver guia passo a passo →",
+                f3Title: "🏆 Nível NTRP e Proteção do Cotovelo",
+                f3Desc: "Informe seu nível NTRP e a condição do braço para que o mecanismo priorize cordas macias e confortáveis sempre que precisar.",
+                f4Title: "🌍 10 Idiomas e Unidades Personalizadas",
+                f4Desc: "Alterne facilmente entre lbs e kg, °C e °F e 10 idiomas globais (português, inglês, coreano, espanhol, japonês, chinês, alemão, francês e italiano).",
+                ctaTitle: "Personalize sua experiência",
+                ctaBtn: "Baixar String Master",
+                footHome: "Início",
+                footGuide: "Guia Pro",
+                footPrivacy: "Privacidade"
+            }
+        };
+    </script>
+    <script src="i18n.js"></script>
+    <script>
+        window.initStringMasterI18n(PROFILE_I18N);
+    </script>
 </body>
 </html>
