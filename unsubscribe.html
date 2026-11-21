@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Unsubscribe - String Master</title>
+    <style>
+        :root {
+            --primary: #CCFF00;
+            --bg: #121212;
+            --surface: #1E1E1E;
+            --text: #FFFFFF;
+            --text-secondary: #AAAAAA;
+            --error: #ff5252;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid #333;
+            border-radius: 20px;
+            max-width: 460px;
+            width: 100%;
+            padding: 36px 28px;
+            text-align: center;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+        }
+
+        .top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--primary);
+            color: #121212;
+            font-weight: 800;
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        .lang-switcher {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #252525;
+            border: 1px solid #3a3a3a;
+            border-radius: 16px;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        .lang-switcher select {
+            background: transparent;
+            color: #fff;
+            border: none;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            color-scheme: dark;
+        }
+
+        .lang-switcher select option { background: #1E1E1E; color: #fff; }
+
+        h1 {
+            font-size: 1.45rem;
+            margin-bottom: 14px;
+            color: #fff;
+        }
+
+        p {
+            color: #bbb;
+            font-size: 0.95rem;
+            margin-bottom: 24px;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: #121212;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 12px;
+            font-weight: 800;
+            font-size: 0.95rem;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.15s, opacity 0.15s;
+        }
+
+        .btn:hover:not(:disabled) { transform: translateY(-1px); }
+        .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+
+        .error-text {
+            color: var(--error);
+            font-size: 0.88rem;
+            margin-top: 14px;
+            display: none;
+        }
+
+        .home-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .home-link:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="top-row">
+            <span class="badge">String Master 🎾</span>
+            <label class="lang-switcher" aria-label="Language">
+                <span>🌐</span>
+                <select id="langSelect" class="sm-lang-select">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="ko">🇰🇷 한국어</option>
+                    <option value="ja">🇯🇵 日本語</option>
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="zh">🇨🇳 简体中文</option>
+                    <option value="zh_Hant">🇹🇼 繁體中文</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                    <option value="pt">🇵🇹 Português</option>
+                </select>
+            </label>
+        </div>
+
+        <div id="confirmView">
+            <h1 data-i18n="title">Unsubscribe from Emails</h1>
+            <p data-i18n="confirmDesc">Would you like to stop receiving product update and promotional emails from String Master?</p>
+            <button id="confirmBtn" class="btn" type="button" data-i18n="button">Confirm Unsubscribe</button>
+            <div id="errorBox" class="error-text"></div>
+        </div>
+
+        <div id="doneView" style="display: none;">
+            <h1>✅ <span data-i18n="doneTitle">You've Been Unsubscribed</span></h1>
+            <p data-i18n="doneDesc">You will no longer receive promotional or update emails from String Master. You can re-enable email notifications anytime in the app settings.</p>
+            <a href="index.html" class="home-link" data-i18n="backHome">← Back to String Master</a>
+        </div>
+
+        <div id="invalidView" style="display: none;">
+            <h1>⚠️ <span data-i18n="title">Unsubscribe from Emails</span></h1>
+            <p data-i18n="invalid">This unsubscribe link is invalid or missing required information.</p>
+            <a href="index.html" class="home-link" data-i18n="backHome">← Back to String Master</a>
+        </div>
+    </div>
+
+    <script src="i18n.js"></script>
+    <script>
+        const UNSUB_ENDPOINT = "https://bckwjrapgdctawgauubo.supabase.co/functions/v1/unsubscribe-user";
+
+        const UNSUB_I18N = {
+            en: {
+                pageTitle: "Unsubscribe - String Master",
+                title: "Unsubscribe from Emails",
+                confirmDesc: "Would you like to stop receiving product update and promotional emails from String Master?",
+                button: "Confirm Unsubscribe",
+                processing: "Processing...",
+                doneTitle: "You've Been Unsubscribed",
+                doneDesc: "You will no longer receive promotional or update emails from String Master. You can re-enable email notifications anytime in the app settings.",
+                invalid: "This unsubscribe link is invalid or expired.",
+                failed: "Could not process your request. Please try again or reply 'Unsubscribe' to the email.",
+                backHome: "← Back to String Master"
+            },
+            ko: {
+                pageTitle: "이메일 수신 거부 - String Master",
+                title: "이메일 수신 거부",
+                confirmDesc: "String Master 업데이트 및 프로모션 이메일 수신을 중단하시겠습니까?",
+                button: "수신 거부 확인",
+                processing: "처리 중...",
+                doneTitle: "수신 거부가 완료되었습니다",
+                doneDesc: "앞으로 String Master 마케팅 및 업데이트 이메일이 발송되지 않습니다. 언제든 앱 내 설정에서 다시 켜실 수 있습니다.",
+                invalid: "유효하지 않거나 만료된 수신 거부 링크입니다.",
+                failed: "요청 처리에 실패했습니다. 잠시 후 다시 시도하거나 이메일에 '수신거절'이라고 답장해 주세요.",
+                backHome: "← String Master 홈으로"
+            },
+            ja: {
+                pageTitle: "メール配信停止 - String Master",
+                title: "メール配信停止",
+                confirmDesc: "String Masterからのお知らせ・プロモーションメールの配信を停止しますか？",
+                button: "配信停止を確認する",
+                processing: "処理中...",
+                doneTitle: "配信停止が完了しました",
+                doneDesc: "今後、String Masterからの更新・プロモーションメールは送信されません。アプリ内の設定からいつでも再登録できます。",
+                invalid: "無効または期限切れの配信停止リンクです。",
+                failed: "処理に失敗しました。しばらくしてから再試行するか、メールに「配信停止」とご返信ください。",
+                backHome: "← String Master ホームへ"
+            },
+            es: {
+                pageTitle: "Cancelar suscripción - String Master",
+                title: "Cancelar suscripción",
+                confirmDesc: "¿Deseas dejar de recibir correos de actualizaciones y promociones de String Master?",
+                button: "Confirmar baja",
+                processing: "Procesando...",
+                doneTitle: "Suscripción cancelada",
+                doneDesc: "Ya no recibirás correos de actualizaciones ni promociones de String Master. Puedes volver a activarlos cuando quieras desde los ajustes de la app.",
+                invalid: "Este enlace de cancelación no es válido o ha expirado.",
+                failed: "No se pudo procesar tu solicitud. Inténtalo de nuevo o responde 'Baja' al correo.",
+                backHome: "← Volver a String Master"
+            },
+            zh: {
+                pageTitle: "退订邮件通知 - String Master",
+                title: "退订邮件通知",
+                confirmDesc: "确定要停止接收 String Master 的产品更新和优惠推广邮件吗？",
+                button: "确认退订",
+                processing: "处理中...",
+                doneTitle: "已成功退订",
+                doneDesc: "您将不再收到 String Master 的更新和推广邮件。您可以随时在应用设置中重新开启。",
+                invalid: "此退订链接无效或已过期。",
+                failed: "处理请求失败，请稍后重试或直接回复邮件“退订”。",
+                backHome: "← 返回 String Master"
+            },
+            zh_Hant: {
+                pageTitle: "取消訂閱郵件 - String Master",
+                title: "取消訂閱郵件",
+                confirmDesc: "確定要停止接收 String Master 的產品更新與優惠推廣郵件嗎？",
+                button: "確認取消訂閱",
+                processing: "處理中...",
+                doneTitle: "已成功取消訂閱",
+                doneDesc: "您將不再收到 String Master 的更新與推廣郵件。您隨時可以在應用程式設定中重新開啟。",
+                invalid: "此取消訂閱連結無效或已過期。",
+                failed: "處理請求失敗，請稍後再試或直接回覆郵件「取消訂閱」。",
+                backHome: "← 返回 String Master"
+            },
+            de: {
+                pageTitle: "E-Mails abbestellen - String Master",
+                title: "E-Mails abbestellen",
+                confirmDesc: "Möchtest du keine Produkt-Updates und Werbe-E-Mails von String Master mehr erhalten?",
+                button: "Abmeldung bestätigen",
+                processing: "Wird verarbeitet...",
+                doneTitle: "Erfolgreich abgemeldet",
+                doneDesc: "Du erhältst ab sofort keine Update- oder Werbe-E-Mails mehr von String Master. Du kannst dies jederzeit in den App-Einstellungen wieder aktivieren.",
+                invalid: "Dieser Abmeldelink ist ungültig oder abgelaufen.",
+                failed: "Anfrage fehlgeschlagen. Bitte versuche es erneut oder antworte mit 'Abmelden'.",
+                backHome: "← Zurück zu String Master"
+            },
+            fr: {
+                pageTitle: "Se désabonner - String Master",
+                title: "Se désabonner",
+                confirmDesc: "Souhaitez-vous ne plus recevoir les e-mails de mise à jour et de promotion de String Master ?",
+                button: "Confirmer le désabonnement",
+                processing: "Traitement en cours...",
+                doneTitle: "Désabonnement confirmé",
+                doneDesc: "Vous ne recevrez plus d'e-mails de mise à jour ni d'offres de String Master. Vous pouvez les réactiver à tout moment dans les paramètres de l'application.",
+                invalid: "Ce lien de désabonnement est invalide ou expiré.",
+                failed: "Impossible de traiter votre demande. Réessayez ou répondez 'Désabonnement' à l'e-mail.",
+                backHome: "← Retour à String Master"
+            },
+            it: {
+                pageTitle: "Annulla iscrizione - String Master",
+                title: "Annulla iscrizione",
+                confirmDesc: "Vuoi smettere di ricevere email di aggiornamento e promozioni da String Master?",
+                button: "Conferma disiscrizione",
+                processing: "Elaborazione...",
+                doneTitle: "Disiscrizione completata",
+                doneDesc: "Non riceverai più email di aggiornamento o promozionali da String Master. Puoi riattivarle in qualsiasi momento nelle impostazioni dell'app.",
+                invalid: "Questo link di disiscrizione non è valido o è scaduto.",
+                failed: "Impossibile completare la richiesta. Riprova o rispondi 'Disiscriviti' all'email.",
+                backHome: "← Torna a String Master"
+            },
+            pt: {
+                pageTitle: "Cancelar inscrição - String Master",
+                title: "Cancelar inscrição",
+                confirmDesc: "Deseja parar de receber e-mails de atualizações e promoções do String Master?",
+                button: "Confirmar cancelamento",
+                processing: "Processando...",
+                doneTitle: "Inscrição cancelada",
+                doneDesc: "Você não receberá mais e-mails de atualizações ou promoções do String Master. Você pode reativá-los a qualquer momento nas configurações do app.",
+                invalid: "Este link de cancelamento é inválido ou expirou.",
+                failed: "Não foi possível processar sua solicitação. Tente novamente ou responda 'Cancelar' ao e-mail.",
+                backHome: "← Voltar ao String Master"
+            }
+        };
+
+        const i18nCtl = window.initStringMasterI18n(UNSUB_I18N);
+
+        const params = new URLSearchParams(window.location.search);
+        const uid = (params.get("uid") || "").trim();
+        const sig = (params.get("sig") || "").trim();
+        const forceInvalid = params.get("invalid") === "1";
+
+        const confirmView = document.getElementById("confirmView");
+        const doneView = document.getElementById("doneView");
+        const invalidView = document.getElementById("invalidView");
+        const confirmBtn = document.getElementById("confirmBtn");
+        const errorBox = document.getElementById("errorBox");
+
+        if (forceInvalid || !uid || !sig) {
+            confirmView.style.display = "none";
+            invalidView.style.display = "block";
+        } else {
+            confirmBtn.addEventListener("click", async () => {
+                const dict = i18nCtl.getDict();
+                confirmBtn.disabled = true;
+                confirmBtn.textContent = dict.processing || "Processing...";
+                errorBox.style.display = "none";
+
+                try {
+                    const res = await fetch(UNSUB_ENDPOINT, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ uid, sig })
+                    });
+
+                    if (res.status === 403) {
+                        confirmView.style.display = "none";
+                        invalidView.style.display = "block";
+                        return;
+                    }
+
+                    if (!res.ok) {
+                        throw new Error("HTTP " + res.status);
+                    }
+
+                    confirmView.style.display = "none";
+                    doneView.style.display = "block";
+                } catch (err) {
+                    confirmBtn.disabled = false;
+                    confirmBtn.textContent = dict.button || "Confirm Unsubscribe";
+                    errorBox.textContent = dict.failed || "Could not process your request.";
+                    errorBox.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>
