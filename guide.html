@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pro Features User Guide - String Master</title>
-    <meta name="description" content="Step-by-step guide on how and where to use String Master Pro features: Smartwatch Auto-Sync, String Presets, Reports, and CSV Export.">
+    <meta name="description" content="Step-by-step guide on how and where to use String Master Pro features: Smartwatch Auto-Sync, String Presets, Reports, CSV Export, and Home Screen Widgets.">
     <style>
         :root {
             --primary: #CCFF00;
@@ -39,9 +39,17 @@
             flex-grow: 1;
         }
 
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 25px;
+        }
+
         .back-btn {
             display: inline-block;
-            margin-bottom: 25px;
             color: var(--text-secondary);
             text-decoration: none;
             font-size: 0.95rem;
@@ -49,6 +57,34 @@
         }
 
         .back-btn:hover { color: var(--primary); }
+
+        .lang-switcher {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--surface);
+            border: 1px solid #333;
+            border-radius: 20px;
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+        }
+
+        .lang-switcher select {
+            background: transparent;
+            color: #fff;
+            border: none;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            outline: none;
+            color-scheme: dark;
+        }
+
+        .lang-switcher select option {
+            background: #1E1E1E;
+            color: #fff;
+        }
 
         .header-section {
             margin-bottom: 40px;
@@ -152,6 +188,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
+            flex-wrap: wrap;
         }
 
         .ui-location-badge strong {
@@ -234,22 +271,39 @@
 </head>
 <body>
     <div class="container">
-        <a href="index.html" class="back-btn">← Back to Home</a>
+        <div class="top-bar">
+            <a href="index.html" class="back-btn" data-i18n="backHome">← Back to Home</a>
+            <label class="lang-switcher" aria-label="Language">
+                <span>🌐</span>
+                <select id="langSelect">
+                    <option value="en">🇺🇸 English</option>
+                    <option value="ko">🇰🇷 한국어</option>
+                    <option value="ja">🇯🇵 日本語</option>
+                    <option value="es">🇪🇸 Español</option>
+                    <option value="zh">🇨🇳 简体中文</option>
+                    <option value="zh_Hant">🇹🇼 繁體中文</option>
+                    <option value="de">🇩🇪 Deutsch</option>
+                    <option value="fr">🇫🇷 Français</option>
+                    <option value="it">🇮🇹 Italiano</option>
+                    <option value="pt">🇵🇹 Português</option>
+                </select>
+            </label>
+        </div>
 
         <div class="header-section">
-            <span class="guide-badge">👑 PRO USER GUIDE</span>
-            <h1>How to Use String Master Pro</h1>
-            <p class="subtitle">
+            <span class="guide-badge" data-i18n="guideBadge">👑 PRO USER GUIDE</span>
+            <h1 data-i18n="heroTitle">How to Use String Master Pro</h1>
+            <p class="subtitle" data-i18n-html="heroSubtitle">
                 A quick visual reference showing exactly <strong>where in the UI</strong> and <strong>how to use</strong> all premium features.
             </p>
 
             <div class="nav-pills">
-                <a href="#smartwatch" class="nav-pill">⌚ Smartwatch Sync</a>
-                <a href="#presets" class="nav-pill">⚡ String Presets</a>
-                <a href="#reports" class="nav-pill">📊 My Reports</a>
-                <a href="#csv" class="nav-pill">📁 CSV Export</a>
-                <a href="#rackets" class="nav-pill">🎾 3+ Rackets & Specs</a>
-                <a href="#widget" class="nav-pill">📱 Home Screen Widget</a>
+                <a href="#smartwatch" class="nav-pill" data-i18n="navWatch">⌚ Smartwatch Sync</a>
+                <a href="#presets" class="nav-pill" data-i18n="navPresets">⚡ String Presets</a>
+                <a href="#reports" class="nav-pill" data-i18n="navReports">📊 My Reports</a>
+                <a href="#csv" class="nav-pill" data-i18n="navCsv">📁 CSV Export</a>
+                <a href="#rackets" class="nav-pill" data-i18n="navRackets">🎾 3+ Rackets &amp; Specs</a>
+                <a href="#widget" class="nav-pill" data-i18n="navWidget">📱 Home Screen Widget</a>
             </div>
         </div>
 
@@ -257,29 +311,21 @@
         <div id="smartwatch" class="guide-card" style="border-left: 5px solid var(--accent-blue);">
             <div class="guide-card-header">
                 <span class="guide-card-icon">⌚</span>
-                <div class="guide-card-title">Smartwatch Workout Auto-Sync</div>
+                <div class="guide-card-title" data-i18n="s1Title">Smartwatch Workout Auto-Sync</div>
             </div>
 
-            <div class="ui-location-badge">
+            <div class="ui-location-badge" data-i18n-html="s1Loc">
                 📍 <strong>Where to Find It:</strong> Watch Workout App ➔ Open String Master (Pop-up Sheet)
             </div>
 
-            <ol class="step-list">
-                <li>
-                    <strong>Track Your Match on Your Watch:</strong> On your <strong>Apple Watch</strong> (Workout app) or <strong>Galaxy Watch</strong> (Samsung Health), start your match using the <strong>'Tennis'</strong> workout mode.
-                </li>
-                <li>
-                    <strong>Open String Master:</strong> After playing, simply open the String Master app on your phone.
-                </li>
-                <li>
-                    <strong>One-Tap Detection:</strong> The app automatically checks for recent tennis sessions from the last 3 days that you haven't logged yet. A <strong>'Tennis Workout Detected! 🎾'</strong> card slides up right away.
-                </li>
-                <li>
-                    <strong>Save in 1 Tap:</strong> Your main racket is already selected. Adjust the time with <strong>+0.5h</strong> or <strong>-0.5h</strong> if needed, then tap <strong>[Log to This Racket]</strong>!
-                </li>
+            <ol class="step-list" data-i18n-html="s1Steps">
+                <li><strong>Track Your Match on Your Watch:</strong> On your <strong>Apple Watch</strong> (Workout app) or <strong>Galaxy Watch</strong> (Samsung Health), start your match using the <strong>'Tennis'</strong> workout mode.</li>
+                <li><strong>Open String Master:</strong> After playing, simply open the String Master app on your phone.</li>
+                <li><strong>One-Tap Detection:</strong> The app automatically checks for recent tennis sessions from the last 3 days that you haven't logged yet. A <strong>'Tennis Workout Detected! 🎾'</strong> card slides up right away.</li>
+                <li><strong>Save in 1 Tap:</strong> Your main racket is already selected. Adjust the time with <strong>+0.5h</strong> or <strong>-0.5h</strong> if needed, then tap <strong>[Log to This Racket]</strong>!</li>
             </ol>
 
-            <div class="pro-tip">
+            <div class="pro-tip" data-i18n-html="s1Tip">
                 💡 <strong>Quick Tip:</strong> Be sure to choose the <strong>'Tennis'</strong> workout on your watch. Workouts saved as 'Other' or 'HIIT' are skipped so your string hours stay accurate.
             </div>
         </div>
@@ -288,26 +334,20 @@
         <div id="presets" class="guide-card" style="border-left: 5px solid var(--primary);">
             <div class="guide-card-header">
                 <span class="guide-card-icon">⚡</span>
-                <div class="guide-card-title">Favorite String Presets</div>
+                <div class="guide-card-title" data-i18n="s2Title">Favorite String Presets</div>
             </div>
 
-            <div class="ui-location-badge">
+            <div class="ui-location-badge" data-i18n-html="s2Loc">
                 📍 <strong>Where to Find It:</strong> <strong>Profile Tab</strong> ➔ <strong>String Presets</strong> &nbsp;|&nbsp; Log Screen ➔ <strong>[Load Preset]</strong> / <strong>[Save Setup]</strong>
             </div>
 
-            <ol class="step-list">
-                <li>
-                    <strong>Save Your Go-To Setup:</strong> Go to <strong>Profile ➔ String Presets</strong> and tap <strong>[Add Preset]</strong>, or tap <strong>[Save Setup]</strong> right inside the string logging screen after choosing your strings, gauges, and tensions. Give it a memorable name like <em>"Match Poly 52 lbs"</em>.
-                </li>
-                <li>
-                    <strong>Apply in 1 Second:</strong> Next time you restring any racket, tap <strong>[Load Preset]</strong> at the top of the string logging screen.
-                </li>
-                <li>
-                    <strong>Zero Re-Typing:</strong> Pick your saved preset and every string, gauge, and tension fills in automatically!
-                </li>
+            <ol class="step-list" data-i18n-html="s2Steps">
+                <li><strong>Save Your Go-To Setup:</strong> Go to <strong>Profile ➔ String Presets</strong> and tap <strong>[Add Preset]</strong>, or tap <strong>[Save Setup]</strong> right inside the string logging screen after choosing your strings, gauges, and tensions. Give it a memorable name like <em>"Match Poly 52 lbs"</em>.</li>
+                <li><strong>Apply in 1 Second:</strong> Next time you restring any racket, tap <strong>[Load Preset]</strong> at the top of the string logging screen.</li>
+                <li><strong>Zero Re-Typing:</strong> Pick your saved preset and every string, gauge, and tension fills in automatically!</li>
             </ol>
 
-            <div class="pro-tip">
+            <div class="pro-tip" data-i18n-html="s2Tip">
                 💡 <strong>Quick Tip:</strong> Create different presets for winter (softer tension) and summer (firmer tension) and apply them to any racket in your bag.
             </div>
         </div>
@@ -316,26 +356,20 @@
         <div id="reports" class="guide-card" style="border-left: 5px solid var(--accent-purple);">
             <div class="guide-card-header">
                 <span class="guide-card-icon">📊</span>
-                <div class="guide-card-title">Smart Weekly & Monthly Reports</div>
+                <div class="guide-card-title" data-i18n="s3Title">Smart Weekly &amp; Monthly Reports</div>
             </div>
 
-            <div class="ui-location-badge">
+            <div class="ui-location-badge" data-i18n-html="s3Loc">
                 📍 <strong>Where to Find It:</strong> <strong>Profile Tab</strong> ➔ <strong>My Reports</strong>
             </div>
 
-            <ol class="step-list">
-                <li>
-                    <strong>Delivered Automatically:</strong> Every <strong>Monday at 9:00 AM (your local time)</strong>, you get a Push Notification & Email summarizing your past week on court.
-                </li>
-                <li>
-                    <strong>Check Anytime in the App:</strong> Tap the <strong>Profile</strong> tab at the bottom, then choose <strong>'My Reports'</strong>.
-                </li>
-                <li>
-                    <strong>See Your Court Trends:</strong> Switch between <strong>Weekly</strong> and <strong>Monthly</strong> views to see your total hours played, how your string tension drops over time for each racket, and when it's time to restring.
-                </li>
+            <ol class="step-list" data-i18n-html="s3Steps">
+                <li><strong>Delivered Automatically:</strong> Every <strong>Monday at 9:00 AM (your local time)</strong>, you get a Push Notification &amp; Email summarizing your past week on court.</li>
+                <li><strong>Check Anytime in the App:</strong> Tap the <strong>Profile</strong> tab at the bottom, then choose <strong>'My Reports'</strong>.</li>
+                <li><strong>See Your Court Trends:</strong> Switch between <strong>Weekly</strong> and <strong>Monthly</strong> views to see your total hours played, how your string tension drops over time for each racket, and when it's time to restring.</li>
             </ol>
 
-            <div class="pro-tip">
+            <div class="pro-tip" data-i18n-html="s3Tip">
                 💡 <strong>Quick Tip:</strong> Monthly reports also arrive on the 1st of every month for an easy-to-read summary of your court time and string wear.
             </div>
         </div>
@@ -344,29 +378,18 @@
         <div id="csv" class="guide-card" style="border-left: 5px solid var(--accent-green);">
             <div class="guide-card-header">
                 <span class="guide-card-icon">📁</span>
-                <div class="guide-card-title">Full History CSV Data Export</div>
+                <div class="guide-card-title" data-i18n="s4Title">Full History CSV Data Export</div>
             </div>
 
-            <div class="ui-location-badge">
+            <div class="ui-location-badge" data-i18n-html="s4Loc">
                 📍 <strong>Where to Find It:</strong> <strong>History Tab</strong> ➔ Top-Right <strong>[Export CSV]</strong> Icon
             </div>
 
-            <ol class="step-list">
-                <li>
-                    <strong>Open History:</strong> Tap the <strong>History</strong> tab in the bottom navigation bar.
-                </li>
-                <li>
-                    <strong>Tap Export CSV:</strong> Tap the share/export icon in the top-right corner to open <strong>Export Data to CSV</strong>.
-                </li>
-                <li>
-                    <strong>Pick What You Need:</strong> Choose from 3 options:
-                        <br>• <em>Stringing Logs:</em> Rackets, strings, gauges, tensions, hours played, ratings &amp; reviews.
-                        <br>• <em>Racket Playtime History:</em> Dates, durations, court feel, weather, temperature &amp; notes.
-                        <br>• <em>Export Everything (Both CSVs):</em> Share both your stringing logs and playtime history together.
-                </li>
-                <li>
-                    <strong>Open Anywhere:</strong> Your phone's share menu opens right away—send it via AirDrop, save to Files/Drive, or open it cleanly in <strong>Microsoft Excel, Apple Numbers, or Google Sheets</strong> with no garbled characters.
-                </li>
+            <ol class="step-list" data-i18n-html="s4Steps">
+                <li><strong>Open History:</strong> Tap the <strong>History</strong> tab in the bottom navigation bar.</li>
+                <li><strong>Tap Export CSV:</strong> Tap the share/export icon in the top-right corner to open <strong>Export Data to CSV</strong>.</li>
+                <li><strong>Pick What You Need:</strong> Choose from 3 options:<br>• <em>Stringing Logs:</em> Rackets, strings, gauges, tensions, hours played, ratings &amp; reviews.<br>• <em>Racket Playtime History:</em> Dates, durations, court feel, weather, temperature &amp; notes.<br>• <em>Export Everything (Both CSVs):</em> Share both your stringing logs and playtime history together.</li>
+                <li><strong>Open Anywhere:</strong> Your phone's share menu opens right away—send it via AirDrop, save to Files/Drive, or open it cleanly in <strong>Microsoft Excel, Apple Numbers, or Google Sheets</strong> with no garbled characters.</li>
             </ol>
         </div>
 
@@ -374,23 +397,16 @@
         <div id="rackets" class="guide-card" style="border-left: 5px solid var(--accent-orange);">
             <div class="guide-card-header">
                 <span class="guide-card-icon">🎾</span>
-                <div class="guide-card-title">3+ Rackets &amp; Custom Specs</div>
+                <div class="guide-card-title" data-i18n="s5Title">3+ Rackets &amp; Custom Specs</div>
             </div>
 
-            <div class="ui-location-badge">
+            <div class="ui-location-badge" data-i18n-html="s5Loc">
                 📍 <strong>Where to Find It:</strong> <strong>Home Tab</strong> (<strong>+</strong> Button) &nbsp;|&nbsp; <strong>Profile Tab</strong> ➔ <strong>My Rackets</strong>
             </div>
 
-            <ol class="step-list">
-                <li>
-                    <strong>Keep Your Whole Bag Ready:</strong> Free accounts can log unlimited jobs and playtime for 2 active rackets. Pro members can track 3+ rackets simultaneously with no limits.
-                </li>
-                <li>
-                    <strong>Save Pro Tuning Specs:</strong> When adding or editing a racket, expand <strong>'Advanced Racket Specs'</strong> to record your exact customization:
-                        <br>• Weight (grams) &amp; Balance Point (mm)
-                        <br>• Swingweight &amp; Frame Stiffness (RA)
-                        <br>• Serial Number &amp; Lead Tape / Grip Setup Notes
-                </li>
+            <ol class="step-list" data-i18n-html="s5Steps">
+                <li><strong>Keep Your Whole Bag Ready:</strong> Free accounts can log unlimited jobs and playtime for 2 active rackets. Pro members can track 3+ rackets simultaneously with no limits.</li>
+                <li><strong>Save Pro Tuning Specs:</strong> When adding or editing a racket, expand <strong>'Advanced Racket Specs'</strong> to record your exact customization:<br>• Weight (grams) &amp; Balance Point (mm)<br>• Swingweight &amp; Frame Stiffness (RA)<br>• Serial Number &amp; Lead Tape / Grip Setup Notes</li>
             </ol>
         </div>
 
@@ -398,43 +414,637 @@
         <div id="widget" class="guide-card" style="border-left: 5px solid #00BFA5;">
             <div class="guide-card-header">
                 <span class="guide-card-icon">📱</span>
-                <div class="guide-card-title">Home Screen Widgets</div>
+                <div class="guide-card-title" data-i18n="s6Title">Home Screen Widgets</div>
             </div>
 
-            <div class="ui-location-badge">
+            <div class="ui-location-badge" data-i18n-html="s6Loc">
                 📍 <strong>Where to Find It:</strong> <strong>Profile Tab</strong> ➔ <strong>Home Screen Widget</strong>
             </div>
 
-            <ol class="step-list">
-                <li>
-                    <strong>Pick Your Widget Size (Android):</strong> Tap <strong>Profile ➔ Home Screen Widget</strong> and choose between the <strong>Small Widget (2x2)</strong> for your string health gauge &amp; tension, or the <strong>Medium Widget (4x2)</strong> with specs, playtime, and a quick-log button.
-                </li>
-                <li>
-                    <strong>Add to Your Screen (iOS):</strong> Touch and hold an empty space on your iPhone Home Screen, tap <strong>'+'</strong> at the top left, and search for <strong>'String Master'</strong>.
-                </li>
+            <ol class="step-list" data-i18n-html="s6Steps">
+                <li><strong>Pick Your Widget Size (Android):</strong> Tap <strong>Profile ➔ Home Screen Widget</strong> and choose between the <strong>Small Widget (2x2)</strong> for your string health gauge &amp; tension, or the <strong>Medium Widget (4x2)</strong> with specs, playtime, and a quick-log button.</li>
+                <li><strong>Add to Your Screen (iOS):</strong> Touch and hold an empty space on your iPhone Home Screen, tap <strong>'+'</strong> at the top left, and search for <strong>'String Master'</strong>.</li>
             </ol>
 
-            <div class="pro-tip">
-                💡 <strong>Quick Tip:</strong> Your widget updates automatically whenever you log playtime or restring your primary racket!
+            <div class="pro-tip" data-i18n-html="s6Tip">
+                💡 <strong>Quick Tip:</strong> Your widget updates automatically whenever you log playtime or restring your primary racket! Pro members can also tap the <strong>'+'</strong> / <strong>'Log Playtime'</strong> button right inside the widget for 1-tap logging.
             </div>
         </div>
 
         <!-- CALL TO ACTION -->
         <div class="cta-bottom">
-            <h2 style="font-size: 1.6rem; margin-bottom: 10px;">Ready to elevate your tennis gear game?</h2>
-            <p style="color: var(--text-secondary); max-width: 500px; margin: auto;">
+            <h2 style="font-size: 1.6rem; margin-bottom: 10px;" data-i18n="ctaTitle">Ready to elevate your tennis gear game?</h2>
+            <p style="color: var(--text-secondary); max-width: 500px; margin: auto;" data-i18n-html="ctaDesc">
                 Experience all Pro features with a <strong>14-Day Free Trial</strong> directly inside the String Master app.
             </p>
-            <a href="index.html" class="cta-btn">Get String Master on iOS & Android</a>
+            <a href="index.html" class="cta-btn" data-i18n="ctaBtn">Get String Master on iOS &amp; Android</a>
         </div>
 
         <footer>
             &copy; 2026 X Dragons. All rights reserved.<br>
-            <a href="index.html">Home</a> | 
-            <a href="privacy.html">Privacy Policy</a> | 
-            <a href="terms.html">Terms of Service</a>
+            <a href="index.html" data-i18n="footHome">Home</a> |
+            <a href="privacy.html" data-i18n="footPrivacy">Privacy Policy</a> |
+            <a href="terms.html" data-i18n="footTerms">Terms of Service</a>
         </footer>
     </div>
+
+    <script>
+        const I18N = {
+            en: {
+                pageTitle: "Pro Features User Guide - String Master",
+                backHome: "← Back to Home",
+                guideBadge: "👑 PRO USER GUIDE",
+                heroTitle: "How to Use String Master Pro",
+                heroSubtitle: "A quick visual reference showing exactly <strong>where in the UI</strong> and <strong>how to use</strong> all premium features.",
+                navWatch: "⌚ Smartwatch Sync",
+                navPresets: "⚡ String Presets",
+                navReports: "📊 My Reports",
+                navCsv: "📁 CSV Export",
+                navRackets: "🎾 3+ Rackets & Specs",
+                navWidget: "📱 Home Screen Widget",
+                s1Title: "Smartwatch Workout Auto-Sync",
+                s1Loc: "📍 <strong>Where to Find It:</strong> Watch Workout App ➔ Open String Master (Pop-up Sheet)",
+                s1Steps: `
+                    <li><strong>Track Your Match on Your Watch:</strong> On your <strong>Apple Watch</strong> (Workout app) or <strong>Galaxy Watch</strong> (Samsung Health), start your match using the <strong>'Tennis'</strong> workout mode.</li>
+                    <li><strong>Open String Master:</strong> After playing, simply open the String Master app on your phone.</li>
+                    <li><strong>One-Tap Detection:</strong> The app automatically checks for recent tennis sessions from the last 3 days that you haven't logged yet. A <strong>'Tennis Workout Detected! 🎾'</strong> card slides up right away.</li>
+                    <li><strong>Save in 1 Tap:</strong> Your main racket is already selected. Adjust the time with <strong>+0.5h</strong> or <strong>-0.5h</strong> if needed, then tap <strong>[Log to This Racket]</strong>!</li>`,
+                s1Tip: "💡 <strong>Quick Tip:</strong> Be sure to choose the <strong>'Tennis'</strong> workout on your watch. Workouts saved as 'Other' or 'HIIT' are skipped so your string hours stay accurate.",
+                s2Title: "Favorite String Presets",
+                s2Loc: "📍 <strong>Where to Find It:</strong> <strong>Profile Tab</strong> ➔ <strong>String Presets</strong> &nbsp;|&nbsp; Log Screen ➔ <strong>[Load Preset]</strong> / <strong>[Save Setup]</strong>",
+                s2Steps: `
+                    <li><strong>Save Your Go-To Setup:</strong> Go to <strong>Profile ➔ String Presets</strong> and tap <strong>[Add Preset]</strong>, or tap <strong>[Save Setup]</strong> right inside the string logging screen after choosing your strings, gauges, and tensions. Give it a memorable name like <em>"Match Poly 52 lbs"</em>.</li>
+                    <li><strong>Apply in 1 Second:</strong> Next time you restring any racket, tap <strong>[Load Preset]</strong> at the top of the string logging screen.</li>
+                    <li><strong>Zero Re-Typing:</strong> Pick your saved preset and every string, gauge, and tension fills in automatically!</li>`,
+                s2Tip: "💡 <strong>Quick Tip:</strong> Create different presets for winter (softer tension) and summer (firmer tension) and apply them to any racket in your bag.",
+                s3Title: "Smart Weekly & Monthly Reports",
+                s3Loc: "📍 <strong>Where to Find It:</strong> <strong>Profile Tab</strong> ➔ <strong>My Reports</strong>",
+                s3Steps: `
+                    <li><strong>Delivered Automatically:</strong> Every <strong>Monday at 9:00 AM (your local time)</strong>, you get a Push Notification &amp; Email summarizing your past week on court.</li>
+                    <li><strong>Check Anytime in the App:</strong> Tap the <strong>Profile</strong> tab at the bottom, then choose <strong>'My Reports'</strong>.</li>
+                    <li><strong>See Your Court Trends:</strong> Switch between <strong>Weekly</strong> and <strong>Monthly</strong> views to see your total hours played, how your string tension drops over time for each racket, and when it's time to restring.</li>`,
+                s3Tip: "💡 <strong>Quick Tip:</strong> Monthly reports also arrive on the 1st of every month for an easy-to-read summary of your court time and string wear.",
+                s4Title: "Full History CSV Data Export",
+                s4Loc: "📍 <strong>Where to Find It:</strong> <strong>History Tab</strong> ➔ Top-Right <strong>[Export CSV]</strong> Icon",
+                s4Steps: `
+                    <li><strong>Open History:</strong> Tap the <strong>History</strong> tab in the bottom navigation bar.</li>
+                    <li><strong>Tap Export CSV:</strong> Tap the share/export icon in the top-right corner to open <strong>Export Data to CSV</strong>.</li>
+                    <li><strong>Pick What You Need:</strong> Choose from 3 options:<br>• <em>Stringing Logs:</em> Rackets, strings, gauges, tensions, hours played, ratings &amp; reviews.<br>• <em>Racket Playtime History:</em> Dates, durations, court feel, weather, temperature &amp; notes.<br>• <em>Export Everything (Both CSVs):</em> Share both your stringing logs and playtime history together.</li>
+                    <li><strong>Open Anywhere:</strong> Your phone's share menu opens right away—send it via AirDrop, save to Files/Drive, or open it cleanly in <strong>Microsoft Excel, Apple Numbers, or Google Sheets</strong> with no garbled characters.</li>`,
+                s5Title: "3+ Rackets & Custom Specs",
+                s5Loc: "📍 <strong>Where to Find It:</strong> <strong>Home Tab</strong> (<strong>+</strong> Button) &nbsp;|&nbsp; <strong>Profile Tab</strong> ➔ <strong>My Rackets</strong>",
+                s5Steps: `
+                    <li><strong>Keep Your Whole Bag Ready:</strong> Free accounts can log unlimited jobs and playtime for 2 active rackets. Pro members can track 3+ rackets simultaneously with no limits.</li>
+                    <li><strong>Save Pro Tuning Specs:</strong> When adding or editing a racket, expand <strong>'Advanced Racket Specs'</strong> to record your exact customization:<br>• Weight (grams) &amp; Balance Point (mm)<br>• Swingweight &amp; Frame Stiffness (RA)<br>• Serial Number &amp; Lead Tape / Grip Setup Notes</li>`,
+                s6Title: "Home Screen Widgets",
+                s6Loc: "📍 <strong>Where to Find It:</strong> <strong>Profile Tab</strong> ➔ <strong>Home Screen Widget</strong>",
+                s6Steps: `
+                    <li><strong>Pick Your Widget Size (Android):</strong> Tap <strong>Profile ➔ Home Screen Widget</strong> and choose between the <strong>Small Widget (2x2)</strong> for your string health gauge &amp; tension, or the <strong>Medium Widget (4x2)</strong> with specs, playtime, and a quick-log button.</li>
+                    <li><strong>Add to Your Screen (iOS):</strong> Touch and hold an empty space on your iPhone Home Screen, tap <strong>'+'</strong> at the top left, and search for <strong>'String Master'</strong>.</li>`,
+                s6Tip: "💡 <strong>Quick Tip:</strong> Your widget updates automatically whenever you log playtime or restring your primary racket! Pro members can also tap the <strong>'+'</strong> / <strong>'Log Playtime'</strong> button right inside the widget for 1-tap logging.",
+                ctaTitle: "Ready to elevate your tennis gear game?",
+                ctaDesc: "Experience all Pro features with a <strong>14-Day Free Trial</strong> directly inside the String Master app.",
+                ctaBtn: "Get String Master on iOS & Android",
+                footHome: "Home",
+                footPrivacy: "Privacy Policy",
+                footTerms: "Terms of Service"
+            },
+            ko: {
+                pageTitle: "Pro 기능 사용 가이드 - String Master",
+                backHome: "← 홈으로 돌아가기",
+                guideBadge: "👑 PRO 사용 가이드",
+                heroTitle: "String Master Pro 완벽 활용 가이드",
+                heroSubtitle: "v2.0.0 및 Pro 프리미엄 기능들이 <strong>앱 어디에 있는지</strong>, <strong>어떻게 활용하는지</strong> 한눈에 확인해 보세요.",
+                navWatch: "⌚ 스마트워치 연동",
+                navPresets: "⚡ 스트링 프리셋",
+                navReports: "📊 내 리포트",
+                navCsv: "📁 CSV 내보내기",
+                navRackets: "🎾 3자루+ 라켓 & 스펙",
+                navWidget: "📱 홈 화면 위젯",
+                s1Title: "스마트워치 운동 자동 연동",
+                s1Loc: "📍 <strong>사용 위치:</strong> 스마트워치 운동 앱 ➔ String Master 앱 실행 (자동 감지 팝업)",
+                s1Steps: `
+                    <li><strong>워치에서 테니스 운동 기록:</strong> <strong>Apple Watch</strong>(운동 앱) 또는 <strong>Galaxy Watch</strong>(삼성 헬스)에서 <strong>'테니스'</strong> 운동 모드로 플레이를 기록하세요.</li>
+                    <li><strong>String Master 앱 실행:</strong> 경기가 끝난 뒤 스마트폰에서 String Master 앱을 열기만 하면 됩니다.</li>
+                    <li><strong>최근 3일 운동 자동 감지:</strong> 아직 기록되지 않은 최근 3일간의 테니스 세션을 자동으로 찾아 <strong>'테니스 운동이 감지되었습니다! 🎾'</strong> 시트가 바로 올라옵니다.</li>
+                    <li><strong>원탭으로 즉시 저장:</strong> 주 라켓이 자동으로 선택되어 있습니다. 필요시 <strong>+0.5시간 / -0.5시간</strong>으로 미세 조정한 뒤 <strong>[이 라켓에 기록]</strong>을 누르면 끝!</li>`,
+                s1Tip: "💡 <strong>꿀팁:</strong> 스트링 수명 계산의 정확도를 위해 워치에서 반드시 <strong>'테니스'</strong> 운동 종목을 선택해 주세요. '기타'나 'HIIT' 운동은 자동으로 제외됩니다.",
+                s2Title: "나만의 스트링 프리셋",
+                s2Loc: "📍 <strong>사용 위치:</strong> <strong>프로필 탭</strong> ➔ <strong>스트링 프리셋</strong> &nbsp;|&nbsp; 스트링 기록 화면 ➔ <strong>[프리셋 불러오기]</strong> / <strong>[세팅 저장]</strong>",
+                s2Steps: `
+                    <li><strong>자주 매는 조합 저장:</strong> <strong>프로필 ➔ 스트링 프리셋</strong>에서 <strong>[프리셋 추가]</strong>를 누르거나, 스트링 교체 기록 화면에서 스트링·게이지·텐션을 입력한 뒤 <strong>[세팅 저장]</strong>을 누르세요. (예: <em>"시합용 폴리 52lbs"</em>)</li>
+                    <li><strong>1초 만에 불러오기:</strong> 다음에 새 스트링을 맬 때 기록 화면 상단의 <strong>[프리셋 불러오기]</strong>를 터치하세요.</li>
+                    <li><strong>번거로운 재입력 끝:</strong> 저장한 프리셋을 선택하면 메인/크로스 스트링, 게이지, 텐션이 한 번에 자동 입력됩니다!</li>`,
+                s2Tip: "💡 <strong>꿀팁:</strong> 겨울용(부드러운 텐션)과 여름용(단단한 텐션) 프리셋을 따로 만들어 두면 가방 속 어떤 라켓에도 1초 만에 적용할 수 있습니다.",
+                s3Title: "스마트 주간 & 월간 리포트",
+                s3Loc: "📍 <strong>사용 위치:</strong> <strong>프로필 탭</strong> ➔ <strong>내 리포트</strong>",
+                s3Steps: `
+                    <li><strong>자동 알림 & 이메일 발송:</strong> 매주 <strong>월요일 오전 9시(현지 시각)</strong>에 지난주 플레이타임과 스트링 상태를 요약한 푸시 알림 및 이메일 리포트가 도착합니다.</li>
+                    <li><strong>앱에서 언제든 다시 보기:</strong> 하단 <strong>프로필</strong> 탭에서 <strong>'내 리포트'</strong> 메뉴를 선택하세요.</li>
+                    <li><strong>장비 컨디션 트렌드 확인:</strong> <strong>주간 / 월간</strong> 탭을 전환하며 총 플레이 시간, 라켓별 텐션 유지율 변화, 스트링 교체 시점을 한눈에 파악할 수 있습니다.</li>`,
+                s3Tip: "💡 <strong>꿀팁:</strong> 매월 1일에는 한 달 동안의 코트 활동과 스트링 마모도를 심층 정리한 월간 리포트도 함께 제공됩니다.",
+                s4Title: "전체 기록 CSV 내보내기",
+                s4Loc: "📍 <strong>사용 위치:</strong> <strong>기록(History) 탭</strong> ➔ 우측 상단 <strong>[CSV 내보내기]</strong> 아이콘",
+                s4Steps: `
+                    <li><strong>기록 탭 열기:</strong> 하단 내비게이션에서 <strong>기록(History)</strong> 탭을 선택합니다.</li>
+                    <li><strong>내보내기 버튼 터치:</strong> 우측 상단의 공유/내보내기 아이콘을 눌러 <strong>CSV 데이터 내보내기</strong>를 엽니다.</li>
+                    <li><strong>원하는 데이터 선택:</strong> 3가지 옵션 중 선택할 수 있습니다:<br>• <em>스트링 교체 로그:</em> 라켓, 스트링, 게이지, 텐션, 누적 플레이 시간, 평점 및 후기.<br>• <em>플레이타임 운동 일지:</em> 날짜, 시간, 타구감, 날씨, 기온 및 세션 메모.<br>• <em>전체 내보내기 (CSV 2종 모두):</em> 스트링 로그와 운동 일지를 한 번에 공유.</li>
+                    <li><strong>어디서나 깔끔하게 열기:</strong> UTF-8 BOM 형식으로 생성되어 AirDrop, 파일 앱, 드라이브로 공유하거나 <strong>Excel, Apple Numbers, Google Sheets</strong>에서 한글 깨짐 없이 바로 열립니다.</li>`,
+                s5Title: "3자루 이상 라켓 무제한 & 고급 튜닝 스펙",
+                s5Loc: "📍 <strong>사용 위치:</strong> <strong>홈 탭</strong> (<strong>+</strong> 버튼) &nbsp;|&nbsp; <strong>프로필 탭</strong> ➔ <strong>내 라켓 관리</strong>",
+                s5Steps: `
+                    <li><strong>라켓 가방 전체를 한 번에 관리:</strong> 무료 회원도 2자루까지 스트링 로그와 플레이타임을 평생 무제한으로 기록할 수 있으며, Pro 회원은 <strong>3자루 이상 라켓을 개수 제한 없이</strong> 동시에 관리할 수 있습니다.</li>
+                    <li><strong>프로 튜닝 스펙 기록:</strong> 라켓 추가/수정 화면에서 <strong>'고급 라켓 스펙'</strong>을 펼쳐 나만의 커스텀 스펙을 정밀하게 보관하세요:<br>• 무게(g) 및 밸런스 포인트(mm)<br>• 스윙웨이트 및 프레임 강성(RA)<br>• 시리얼 번호 및 납테이프 / 그립 튜닝 메모</li>`,
+                s6Title: "홈 화면 위젯 (iOS & Android)",
+                s6Loc: "📍 <strong>사용 위치:</strong> <strong>프로필 탭</strong> ➔ <strong>홈 화면 위젯</strong>",
+                s6Steps: `
+                    <li><strong>Android 위젯 추가:</strong> <strong>프로필 ➔ 홈 화면 위젯</strong>에서 스트링 잔여 수명과 텐션을 보여주는 <strong>Small 위젯(2×2)</strong> 또는 스펙·플레이타임·빠른 기록 버튼이 포함된 <strong>Medium 위젯(4×2)</strong>을 선택해 바로 고정하세요.</li>
+                    <li><strong>iOS 위젯 추가:</strong> iPhone 홈 화면의 빈 공간을 길게 누른 뒤, 좌측 상단 <strong>'+'</strong> 버튼을 탭하고 <strong>'String Master'</strong>를 검색해 추가하세요.</li>`,
+                s6Tip: "💡 <strong>꿀팁:</strong> 주 라켓의 플레이타임을 기록하거나 스트링을 새로 맬 때마다 위젯이 자동 동기화됩니다! Pro 회원은 위젯 안의 <strong>'+' / '플레이타임 기록'</strong> 버튼으로 앱 실행 없이 원탭 기록도 가능합니다.",
+                ctaTitle: "더 스마트한 테니스 장비 관리를 시작해 보세요!",
+                ctaDesc: "지금 String Master 앱 안에서 <strong>14일 무료 체험</strong>으로 모든 Pro 기능을 경험해 보실 수 있습니다.",
+                ctaBtn: "iOS / Android에서 String Master 받기",
+                footHome: "홈",
+                footPrivacy: "개인정보처리방침",
+                footTerms: "이용약관"
+            },
+            ja: {
+                pageTitle: "Pro機能 使い方ガイド - String Master",
+                backHome: "← ホームへ戻る",
+                guideBadge: "👑 PRO ユーザーガイド",
+                heroTitle: "String Master Pro 使い方ガイド",
+                heroSubtitle: "v2.0.0およびProプレミアム機能が<strong>アプリのどこにあり</strong>、<strong>どう使うか</strong>をひと目で確認できるガイドです。",
+                navWatch: "⌚ ウォッチ連携",
+                navPresets: "⚡ プリセット",
+                navReports: "📊 マイレポート",
+                navCsv: "📁 CSV出力",
+                navRackets: "🎾 3本以上のラケット",
+                navWidget: "📱 ホームウィジェット",
+                s1Title: "スマートウォッチ自動ワークアウト同期",
+                s1Loc: "📍 <strong>場所:</strong> ウォッチのワークアウトアプリ ➔ String Masterを起動（自動検出シート）",
+                s1Steps: `
+                    <li><strong>ウォッチでテニスを記録:</strong> <strong>Apple Watch</strong>（ワークアウト）または <strong>Galaxy Watch</strong>（Samsung Health）で<strong>「テニス」</strong>モードを開始してプレイします。</li>
+                    <li><strong>String Masterを開く:</strong> プレイ後、スマホでString Masterを開くだけです。</li>
+                    <li><strong>過去3日分を自動検出:</strong> 未記録のテニスセッションを自動検出し、<strong>「テニスワークアウトを検出しました！🎾」</strong>シートが表示されます。</li>
+                    <li><strong>ワンタップで保存:</strong> メインラケットが自動選択されています。必要に応じて <strong>+0.5h / -0.5h</strong> を微調整し、<strong>[このラケットに記録]</strong>をタップするだけ！</li>`,
+                s1Tip: "💡 <strong>ヒント:</strong> 正確なプレイ時間計測のため、ウォッチでは必ず<strong>「テニス」</strong>種目を選んでください。「その他」や「HIIT」は自動除外されます。",
+                s2Title: "お気に入りストリングプリセット",
+                s2Loc: "📍 <strong>場所:</strong> <strong>プロフィールタブ</strong> ➔ <strong>ストリングプリセット</strong> &nbsp;|&nbsp; 記録画面 ➔ <strong>[プリセット読込]</strong> / <strong>[設定を保存]</strong>",
+                s2Steps: `
+                    <li><strong>定番セッティングを保存:</strong> <strong>プロフィール ➔ ストリングプリセット</strong>から<strong>[プリセット追加]</strong>をタップするか、張り替え記録画面で<strong>[設定を保存]</strong>を押して名前を付けます（例: <em>「試合用ポリ 52 lbs」</em>）。</li>
+                    <li><strong>1秒で呼び出し:</strong> 次回の張り替え時、記録画面上部の<strong>[プリセット読込]</strong>をタップします。</li>
+                    <li><strong>再入力の手間ゼロ:</strong> 選ぶだけでストリング・ゲージ・テンションがすべて自動入力されます！</li>`,
+                s2Tip: "💡 <strong>ヒント:</strong> 冬用（柔らかめ）と夏用（硬め）のプリセットを分けて保存しておくと、どのラケットにもすぐ適用できて便利です。",
+                s3Title: "スマート週次・月次レポート",
+                s3Loc: "📍 <strong>場所:</strong> <strong>プロフィールタブ</strong> ➔ <strong>マイレポート</strong>",
+                s3Steps: `
+                    <li><strong>毎週自動で届く:</strong> 毎週<strong>月曜日の朝9:00（現地時間）</strong>に、先週のプレイ時間とストリング状態をまとめたプッシュ通知とメールが届きます。</li>
+                    <li><strong>アプリでいつでも確認:</strong> 下部の<strong>プロフィール</strong>タブから<strong>「マイレポート」</strong>を開きます。</li>
+                    <li><strong>コンディション推移を把握:</strong> <strong>週次 / 月次</strong>を切り替えて、合計プレイ時間やラケットごとのテンション推移、張り替え時期を確認できます。</li>`,
+                s3Tip: "💡 <strong>ヒント:</strong> 毎月1日には、1ヶ月分のコート活動とストリング消耗をまとめた月次分析レポートも届きます。",
+                s4Title: "全履歴CSVデータエクスポート",
+                s4Loc: "📍 <strong>場所:</strong> <strong>履歴タブ</strong> ➔ 右上の<strong>[CSV出力]</strong>アイコン",
+                s4Steps: `
+                    <li><strong>履歴タブを開く:</strong> 下部バーの<strong>履歴（History）</strong>タブをタップします。</li>
+                    <li><strong>CSV出力をタップ:</strong> 右上の共有・エクスポートアイコンから<strong>CSVエクスポート</strong>を開きます。</li>
+                    <li><strong>出力対象を選択:</strong> 3種類から選べます:<br>• <em>張り替えログ:</em> ラケット、ストリング、ゲージ、テンション、プレイ時間、評価・レビュー。<br>• <em>プレイ時間履歴:</em> 日付、時間、打球感、天気、気温、メモ。<br>• <em>すべて出力（両方）:</em> 張り替えログとプレイ履歴をまとめて共有。</li>
+                    <li><strong>文字化けなしで閲覧:</strong> UTF-8 BOM対応のため、AirDropやドライブ保存後、<strong>Excel・Numbers・Googleスプレッドシート</strong>で文字化けせずそのまま開けます。</li>`,
+                s5Title: "3本以上のラケット管理 & 詳細スペック",
+                s5Loc: "📍 <strong>場所:</strong> <strong>ホームタブ</strong>（<strong>+</strong>ボタン） &nbsp;|&nbsp; <strong>プロフィールタブ</strong> ➔ <strong>マイラケット</strong>",
+                s5Steps: `
+                    <li><strong>バッグ内の全ラケットを管理:</strong> 無料プランでも2本まで無制限に記録可能。Pro会員は<strong>3本以上のラケットを上限なし</strong>で同時管理できます。</li>
+                    <li><strong>チューニングスペックを保存:</strong> ラケット追加・編集画面で<strong>「詳細スペック」</strong>を開くと、重量(g)・バランス(mm)・スイングウェイト・剛性(RA)・シリアル番号や加重メモまで記録できます。</li>`,
+                s6Title: "ホーム画面ウィジェット（iOS & Android）",
+                s6Loc: "📍 <strong>場所:</strong> <strong>プロフィールタブ</strong> ➔ <strong>ホーム画面ウィジェット</strong>",
+                s6Steps: `
+                    <li><strong>Androidでの追加:</strong> <strong>プロフィール ➔ ホーム画面ウィジェット</strong>から、残存寿命＆テンション表示の<strong>Small (2×2)</strong>、または詳細スペック＆クイック記録付きの<strong>Medium (4×2)</strong>を選んで配置します。</li>
+                    <li><strong>iOSでの追加:</strong> iPhoneのホーム画面の空きスペースを長押しし、左上の<strong>「+」</strong>から<strong>「String Master」</strong>を検索して追加してください。</li>`,
+                s6Tip: "💡 <strong>ヒント:</strong> プレイ時間の記録や張り替えを行うとウィジェットも自動更新されます！Pro会員はウィジェット内の<strong>「+」/「プレイ記録」</strong>ボタンからワンタップ記録も可能です。",
+                ctaTitle: "テニスギア管理を次のレベルへ",
+                ctaDesc: "String Masterアプリ内で<strong>14日間無料トライアル</strong>を開始し、すべてのPro機能をお試しください。",
+                ctaBtn: "iOS & AndroidでString Masterを入手",
+                footHome: "ホーム",
+                footPrivacy: "プライバシーポリシー",
+                footTerms: "利用規約"
+            },
+            es: {
+                pageTitle: "Guía de Usuario Pro - String Master",
+                backHome: "← Volver al inicio",
+                guideBadge: "👑 GUÍA DE USUARIO PRO",
+                heroTitle: "Cómo usar String Master Pro",
+                heroSubtitle: "Una referencia rápida que muestra <strong>dónde encontrar</strong> y <strong>cómo usar</strong> todas las funciones premium en la app.",
+                navWatch: "⌚ Smartwatch",
+                navPresets: "⚡ Ajustes Preest.",
+                navReports: "📊 Mis Informes",
+                navCsv: "📁 Exportar CSV",
+                navRackets: "🎾 +3 Raquetas",
+                navWidget: "📱 Widgets",
+                s1Title: "Sincronización Automática con Smartwatch",
+                s1Loc: "📍 <strong>Dónde encontrarlo:</strong> App de entrenamiento del reloj ➔ Abrir String Master (hoja emergente)",
+                s1Steps: `
+                    <li><strong>Registra tu partido en el reloj:</strong> En tu <strong>Apple Watch</strong> (app Entreno) o <strong>Galaxy Watch</strong> (Samsung Health), inicia tu sesión con el modo <strong>'Tenis'</strong>.</li>
+                    <li><strong>Abre String Master:</strong> Después de jugar, simplemente abre String Master en tu teléfono.</li>
+                    <li><strong>Detección en 1 toque:</strong> La app busca automáticamente sesiones de tenis de los últimos 3 días aún no registradas y muestra la tarjeta <strong>'¡Entrenamiento de tenis detectado! 🎾'</strong>.</li>
+                    <li><strong>Guarda al instante:</strong> Tu raqueta principal ya está seleccionada. Ajusta la duración con <strong>+0.5h / -0.5h</strong> si lo necesitas y pulsa <strong>[Registrar en esta raqueta]</strong>.</li>`,
+                s1Tip: "💡 <strong>Consejo:</strong> Asegúrate de elegir el modo <strong>'Tenis'</strong> en tu reloj. Los entrenamientos guardados como 'Otro' o 'HIIT' se omiten para mantener tus horas precisas.",
+                s2Title: "Ajustes Preestablecidos de Cordaje",
+                s2Loc: "📍 <strong>Dónde encontrarlo:</strong> <strong>Pestaña Perfil</strong> ➔ <strong>Presets de Cordaje</strong> &nbsp;|&nbsp; Pantalla de Registro ➔ <strong>[Cargar Preset]</strong> / <strong>[Guardar]</strong>",
+                s2Steps: `
+                    <li><strong>Guarda tu configuración favorita:</strong> Ve a <strong>Perfil ➔ Presets de Cordaje</strong> y pulsa <strong>[Añadir Preset]</strong>, o pulsa <strong>[Guardar configuración]</strong> directamente al registrar un encordado (ej. <em>"Poly Partido 52 lbs"</em>).</li>
+                    <li><strong>Aplica en 1 segundo:</strong> La próxima vez que encuerdes una raqueta, pulsa <strong>[Cargar Preset]</strong> en la parte superior.</li>
+                    <li><strong>Sin volver a escribir:</strong> Elige tu preset y las cuerdas, calibres y tensiones se rellenarán automáticamente.</li>`,
+                s2Tip: "💡 <strong>Consejo:</strong> Crea presets distintos para invierno (tensión más baja) y verano (tensión más firme) y aplícalos a cualquier raqueta de tu bolsa.",
+                s3Title: "Informes Inteligentes Semanales y Mensuales",
+                s3Loc: "📍 <strong>Dónde encontrarlo:</strong> <strong>Pestaña Perfil</strong> ➔ <strong>Mis Informes</strong>",
+                s3Steps: `
+                    <li><strong>Entrega automática:</strong> Cada <strong>lunes a las 9:00 AM (hora local)</strong> recibes una notificación y correo con el resumen de tu semana en pista.</li>
+                    <li><strong>Consúltalos en cualquier momento:</strong> Toca la pestaña <strong>Perfil</strong> abajo y selecciona <strong>'Mis Informes'</strong>.</li>
+                    <li><strong>Analiza tus tendencias:</strong> Cambia entre las vistas <strong>Semanal</strong> y <strong>Mensual</strong> para revisar horas jugadas, pérdida de tensión y el momento ideal para reencordar.</li>`,
+                s3Tip: "💡 <strong>Consejo:</strong> El día 1 de cada mes también recibirás un análisis mensual completo de tu tiempo en pista y desgaste del cordaje.",
+                s4Title: "Exportación Completa a CSV",
+                s4Loc: "📍 <strong>Dónde encontrarlo:</strong> <strong>Pestaña Historial</strong> ➔ Icono <strong>[Exportar CSV]</strong> arriba a la derecha",
+                s4Steps: `
+                    <li><strong>Abre el Historial:</strong> Toca la pestaña <strong>Historial</strong> en la barra inferior.</li>
+                    <li><strong>Toca Exportar CSV:</strong> Pulsa el icono de exportar en la esquina superior derecha.</li>
+                    <li><strong>Elige los datos:</strong> Selecciona entre 3 opciones:<br>• <em>Registros de encordado:</em> Raquetas, cuerdas, calibres, tensiones, horas, valoraciones y reseñas.<br>• <em>Historial de tiempo de juego:</em> Fechas, duración, sensaciones, clima, temperatura y notas.<br>• <em>Exportar todo (ambos CSV):</em> Comparte ambos archivos juntos.</li>
+                    <li><strong>Ábrelo en cualquier app:</strong> Compatible con <strong>Excel, Apple Numbers y Google Sheets</strong> en formato UTF-8 BOM sin caracteres corruptos.</li>`,
+                s5Title: "3+ Raquetas y Especificaciones Avanzadas",
+                s5Loc: "📍 <strong>Dónde encontrarlo:</strong> <strong>Pestaña Inicio</strong> (Botón <strong>+</strong>) &nbsp;|&nbsp; <strong>Perfil</strong> ➔ <strong>Mis Raquetas</strong>",
+                s5Steps: `
+                    <li><strong>Toda tu bolsa bajo control:</strong> Los usuarios gratuitos gestionan hasta 2 raquetas con registros ilimitados. Los miembros Pro pueden gestionar <strong>3 o más raquetas sin límites</strong>.</li>
+                    <li><strong>Guarda tu personalización:</strong> Al añadir o editar una raqueta, despliega <strong>'Especificaciones avanzadas'</strong> para guardar peso (g), balance (mm), swingweight, rigidez (RA), número de serie y notas de plomo/grip.</li>`,
+                s6Title: "Widgets de Pantalla de Inicio (iOS y Android)",
+                s6Loc: "📍 <strong>Dónde encontrarlo:</strong> <strong>Pestaña Perfil</strong> ➔ <strong>Widget de Pantalla de Inicio</strong>",
+                s6Steps: `
+                    <li><strong>Elige tu tamaño (Android):</strong> Ve a <strong>Perfil ➔ Widget de Pantalla de Inicio</strong> y selecciona <strong>Pequeño (2×2)</strong> o <strong>Mediano (4×2)</strong> con especificaciones, horas y botón de registro rápido.</li>
+                    <li><strong>Añadir en iOS:</strong> Mantén pulsado un espacio vacío en la pantalla de inicio del iPhone, toca <strong>'+'</strong> arriba a la izquierda y busca <strong>'String Master'</strong>.</li>`,
+                s6Tip: "💡 <strong>Consejo:</strong> El widget se actualiza automáticamente al registrar juego o encordar tu raqueta principal. Los miembros Pro también pueden tocar <strong>'+' / 'Registrar tiempo'</strong> directamente en el widget.",
+                ctaTitle: "¿Listo para llevar tu equipamiento al siguiente nivel?",
+                ctaDesc: "Prueba todas las funciones Pro con una <strong>prueba gratuita de 14 días</strong> directamente dentro de la app String Master.",
+                ctaBtn: "Descargar String Master en iOS y Android",
+                footHome: "Inicio",
+                footPrivacy: "Política de Privacidad",
+                footTerms: "Términos de Servicio"
+            },
+            zh: {
+                pageTitle: "Pro 功能使用指南 - String Master",
+                backHome: "← 返回首页",
+                guideBadge: "👑 PRO 使用指南",
+                heroTitle: "String Master Pro 使用指南",
+                heroSubtitle: "快速了解各项 v2.0.0 与 Pro 高级功能的<strong>界面入口</strong>与<strong>使用步骤</strong>。",
+                navWatch: "⌚ 手表自动同步",
+                navPresets: "⚡ 球线预设",
+                navReports: "📊 我的报告",
+                navCsv: "📁 CSV 导出",
+                navRackets: "🎾 3支以上球拍",
+                navWidget: "📱 主屏幕小组件",
+                s1Title: "智能手表运动自动同步",
+                s1Loc: "📍 <strong>入口位置:</strong> 手表运动应用 ➔ 打开 String Master（自动弹窗）",
+                s1Steps: `
+                    <li><strong>在手表上记录网球运动:</strong> 在 <strong>Apple Watch</strong>（体能训练）或 <strong>Galaxy Watch</strong>（三星健康）中使用<strong>“网球”</strong>运动模式开始记录。</li>
+                    <li><strong>打开 String Master:</strong> 打完球后只需打开手机上的 String Master 应用。</li>
+                    <li><strong>一键自动检测:</strong> 应用会自动查找最近 3 天内尚未记录的网球训练，并立即弹出<strong>“检测到网球运动！🎾”</strong>卡片。</li>
+                    <li><strong>一键保存:</strong> 已自动选中主力球拍，如需微调可点击 <strong>+0.5h / -0.5h</strong>，再点<strong>[记录到此球拍]</strong>即可完成！</li>`,
+                s1Tip: "💡 <strong>小贴士:</strong> 请务必在手表上选择<strong>“网球”</strong>模式。记录为“其他”或“HIIT”的训练会自动跳过，确保球线计时准确。",
+                s2Title: "常用球线预设",
+                s2Loc: "📍 <strong>入口位置:</strong> <strong>个人中心</strong> ➔ <strong>球线预设</strong> &nbsp;|&nbsp; 穿线记录页 ➔ <strong>[加载预设]</strong> / <strong>[保存配置]</strong>",
+                s2Steps: `
+                    <li><strong>保存常用搭配:</strong> 前往<strong>个人中心 ➔ 球线预设</strong>点击<strong>[添加预设]</strong>，或在穿线记录页选好球线、线径和磅数后点击<strong>[保存配置]</strong>（例如：<em>“比赛聚酯 52 磅”</em>）。</li>
+                    <li><strong>1 秒快速套用:</strong> 下次穿线时，点击记录页顶部的<strong>[加载预设]</strong>。</li>
+                    <li><strong>告别重复输入:</strong> 选中预设后，竖线/横线、线径与磅数将自动全部填好！</li>`,
+                s2Tip: "💡 <strong>小贴士:</strong> 可以分别创建冬季（较低磅数）和夏季（较高磅数）预设，随时套用到任意球拍上。",
+                s3Title: "智能周报与月度报告",
+                s3Loc: "📍 <strong>入口位置:</strong> <strong>个人中心</strong> ➔ <strong>我的报告</strong>",
+                s3Steps: `
+                    <li><strong>每周自动送达:</strong> 每周<strong>一上午 9:00（当地时间）</strong>自动发送推送与邮件，总结您上周的打球时长与球线状态。</li>
+                    <li><strong>随时在应用内查阅:</strong> 点击底部<strong>个人中心</strong>标签，进入<strong>“我的报告”</strong>。</li>
+                    <li><strong>洞察装备趋势:</strong> 自由切换<strong>周报 / 月报</strong>视图，查看总时长、每支球拍的掉磅趋势与建议换线时机。</li>`,
+                s3Tip: "💡 <strong>小贴士:</strong> 每月 1 日还会送达月度深度分析报告，帮您全面回顾整月装备消耗。",
+                s4Title: "完整历史 CSV 数据导出",
+                s4Loc: "📍 <strong>入口位置:</strong> <strong>历史记录标签</strong> ➔ 右上角<strong>[导出 CSV]</strong>图标",
+                s4Steps: `
+                    <li><strong>打开历史记录:</strong> 点击底部导航栏中的<strong>历史（History）</strong>标签。</li>
+                    <li><strong>点击导出 CSV:</strong> 点击右上角分享/导出图标打开 <strong>CSV 数据导出</strong>。</li>
+                    <li><strong>按需选择内容:</strong> 提供 3 种选项：<br>• <em>穿线日志:</em> 球拍、球线、线径、磅数、使用时长、评分与心得。<br>• <em>击球时长记录:</em> 日期、时长、手感、天气、温度与备注。<br>• <em>导出全部（两份 CSV）:</em> 一次性打包分享全部记录。</li>
+                    <li><strong>兼容各大表格软件:</strong> 采用 UTF-8 BOM 编码，可直接通过 AirDrop 或网盘分享，在 <strong>Excel、Numbers、Google Sheets</strong> 中打开无任何乱码。</li>`,
+                s5Title: "3 支以上球拍与专业调校参数",
+                s5Loc: "📍 <strong>入口位置:</strong> <strong>首页</strong>（<strong>+</strong> 按钮） &nbsp;|&nbsp; <strong>个人中心</strong> ➔ <strong>我的球拍</strong>",
+                s5Steps: `
+                    <li><strong>轻松管理整个球包:</strong> 免费账户可永久无限记录 2 支球拍；Pro 会员可无限制同时管理 <strong>3 支及以上球拍</strong>。</li>
+                    <li><strong>记录进阶改装数据:</strong> 添加或编辑球拍时展开<strong>“高级球拍参数”</strong>，记录重量(g)、平衡点(mm)、挥重、硬度(RA)、序列号以及铅片/手胶备注。</li>`,
+                s6Title: "主屏幕小组件（iOS & Android）",
+                s6Loc: "📍 <strong>入口位置:</strong> <strong>个人中心</strong> ➔ <strong>主屏幕小组件</strong>",
+                s6Steps: `
+                    <li><strong>Android 添加方式:</strong> 点击<strong>个人中心 ➔ 主屏幕小组件</strong>，选择展示球线健康度与磅数的 <strong>小号 (2×2)</strong>，或含详细参数与快捷记录按钮的 <strong>中号 (4×2)</strong> 即可固定到桌面。</li>
+                    <li><strong>iOS 添加方式:</strong> 长按 iPhone 主屏幕空白处，点击左上角<strong>“+”</strong>，搜索<strong>“String Master”</strong>即可添加。</li>`,
+                s6Tip: "💡 <strong>小贴士:</strong> 每次记录打球时间或更换球线后小组件都会自动刷新！Pro 会员还可在小组件内点击<strong>“+”/“记录时长”</strong>一键快速记账。",
+                ctaTitle: "准备好升级您的网球装备管理了吗？",
+                ctaDesc: "立即在 String Master 应用内开启 <strong>14 天免费试用</strong>，完整体验全部 Pro 功能。",
+                ctaBtn: "在 iOS 与 Android 获取 String Master",
+                footHome: "首页",
+                footPrivacy: "隐私政策",
+                footTerms: "服务条款"
+            },
+            zh_Hant: {
+                pageTitle: "Pro 功能使用指南 - String Master",
+                backHome: "← 返回首頁",
+                guideBadge: "👑 PRO 使用指南",
+                heroTitle: "String Master Pro 使用指南",
+                heroSubtitle: "快速查看各項 v2.0.0 與 Pro 進階功能的<strong>介面位置</strong>與<strong>操作方式</strong>。",
+                navWatch: "⌚ 手錶自動同步",
+                navPresets: "⚡ 網線預設",
+                navReports: "📊 我的報告",
+                navCsv: "📁 CSV 匯出",
+                navRackets: "🎾 3支以上球拍",
+                navWidget: "📱 主畫面小工具",
+                s1Title: "智慧手錶運動自動同步",
+                s1Loc: "📍 <strong>功能位置:</strong> 手錶運動 App ➔ 開啟 String Master（自動彈出視窗）",
+                s1Steps: `
+                    <li><strong>用手錶記錄網球運動:</strong> 在 <strong>Apple Watch</strong>（體能訓練）或 <strong>Galaxy Watch</strong>（Samsung Health）中使用<strong>「網球」</strong>模式記錄打球。</li>
+                    <li><strong>開啟 String Master:</strong> 打完球後直接打開手機上的 String Master 即可。</li>
+                    <li><strong>一鍵自動偵測:</strong> App 會自動檢查最近 3 天尚未記錄的網球行程，並立即彈出<strong>「偵測到網球運動！🎾」</strong>卡片。</li>
+                    <li><strong>一鍵儲存:</strong> 已預選主力球拍，可視需要透過 <strong>+0.5h / -0.5h</strong> 微調時間，再點<strong>[記錄到此球拍]</strong>就完成了！</li>`,
+                s1Tip: "💡 <strong>小技巧:</strong> 請務必在手錶上選擇<strong>「網球」</strong>運動。記錄為「其他」或「HIIT」的項目會自動略過，以維持網線計時精準度。",
+                s2Title: "常用網線預設",
+                s2Loc: "📍 <strong>功能位置:</strong> <strong>個人檔案</strong> ➔ <strong>網線預設</strong> &nbsp;|&nbsp; 穿線記錄頁 ➔ <strong>[載入預設]</strong> / <strong>[儲存設定]</strong>",
+                s2Steps: `
+                    <li><strong>儲存慣用組合:</strong> 前往<strong>個人檔案 ➔ 網線預設</strong>點選<strong>[新增預設]</strong>，或在穿線記錄畫面選好網線、線徑與磅數後點選<strong>[儲存設定]</strong>（例如：<em>「比賽聚酯 52 磅」</em>）。</li>
+                    <li><strong>1 秒快速套用:</strong> 下次穿線時，點擊記錄頁上方的<strong>[載入預設]</strong>。</li>
+                    <li><strong>省去重複輸入:</strong> 選擇預設後，主線/橫線、線徑與磅數都會自動填妥！</li>`,
+                s2Tip: "💡 <strong>小技巧:</strong> 建議分別建立冬季（較低磅數）與夏季（較高磅數）預設，隨時一鍵套用到任何球拍。",
+                s3Title: "智慧週報與月度報告",
+                s3Loc: "📍 <strong>功能位置:</strong> <strong>個人檔案</strong> ➔ <strong>我的報告</strong>",
+                s3Steps: `
+                    <li><strong>每週自動推播:</strong> 每週<strong>一上午 9:00（當地時間）</strong>自動寄送推播通知與 Email，摘要您上週的打球時間與網線狀態。</li>
+                    <li><strong>隨時於 App 查閱:</strong> 點選下方<strong>個人檔案</strong>分頁，進入<strong>「我的報告」</strong>。</li>
+                    <li><strong>掌握裝備趨勢:</strong> 切換<strong>週報 / 月報</strong>檢視總時數、各支球拍的掉磅趨勢與建議換線時機。</li>`,
+                s3Tip: "💡 <strong>小技巧:</strong> 每月 1 日還會提供月度綜合分析報告，讓您清楚回顧整月的場上時間與網線磨損。",
+                s4Title: "完整歷史 CSV 資料匯出",
+                s4Loc: "📍 <strong>功能位置:</strong> <strong>歷史紀錄分頁</strong> ➔ 右上角<strong>[匯出 CSV]</strong>圖示",
+                s4Steps: `
+                    <li><strong>開啟歷史紀錄:</strong> 點擊底部導覽列的<strong>歷史（History）</strong>分頁。</li>
+                    <li><strong>點選匯出 CSV:</strong> 點擊右上角分享/匯出圖示開啟 <strong>CSV 資料匯出</strong>。</li>
+                    <li><strong>挑選匯出項目:</strong> 提供 3 種選項：<br>• <em>穿線日誌:</em> 球拍、網線、線徑、磅數、使用時數、評分與心得。<br>• <em>擊球時間紀錄:</em> 日期、時長、手感、天氣、氣溫與備註。<br>• <em>全部匯出（兩份 CSV）:</em> 一次打包分享所有紀錄。</li>
+                    <li><strong>跨平台無亂碼:</strong> 採用 UTF-8 BOM 編碼，透過 AirDrop 或雲端分享後，在 <strong>Excel、Numbers、Google Sheets</strong> 中都能完美開啟。</li>`,
+                s5Title: "3 支以上球拍與進階調校規格",
+                s5Loc: "📍 <strong>功能位置:</strong> <strong>首頁</strong>（<strong>+</strong> 按鈕） &nbsp;|&nbsp; <strong>個人檔案</strong> ➔ <strong>我的球拍</strong>",
+                s5Steps: `
+                    <li><strong>管理整個球袋:</strong> 免費帳號可永久無限記錄 2 支球拍；Pro 會員可無上限同時管理 <strong>3 支以上球拍</strong>。</li>
+                    <li><strong>儲存進階改裝參數:</strong> 新增或編輯球拍時展開<strong>「進階球拍規格」</strong>，記錄重量(g)、平衡點(mm)、揮重、硬度(RA)、序號與鉛片/握把備註。</li>`,
+                s6Title: "主畫面小工具（iOS & Android）",
+                s6Loc: "📍 <strong>功能位置:</strong> <strong>個人檔案</strong> ➔ <strong>主畫面小工具</strong>",
+                s6Steps: `
+                    <li><strong>Android 加入方式:</strong> 點選<strong>個人檔案 ➔ 主畫面小工具</strong>，選擇顯示網線健康度與磅數的 <strong>小尺寸 (2×2)</strong>，或含規格與快速記錄按鈕的 <strong>中尺寸 (4×2)</strong> 即可釘選。</li>
+                    <li><strong>iOS 加入方式:</strong> 長按 iPhone 主畫面空白處，點擊左上角<strong>「+」</strong>並搜尋<strong>「String Master」</strong>即可新增。</li>`,
+                s6Tip: "💡 <strong>小技巧:</strong> 每次記錄打球時間或重新穿線時小工具皆會自動同步！Pro 會員還可直接點選小工具上的<strong>「+」/「記錄時間」</strong>一鍵快速記錄。",
+                ctaTitle: "準備好升級您的網球裝備管理了嗎？",
+                ctaDesc: "立即在 String Master App 內開啟 <strong>14 天免費試用</strong>，完整體驗所有 Pro 功能。",
+                ctaBtn: "於 iOS 與 Android 下載 String Master",
+                footHome: "首頁",
+                footPrivacy: "隱私政策",
+                footTerms: "服務條款"
+            },
+            de: {
+                pageTitle: "Pro-Benutzerhandbuch - String Master",
+                backHome: "← Zurück zur Startseite",
+                guideBadge: "👑 PRO-BENUTZERHANDBUCH",
+                heroTitle: "So nutzt du String Master Pro",
+                heroSubtitle: "Eine kompakte Übersicht, <strong>wo in der App</strong> du alle Premium-Funktionen findest und <strong>wie sie funktionieren</strong>.",
+                navWatch: "⌚ Smartwatch-Sync",
+                navPresets: "⚡ Saiten-Presets",
+                navReports: "📊 Meine Berichte",
+                navCsv: "📁 CSV-Export",
+                navRackets: "🎾 3+ Schläger",
+                navWidget: "📱 Startbildschirm-Widget",
+                s1Title: "Smartwatch Workout Auto-Sync",
+                s1Loc: "📍 <strong>Wo zu finden:</strong> Trainings-App auf der Uhr ➔ String Master öffnen (Pop-up)",
+                s1Steps: `
+                    <li><strong>Match auf der Uhr erfassen:</strong> Starte auf deiner <strong>Apple Watch</strong> (Trainings-App) oder <strong>Galaxy Watch</strong> (Samsung Health) das Training im Modus <strong>'Tennis'</strong>.</li>
+                    <li><strong>String Master öffnen:</strong> Öffne nach dem Spielen einfach die String Master App auf deinem Smartphone.</li>
+                    <li><strong>Erkennung mit 1 Tipp:</strong> Die App findet automatisch nicht gespeicherte Tennis-Workouts der letzten 3 Tage und blendet die Karte <strong>'Tennis-Training erkannt! 🎾'</strong> ein.</li>
+                    <li><strong>Sofort speichern:</strong> Dein Hauptschläger ist bereits vorausgewählt. Passe die Zeit bei Bedarf mit <strong>+0,5h / -0,5h</strong> an und tippe auf <strong>[Auf diesen Schläger buchen]</strong>!</li>`,
+                s1Tip: "💡 <strong>Tipp:</strong> Wähle auf der Uhr unbedingt das Training <strong>'Tennis'</strong>. Einheiten wie 'Sonstiges' oder 'HIIT' werden ignoriert, damit deine Saitenstunden exakt bleiben.",
+                s2Title: "Favoriten-Saiten-Presets",
+                s2Loc: "📍 <strong>Wo zu finden:</strong> <strong>Profil-Tab</strong> ➔ <strong>Saiten-Presets</strong> &nbsp;|&nbsp; Bespannungs-Screen ➔ <strong>[Preset laden]</strong> / <strong>[Setup speichern]</strong>",
+                s2Steps: `
+                    <li><strong>Lieblingsbespannung speichern:</strong> Gehe zu <strong>Profil ➔ Saiten-Presets</strong> und tippe auf <strong>[Preset hinzufügen]</strong> oder tippe im Bespannungs-Screen direkt auf <strong>[Setup speichern]</strong> (z. B. <em>„Match Poly 23 kg“</em>).</li>
+                    <li><strong>In 1 Sekunde anwenden:</strong> Tippe beim nächsten Bespannen oben auf <strong>[Preset laden]</strong>.</li>
+                    <li><strong>Kein erneutes Tippen:</strong> Wähle dein Preset und alle Saiten, Stärken und Bespannhärten werden automatisch ausgefüllt!</li>`,
+                s2Tip: "💡 <strong>Tipp:</strong> Lege getrennte Presets für Winter (weichere Härte) und Sommer (härtere Spannung) an und wende sie blitzschnell auf jeden Schläger an.",
+                s3Title: "Intelligente Wochen- & Monatsberichte",
+                s3Loc: "📍 <strong>Wo zu finden:</strong> <strong>Profil-Tab</strong> ➔ <strong>Meine Berichte</strong>",
+                s3Steps: `
+                    <li><strong>Automatische Zustellung:</strong> Jeden <strong>Montag um 9:00 Uhr (Ortszeit)</strong> erhältst du eine Push-Mitteilung &amp; E-Mail mit deiner Wochenauswertung.</li>
+                    <li><strong>Jederzeit in der App abrufbar:</strong> Öffne unten den Tab <strong>Profil</strong> und wähle <strong>'Meine Berichte'</strong>.</li>
+                    <li><strong>Trends im Blick behalten:</strong> Wechsle zwischen <strong>Wöchentlich</strong> und <strong>Monatlich</strong>, um Spielstunden, Spannungsverlust und den optimalen Zeitpunkt zum Neubesaiten zu sehen.</li>`,
+                s3Tip: "💡 <strong>Tipp:</strong> Am 1. jedes Monats erhältst du zusätzlich eine übersichtliche Monatsanalyse deiner Spielzeit und Saitenabnutzung.",
+                s4Title: "Vollständiger CSV-Datenexport",
+                s4Loc: "📍 <strong>Wo zu finden:</strong> <strong>Verlauf-Tab</strong> ➔ <strong>[CSV exportieren]</strong>-Symbol oben rechts",
+                s4Steps: `
+                    <li><strong>Verlauf öffnen:</strong> Tippe unten in der Navigationsleiste auf <strong>Verlauf (History)</strong>.</li>
+                    <li><strong>CSV exportieren wählen:</strong> Tippe oben rechts auf das Teilen-/Export-Symbol.</li>
+                    <li><strong>Gewünschte Daten wählen:</strong> 3 Optionen stehen bereit:<br>• <em>Bespannungsprotokolle:</em> Schläger, Saiten, Stärken, Härten, Spielstunden &amp; Bewertungen.<br>• <em>Spielzeit-Verlauf:</em> Datum, Dauer, Spielgefühl, Wetter, Temperatur &amp; Notizen.<br>• <em>Alles exportieren (beide CSVs):</em> Beide Dateien gemeinsam teilen.</li>
+                    <li><strong>Überall sauber öffnen:</strong> Dank UTF-8 BOM ohne Zeichenfehler direkt in <strong>Excel, Apple Numbers oder Google Sheets</strong> öffnen.</li>`,
+                s5Title: "3+ Schläger & Individuelle Specs",
+                s5Loc: "📍 <strong>Wo zu finden:</strong> <strong>Home-Tab</strong> (<strong>+</strong> Button) &nbsp;|&nbsp; <strong>Profil-Tab</strong> ➔ <strong>Meine Schläger</strong>",
+                s5Steps: `
+                    <li><strong>Die ganze Tasche verwalten:</strong> Kostenlose Konten verwalten bis zu 2 Schläger mit unbegrenzten Einträgen. Pro-Mitglieder verfolgen <strong>3 oder mehr Schläger ohne Limit</strong>.</li>
+                    <li><strong>Pro-Tuning-Daten speichern:</strong> Klappe beim Hinzufügen/Bearbeiten <strong>'Erweiterte Schläger-Specs'</strong> aus, um Gewicht (g), Balance (mm), Schwunggewicht, Rahmenhärte (RA), Seriennummer und Bleiband-/Griffnotizen festzuhalten.</li>`,
+                s6Title: "Startbildschirm-Widgets (iOS & Android)",
+                s6Loc: "📍 <strong>Wo zu finden:</strong> <strong>Profil-Tab</strong> ➔ <strong>Startbildschirm-Widget</strong>",
+                s6Steps: `
+                    <li><strong>Widget-Größe wählen (Android):</strong> Tippe auf <strong>Profil ➔ Startbildschirm-Widget</strong> und wähle zwischen <strong>Small (2×2)</strong> oder <strong>Medium (4×2)</strong> mit Specs, Spielzeit und Schnell-Log-Button.</li>
+                    <li><strong>Auf iOS hinzufügen:</strong> Halte eine freie Stelle auf dem iPhone-Startbildschirm gedrückt, tippe oben links auf <strong>'+'</strong> und suche nach <strong>'String Master'</strong>.</li>`,
+                s6Tip: "💡 <strong>Tipp:</strong> Dein Widget aktualisiert sich automatisch bei jeder Spielzeit oder Neubesaitung. Pro-Mitglieder können zudem direkt über <strong>'+' / 'Spielzeit erfassen'</strong> im Widget mit 1 Tipp buchen.",
+                ctaTitle: "Bereit für das nächste Level bei deinem Equipment?",
+                ctaDesc: "Teste alle Pro-Funktionen mit der <strong>14-tägigen kostenlosen Testphase</strong> direkt in der String Master App.",
+                ctaBtn: "String Master für iOS & Android laden",
+                footHome: "Startseite",
+                footPrivacy: "Datenschutz",
+                footTerms: "Nutzungsbedingungen"
+            },
+            fr: {
+                pageTitle: "Guide d'Utilisation Pro - String Master",
+                backHome: "← Retour à l'accueil",
+                guideBadge: "👑 GUIDE UTILISATEUR PRO",
+                heroTitle: "Comment utiliser String Master Pro",
+                heroSubtitle: "Un guide visuel rapide indiquant <strong>où trouver</strong> et <strong>comment utiliser</strong> chaque fonctionnalité premium.",
+                navWatch: "⌚ Montre Connectée",
+                navPresets: "⚡ Préréglages",
+                navReports: "📊 Mes Rapports",
+                navCsv: "📁 Export CSV",
+                navRackets: "🎾 3+ Raquettes",
+                navWidget: "📱 Widgets",
+                s1Title: "Synchronisation Automatique avec Montre Connectée",
+                s1Loc: "📍 <strong>Où le trouver :</strong> App Exercice sur montre ➔ Ouvrir String Master (fiche automatique)",
+                s1Steps: `
+                    <li><strong>Enregistrez votre match sur votre montre :</strong> Sur <strong>Apple Watch</strong> (app Exercice) ou <strong>Galaxy Watch</strong> (Samsung Health), démarrez votre séance en mode <strong>« Tennis »</strong>.</li>
+                    <li><strong>Ouvrez String Master :</strong> Après la partie, ouvrez simplement l'application sur votre téléphone.</li>
+                    <li><strong>Détection en 1 clic :</strong> L'application détecte automatiquement vos séances de tennis des 3 derniers jours non enregistrées et affiche <strong>« Séance de tennis détectée ! 🎾 »</strong>.</li>
+                    <li><strong>Validez instantanément :</strong> Votre raquette principale est présélectionnée. Ajustez la durée avec <strong>+0,5h / -0,5h</strong> si besoin, puis touchez <strong>[Enregistrer sur cette raquette]</strong> !</li>`,
+                s1Tip: "💡 <strong>Astuce :</strong> Choisissez bien l'activité <strong>« Tennis »</strong> sur votre montre. Les séances « Autre » ou « HIIT » sont ignorées pour garder vos statistiques fiables.",
+                s2Title: "Préréglages de Cordage Favoris",
+                s2Loc: "📍 <strong>Où le trouver :</strong> <strong>Onglet Profil</strong> ➔ <strong>Préréglages de Cordage</strong> &nbsp;|&nbsp; Écran de pose ➔ <strong>[Charger]</strong> / <strong>[Sauvegarder]</strong>",
+                s2Steps: `
+                    <li><strong>Sauvegardez votre montage favori :</strong> Allez dans <strong>Profil ➔ Préréglages de Cordage</strong> et touchez <strong>[Ajouter un préréglage]</strong>, ou touchez <strong>[Sauvegarder le montage]</strong> directement sur l'écran d'enregistrement (ex. <em>« Poly Match 24 kg »</em>).</li>
+                    <li><strong>Appliquez en 1 seconde :</strong> Lors du prochain cordage, touchez <strong>[Charger un préréglage]</strong> en haut de l'écran.</li>
+                    <li><strong>Plus rien à retaper :</strong> Choisissez votre préréglage : cordes, jauges et tensions se remplissent automatiquement !</li>`,
+                s2Tip: "💡 <strong>Astuce :</strong> Créez un préréglage hiver (tension plus souple) et un préréglage été (tension plus ferme) applicables à n'importe quelle raquette de votre sac.",
+                s3Title: "Rapports Intelligents Hebdomadaires et Mensuels",
+                s3Loc: "📍 <strong>Où le trouver :</strong> <strong>Onglet Profil</strong> ➔ <strong>Mes Rapports</strong>",
+                s3Steps: `
+                    <li><strong>Envoi automatique :</strong> Chaque <strong>lundi à 9h00 (heure locale)</strong>, recevez une notification et un e-mail résumant votre semaine sur le court.</li>
+                    <li><strong>Consultable à tout moment :</strong> Ouvrez l'onglet <strong>Profil</strong> en bas, puis sélectionnez <strong>« Mes Rapports »</strong>.</li>
+                    <li><strong>Suivez vos tendances :</strong> Basculez entre <strong>Hebdomadaire</strong> et <strong>Mensuel</strong> pour suivre votre temps de jeu, la perte de tension et le moment idéal pour recorder.</li>`,
+                s3Tip: "💡 <strong>Astuce :</strong> Le 1er de chaque mois, un bilan mensuel complet retrace tout votre temps de jeu et l'usure de vos cordages.",
+                s4Title: "Exportation Complète des Données en CSV",
+                s4Loc: "📍 <strong>Où le trouver :</strong> <strong>Onglet Historique</strong> ➔ Icône <strong>[Exporter CSV]</strong> en haut à droite",
+                s4Steps: `
+                    <li><strong>Ouvrez l'Historique :</strong> Touchez l'onglet <strong>Historique</strong> dans la barre inférieure.</li>
+                    <li><strong>Touchez Exporter CSV :</strong> Appuyez sur l'icône de partage/export en haut à droite.</li>
+                    <li><strong>Choisissez vos données :</strong> 3 options disponibles :<br>• <em>Journal de cordages :</em> Raquettes, cordes, jauges, tensions, heures, notes et avis.<br>• <em>Historique de temps de jeu :</em> Dates, durées, sensations, météo, température et notes.<br>• <em>Tout exporter (les 2 CSV) :</em> Partagez les deux fichiers en une fois.</li>
+                    <li><strong>Compatible partout :</strong> Format UTF-8 BOM lisible sans erreur d'accents dans <strong>Excel, Apple Numbers ou Google Sheets</strong>.</li>`,
+                s5Title: "3+ Raquettes et Spécifications Avancées",
+                s5Loc: "📍 <strong>Où le trouver :</strong> <strong>Onglet Accueil</strong> (Bouton <strong>+</strong>) &nbsp;|&nbsp; <strong>Profil</strong> ➔ <strong>Mes Raquettes</strong>",
+                s5Steps: `
+                    <li><strong>Tout votre sac prêt à jouer :</strong> L'offre gratuite gère jusqu'à 2 raquettes avec entrées illimitées. Les membres Pro suivent <strong>3 raquettes ou plus sans aucune limite</strong>.</li>
+                    <li><strong>Notez vos réglages sur mesure :</strong> Dépliez <strong>« Spécifications avancées »</strong> lors de l'ajout ou modification d'une raquette pour enregistrer poids (g), équilibre (mm), swingweight, rigidité (RA), numéro de série et notes plomb/grip.</li>`,
+                s6Title: "Widgets d'Écran d'Accueil (iOS & Android)",
+                s6Loc: "📍 <strong>Où le trouver :</strong> <strong>Onglet Profil</strong> ➔ <strong>Widget d'Écran d'Accueil</strong>",
+                s6Steps: `
+                    <li><strong>Choisissez la taille (Android) :</strong> Ouvrez <strong>Profil ➔ Widget d'Écran d'Accueil</strong> et choisissez le format <strong>Petit (2×2)</strong> ou <strong>Moyen (4×2)</strong> avec caractéristiques, temps de jeu et bouton d'ajout rapide.</li>
+                    <li><strong>Ajouter sur iOS :</strong> Maintenez votre doigt sur un espace vide de l'écran d'accueil iPhone, touchez <strong>« + »</strong> en haut à gauche et recherchez <strong>« String Master »</strong>.</li>`,
+                s6Tip: "💡 <strong>Astuce :</strong> Votre widget se met à jour automatiquement à chaque séance ou recordage. Les membres Pro peuvent aussi toucher <strong>« + » / « Enregistrer »</strong> directement depuis le widget.",
+                ctaTitle: "Prêt à optimiser votre équipement de tennis ?",
+                ctaDesc: "Découvrez toutes les fonctionnalités Pro grâce à l'<strong>essai gratuit de 14 jours</strong> directement dans l'application String Master.",
+                ctaBtn: "Télécharger String Master sur iOS & Android",
+                footHome: "Accueil",
+                footPrivacy: "Confidentialité",
+                footTerms: "Conditions d'utilisation"
+            },
+            it: {
+                pageTitle: "Guida Utente Pro - String Master",
+                backHome: "← Torna alla Home",
+                guideBadge: "👑 GUIDA UTENTE PRO",
+                heroTitle: "Come usare String Master Pro",
+                heroSubtitle: "Una guida visiva rapida per scoprire <strong>dove trovare</strong> e <strong>come usare</strong> tutte le funzioni premium nell'app.",
+                navWatch: "⌚ Smartwatch",
+                navPresets: "⚡ Preset Corde",
+                navReports: "📊 I Miei Report",
+                navCsv: "📁 Esporta CSV",
+                navRackets: "🎾 3+ Racchette",
+                navWidget: "📱 Widget Home",
+                s1Title: "Sincronizzazione Automatica Smartwatch",
+                s1Loc: "📍 <strong>Dove trovarlo:</strong> App Allenamento su orologio ➔ Apri String Master (scheda automatica)",
+                s1Steps: `
+                    <li><strong>Registra il match sull'orologio:</strong> Su <strong>Apple Watch</strong> (app Allenamento) o <strong>Galaxy Watch</strong> (Samsung Health), avvia la sessione in modalità <strong>'Tennis'</strong>.</li>
+                    <li><strong>Apri String Master:</strong> Dopo la partita, apri semplicemente String Master sul telefono.</li>
+                    <li><strong>Rilevamento in 1 tocco:</strong> L'app controlla automaticamente le sessioni di tennis degli ultimi 3 giorni non ancora salvate e mostra la scheda <strong>'Allenamento di tennis rilevato! 🎾'</strong>.</li>
+                    <li><strong>Salva subito:</strong> La racchetta principale è già selezionata. Regola la durata con <strong>+0,5h / -0,5h</strong> se serve e tocca <strong>[Registra su questa racchetta]</strong>!</li>`,
+                s1Tip: "💡 <strong>Consiglio:</strong> Seleziona sempre l'allenamento <strong>'Tennis'</strong> sull'orologio. Le sessioni 'Altro' o 'HIIT' vengono ignorate per mantenere precise le ore delle corde.",
+                s2Title: "Preset Preferiti per le Corde",
+                s2Loc: "📍 <strong>Dove trovarlo:</strong> <strong>Scheda Profilo</strong> ➔ <strong>Preset Corde</strong> &nbsp;|&nbsp; Schermata Incordatura ➔ <strong>[Carica Preset]</strong> / <strong>[Salva Setup]</strong>",
+                s2Steps: `
+                    <li><strong>Salva il tuo setup preferito:</strong> Vai su <strong>Profilo ➔ Preset Corde</strong> e tocca <strong>[Aggiungi Preset]</strong>, oppure tocca <strong>[Salva Setup]</strong> nella schermata di incordatura (es. <em>"Poly Match 23 kg"</em>).</li>
+                    <li><strong>Applica in 1 secondo:</strong> Alla prossima incordatura, tocca <strong>[Carica Preset]</strong> in alto.</li>
+                    <li><strong>Zero riscritture:</strong> Seleziona il preset e corde, calibri e tensioni si compileranno automaticamente!</li>`,
+                s2Tip: "💡 <strong>Consiglio:</strong> Crea preset diversi per l'inverno (tensione più morbida) e l'estate (più rigida) da applicare subito a qualsiasi racchetta.",
+                s3Title: "Report Intelligenti Settimanali e Mensili",
+                s3Loc: "📍 <strong>Dove trovarlo:</strong> <strong>Scheda Profilo</strong> ➔ <strong>I Miei Report</strong>",
+                s3Steps: `
+                    <li><strong>Invio automatico:</strong> Ogni <strong>lunedì alle 9:00 (ora locale)</strong> ricevi una notifica push e un'email con il riepilogo della settimana in campo.</li>
+                    <li><strong>Sempre a portata di mano:</strong> Tocca la scheda <strong>Profilo</strong> in basso e seleziona <strong>'I Miei Report'</strong>.</li>
+                    <li><strong>Monitora i trend:</strong> Passa da <strong>Settimanale</strong> a <strong>Mensile</strong> per vedere ore giocate, calo di tensione e quando incordare di nuovo.</li>`,
+                s3Tip: "💡 <strong>Consiglio:</strong> Il 1° di ogni mese arriva anche un'analisi mensile completa del tuo tempo in campo e dell'usura delle corde.",
+                s4Title: "Esportazione Completa in CSV",
+                s4Loc: "📍 <strong>Dove trovarlo:</strong> <strong>Scheda Cronologia</strong> ➔ Icona <strong>[Esporta CSV]</strong> in alto a destra",
+                s4Steps: `
+                    <li><strong>Apri Cronologia:</strong> Tocca la scheda <strong>Cronologia (History)</strong> nella barra in basso.</li>
+                    <li><strong>Tocca Esporta CSV:</strong> Tocca l'icona di condivisione/esportazione in alto a destra.</li>
+                    <li><strong>Scegli cosa esportare:</strong> 3 opzioni disponibili:<br>• <em>Log incordature:</em> Racchette, corde, calibri, tensioni, ore, valutazioni e recensioni.<br>• <em>Cronologia ore di gioco:</em> Date, durata, feeling, meteo, temperatura e note.<br>• <em>Esporta tutto (entrambi i CSV):</em> Condividi entrambi i file insieme.</li>
+                    <li><strong>Apri ovunque:</strong> Formato UTF-8 BOM pronto per <strong>Excel, Apple Numbers e Google Sheets</strong> senza problemi di caratteri.</li>`,
+                s5Title: "3+ Racchette e Specifiche Avanzate",
+                s5Loc: "📍 <strong>Dove trovarlo:</strong> <strong>Scheda Home</strong> (Pulsante <strong>+</strong>) &nbsp;|&nbsp; <strong>Profilo</strong> ➔ <strong>Le Mie Racchette</strong>",
+                s5Steps: `
+                    <li><strong>Tutta la borsa sotto controllo:</strong> Il piano gratuito include fino a 2 racchette con registrazioni illimitate. Gli utenti Pro possono gestire <strong>3 o più racchette senza limiti</strong>.</li>
+                    <li><strong>Salva il tuo tuning:</strong> Espandi <strong>'Specifiche avanzate racchetta'</strong> per registrare peso (g), bilanciamento (mm), swingweight, rigidità (RA), numero seriale e note su piombo/grip.</li>`,
+                s6Title: "Widget Schermata Home (iOS e Android)",
+                s6Loc: "📍 <strong>Dove trovarlo:</strong> <strong>Scheda Profilo</strong> ➔ <strong>Widget Schermata Home</strong>",
+                s6Steps: `
+                    <li><strong>Scegli la dimensione (Android):</strong> Vai su <strong>Profilo ➔ Widget Schermata Home</strong> e scegli tra <strong>Piccolo (2×2)</strong> o <strong>Medio (4×2)</strong> con specifiche, ore e pulsante di registrazione rapida.</li>
+                    <li><strong>Aggiungi su iOS:</strong> Tieni premuto uno spazio vuoto sulla schermata Home dell'iPhone, tocca <strong>'+'</strong> in alto a sinistra e cerca <strong>'String Master'</strong>.</li>`,
+                s6Tip: "💡 <strong>Consiglio:</strong> Il widget si aggiorna automaticamente ogni volta che registri una sessione o un'incordatura. Gli utenti Pro possono anche toccare <strong>'+' / 'Registra'</strong> direttamente dal widget.",
+                ctaTitle: "Pronto a portare la gestione della tua attrezzatura al livello successivo?",
+                ctaDesc: "Prova tutte le funzioni Pro con <strong>14 giorni di prova gratuita</strong> direttamente dentro l'app String Master.",
+                ctaBtn: "Scarica String Master su iOS e Android",
+                footHome: "Home",
+                footPrivacy: "Privacy Policy",
+                footTerms: "Termini di Servizio"
+            },
+            pt: {
+                pageTitle: "Guia do Usuário Pro - String Master",
+                backHome: "← Voltar ao Início",
+                guideBadge: "👑 GUIA DO USUÁRIO PRO",
+                heroTitle: "Como usar o String Master Pro",
+                heroSubtitle: "Um guia visual rápido mostrando <strong>onde encontrar</strong> e <strong>como usar</strong> cada recurso premium no app.",
+                navWatch: "⌚ Smartwatch",
+                navPresets: "⚡ Presets de Corda",
+                navReports: "📊 Meus Relatórios",
+                navCsv: "📁 Exportar CSV",
+                navRackets: "🎾 3+ Raquetes",
+                navWidget: "📱 Widgets",
+                s1Title: "Sincronização Automática com Smartwatch",
+                s1Loc: "📍 <strong>Onde encontrar:</strong> App de treino no relógio ➔ Abrir String Master (alerta automático)",
+                s1Steps: `
+                    <li><strong>Registre seu jogo no relógio:</strong> No <strong>Apple Watch</strong> (app Exercício) ou <strong>Galaxy Watch</strong> (Samsung Health), inicie sua partida no modo <strong>'Tênis'</strong>.</li>
+                    <li><strong>Abra o String Master:</strong> Após jogar, basta abrir o app String Master no celular.</li>
+                    <li><strong>Detecção em 1 toque:</strong> O app verifica automaticamente treinos de tênis dos últimos 3 dias ainda não registrados e exibe o cartão <strong>'Treino de Tênis Detectado! 🎾'</strong>.</li>
+                    <li><strong>Salve na hora:</strong> Sua raquete principal já vem selecionada. Ajuste com <strong>+0,5h / -0,5h</strong> se precisar e toque em <strong>[Registrar nesta raquete]</strong>!</li>`,
+                s1Tip: "💡 <strong>Dica:</strong> Escolha sempre o modo <strong>'Tênis'</strong> no relógio. Treinos salvos como 'Outro' ou 'HIIT' são ignorados para manter as horas da corda precisas.",
+                s2Title: "Presets Favoritos de Corda",
+                s2Loc: "📍 <strong>Onde encontrar:</strong> <strong>Aba Perfil</strong> ➔ <strong>Presets de Corda</strong> &nbsp;|&nbsp; Tela de Registro ➔ <strong>[Carregar Preset]</strong> / <strong>[Salvar Setup]</strong>",
+                s2Steps: `
+                    <li><strong>Salve sua combinação favorita:</strong> Vá em <strong>Perfil ➔ Presets de Corda</strong> e toque em <strong>[Adicionar Preset]</strong>, ou toque em <strong>[Salvar Setup]</strong> na própria tela de encordoamento (ex.: <em>"Poly Torneio 52 lbs"</em>).</li>
+                    <li><strong>Aplique em 1 segundo:</strong> No próximo encordoamento, toque em <strong>[Carregar Preset]</strong> no topo da tela.</li>
+                    <li><strong>Sem digitar tudo de novo:</strong> Escolha o preset e cordas, calibres e tensões são preenchidos automaticamente!</li>`,
+                s2Tip: "💡 <strong>Dica:</strong> Crie presets separados para inverno (tensão menor) e verão (tensão mais firme) e aplique a qualquer raquete da sua raqueteira.",
+                s3Title: "Relatórios Inteligentes Semanais e Mensais",
+                s3Loc: "📍 <strong>Onde encontrar:</strong> <strong>Aba Perfil</strong> ➔ <strong>Meus Relatórios</strong>",
+                s3Steps: `
+                    <li><strong>Entrega automática:</strong> Toda <strong>segunda-feira às 9h (horário local)</strong>, você recebe uma notificação e e-mail com o resumo da sua semana em quadra.</li>
+                    <li><strong>Consulte quando quiser:</strong> Toque na aba <strong>Perfil</strong> na parte inferior e abra <strong>'Meus Relatórios'</strong>.</li>
+                    <li><strong>Acompanhe sua evolução:</strong> Alterne entre <strong>Semanal</strong> e <strong>Mensal</strong> para ver total de horas, perda de tensão por raquete e a hora certa de reencordoar.</li>`,
+                s3Tip: "💡 <strong>Dica:</strong> Todo dia 1º do mês você também recebe uma análise mensal completa do seu tempo de jogo e desgaste das cordas.",
+                s4Title: "Exportação Completa de Dados em CSV",
+                s4Loc: "📍 <strong>Onde encontrar:</strong> <strong>Aba Histórico</strong> ➔ Ícone <strong>[Exportar CSV]</strong> no canto superior direito",
+                s4Steps: `
+                    <li><strong>Abra o Histórico:</strong> Toque na aba <strong>Histórico (History)</strong> na barra inferior.</li>
+                    <li><strong>Toque em Exportar CSV:</strong> Toque no ícone de compartilhar/exportar no canto superior direito.</li>
+                    <li><strong>Escolha o que exportar:</strong> 3 opções:<br>• <em>Registros de encordoamento:</em> Raquetes, cordas, calibres, tensões, horas, notas e avaliações.<br>• <em>Histórico de tempo de jogo:</em> Datas, duração, sensação, clima, temperatura e observações.<br>• <em>Exportar tudo (ambos os CSVs):</em> Compartilhe os dois arquivos juntos.</li>
+                    <li><strong>Abra em qualquer lugar:</strong> Formato UTF-8 BOM pronto para <strong>Excel, Apple Numbers ou Google Sheets</strong> sem erros de acentuação.</li>`,
+                s5Title: "3+ Raquetes e Especificações Personalizadas",
+                s5Loc: "📍 <strong>Onde encontrar:</strong> <strong>Aba Início</strong> (Botão <strong>+</strong>) &nbsp;|&nbsp; <strong>Perfil</strong> ➔ <strong>Minhas Raquetes</strong>",
+                s5Steps: `
+                    <li><strong>Toda a raqueteira organizada:</strong> Contas gratuitas gerenciam até 2 raquetes com registros ilimitados. Membros Pro acompanham <strong>3 ou mais raquetes sem limite</strong>.</li>
+                    <li><strong>Salve seu tuning completo:</strong> Expanda <strong>'Especificações avançadas da raquete'</strong> para registrar peso (g), equilíbrio (mm), swingweight, rigidez (RA), número de série e notas de chumbo/grip.</li>`,
+                s6Title: "Widgets na Tela Inicial (iOS e Android)",
+                s6Loc: "📍 <strong>Onde encontrar:</strong> <strong>Aba Perfil</strong> ➔ <strong>Widget da Tela Inicial</strong>",
+                s6Steps: `
+                    <li><strong>Escolha o tamanho (Android):</strong> Toque em <strong>Perfil ➔ Widget da Tela Inicial</strong> e escolha entre <strong>Pequeno (2×2)</strong> ou <strong>Médio (4×2)</strong> com especificações, horas e botão de registro rápido.</li>
+                    <li><strong>Adicionar no iOS:</strong> Mantenha pressionado um espaço vazio na tela inicial do iPhone, toque em <strong>'+'</strong> no canto superior esquerdo e procure por <strong>'String Master'</strong>.</li>`,
+                s6Tip: "💡 <strong>Dica:</strong> O widget é atualizado automaticamente sempre que você registra jogo ou encordoamento. Membros Pro também podem tocar em <strong>'+' / 'Registrar'</strong> direto no widget.",
+                ctaTitle: "Pronto para elevar o cuidado com seu equipamento?",
+                ctaDesc: "Experimente todos os recursos Pro com <strong>14 dias de teste gratuito</strong> diretamente no aplicativo String Master.",
+                ctaBtn: "Baixar String Master para iOS e Android",
+                footHome: "Início",
+                footPrivacy: "Privacidade",
+                footTerms: "Termos de Uso"
+            }
+        };
+    </script>
+    <script src="i18n.js"></script>
+    <script>
+        window.initStringMasterI18n(I18N);
+    </script>
 </body>
 </html>
-
